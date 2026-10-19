@@ -28,40 +28,25 @@ $(function() {
     "use strict";
 	
 	
+    // 1. & 2. fadeIn (instant on load, preloader removed)
+    function initPageAppearance() {
+        $(".hero-bg").css({
+            "background-image": "url('Stormlit%20Brutalist%20Concrete%20Pavilion.png')",
+            "background-size": "cover",
+            "background-position": "center center",
+            "background-repeat": "no-repeat"
+        });
+        $(".fadeIn-element").fadeIn(600);
+        $(".fadeIn-element-2").fadeIn(600);
+        $(".border-left").removeClass("left-position");
+        $(".border-right").removeClass("right-position");
+        $(".border-top").removeClass("top-position");
+        $(".border-bottom").removeClass("bottom-position");
+        $(".hero-bg").addClass("hero-bg-show");
+    }
+    initPageAppearance();
     $(window).on("load", function() {
-        // 1. preloader
-        $("#preloader").fadeOut(600);
-        $(".preloader-bg").delay(400).fadeOut(600);
-		
-        // 2. fadeIn
-        // 2-1. fadeIn.element
-        setTimeout(function() {
-            $(".fadeIn-element").delay(1200).css({
-                display: "none"
-            }).fadeIn(2400);
-        }, 0);
-        setTimeout(function() {
-            $(".fadeIn-element-2").delay(1200).css({
-                display: "none"
-            }).fadeIn(1200);
-        }, 0);
-        // 2-2. fadeIn.borders
-        setTimeout(function() {
-            $(".border-left").removeClass("left-position");
-        }, 800);
-        setTimeout(function() {
-            $(".border-right").removeClass("right-position");
-        }, 800);
-        setTimeout(function() {
-            $(".border-top").removeClass("top-position");
-        }, 800);
-        setTimeout(function() {
-            $(".border-bottom").removeClass("bottom-position");
-        }, 800);
-        // 2-3. fadeIn.hero
-        setTimeout(function() {
-            $(".hero-bg").addClass("hero-bg-show");
-        }, 400);
+        initPageAppearance();
     });
 	
     // 3. countdown SETUP
@@ -85,7 +70,7 @@ $(function() {
         animationIn: "fadeInLeft",
         animationOut: "fadeOutRight",
         speed: 4000,
-        words: ['<span class="highlighter">ZEROPOINT</span><br>Stillness in Motion', 'Private Dance<br><span class="highlighter">Experiences</span>']
+        words: ['ZEROPOINT<br><span class="highlighter">STILLNESS IN MOTION</span>', 'PRIVATE. PRECISE.<br><span class="highlighter">PERSONAL.</span>']
     });
 	
     // 6. facts counter
@@ -97,6 +82,40 @@ $(function() {
             speed: 1200,
             refreshInterval: 60
         });
+    });
+	
+    // 6-1. About Year Counter Animation (2006)
+    function runAboutYearCounter() {
+        var $counter = $(".about-year-counter");
+        if (!$counter.length) return;
+        var targetYear = parseInt($counter.attr("data-target"), 10) || 2006;
+        var startYear = 1990;
+        var duration = 1600;
+        var startTimestamp = null;
+
+        function animateCount(timestamp) {
+            if (!startTimestamp) startTimestamp = timestamp;
+            var progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            var currentVal = Math.floor(startYear + (targetYear - startYear) * ease);
+            $counter.text(currentVal);
+            if (progress < 1) {
+                window.requestAnimationFrame(animateCount);
+            } else {
+                $counter.text(targetYear);
+            }
+        }
+        window.requestAnimationFrame(animateCount);
+    }
+
+    $("#fire-about").on("click", function() {
+        setTimeout(function() {
+            runAboutYearCounter();
+        }, 500);
+    });
+
+    $(".about-year-counter").appear(function() {
+        runAboutYearCounter();
     });
 	
     // 7. skills bar
@@ -219,23 +238,12 @@ $(function() {
         pauseOnHover: false
     });
 	
-	// 11. YTPlayer
-    $("#background-video").YTPlayer({
-        videoId: "9ZfN87gSjvI", // DEMO URL is: https://www.youtube.com/watch?v=9ZfN87gSjvI
-        mute: true,             // options: true, false
-        pauseOnScroll: false,
-        repeat: true,
-        fitToBackground: true,
-        playerVars: {
-            modestbranding: 0,
-            autoplay: 1,
-            controls: 0,
-            showinfo: 0,
-            wmode: "transparent",
-            branding: 0,
-            rel: 0,
-            autohide: 0
-        }
+	// 11. Hero Background Image (Stormlit Brutalist Concrete Pavilion)
+    $(".hero-bg").css({
+        "background-image": "url('Stormlit%20Brutalist%20Concrete%20Pavilion.png')",
+        "background-size": "cover",
+        "background-position": "center center",
+        "background-repeat": "no-repeat"
     });
 	
     // 12. MOBILE DETECT
