@@ -102,6 +102,17 @@ $(function() {
         window.requestAnimationFrame(animateCount);
     }
 
+    // 6-2. Navigation transitions - show logo in low visibility on inner pages
+    $("#fire-about, #fire-services, #fire-contact").on("click", function() {
+        $("body").addClass("inner-page-active");
+        $("#hero-bg").addClass("hero-bg-low-vis");
+    });
+
+    $("#fire-home").on("click", function() {
+        $("body").removeClass("inner-page-active");
+        $("#hero-bg").removeClass("hero-bg-low-vis");
+    });
+
     $("#fire-about").on("click", function() {
         setTimeout(function() {
             runAboutYearCounter();

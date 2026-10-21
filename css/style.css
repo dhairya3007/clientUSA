@@ -15,6 +15,10 @@
   --color-limestone-rgb: 233, 228, 218;
   --color-stone-grey: #77766F;
   --color-stone-grey-rgb: 119, 118, 111;
+
+  /* Brand Typography */
+  --font-display: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 
@@ -332,9 +336,9 @@ outline: 0;
 
 /* layout */
 body {
-font-family: 'Raleway', sans-serif;
-font-size: 14px;
-line-height: 1.5;
+font-family: var(--font-body);
+font-size: 17px;
+line-height: 1.7;
 font-style: normal;
 font-weight: 400;
 text-align: left;
@@ -351,6 +355,13 @@ overflow-x: hidden;
 overflow-y: auto;
 margin: 0;
 padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
 }
 
 a {
@@ -384,11 +395,22 @@ outline: none;
 }
 
 p {
+font-family: var(--font-body);
+font-size: 17px;
+line-height: 1.7;
+font-weight: 400;
  -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 -webkit-text-size-adjust: 100%;
    -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
 }
 
 p a {
@@ -517,6 +539,7 @@ margin: 0 auto;
 padding: 0;
 text-align: center;
 overflow: visible;
+font-weight: 700 !important;
 }
 
 #wordrotator {
@@ -525,6 +548,12 @@ width: 100%;
 max-width: 100%;
 text-align: center;
 box-sizing: border-box;
+font-weight: 700 !important;
+}
+
+.wordsrotator_words,
+.wordsrotator_words * {
+font-weight: 700 !important;
 }
 
 .wordsrotator_words {
@@ -540,6 +569,7 @@ box-sizing: border-box;
 width: 100%;
 text-align: center;
 box-sizing: border-box;
+font-weight: 700 !important;
 }
 
 .wordsrotator_words .wordsrotator_wordOut {
@@ -553,15 +583,16 @@ position: absolute;
 .wordsrotator_words .wordsrotator_wordOut span {
 display: inline-block;
 width: 100%;
+font-weight: 700 !important;
 }
 
 h1 {
-font-family: 'Oswald', sans-serif;
-font-size: 90px;
-font-weight: 700;
-line-height: .9;
-letter-spacing: -0.04em;
-color: #fff;
+font-family: var(--font-display);
+font-size: clamp(64px, 5.5vw, 80px);
+font-weight: 700 !important;
+line-height: 1.05;
+letter-spacing: 0.02em;
+color: var(--color-ivory);
 margin: 160px auto 50px auto;
 text-align: center;
 text-transform: uppercase;
@@ -580,15 +611,15 @@ text-shadow: 1px 1px 2px #000;
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   h1 {
-    font-size: 78px;
+    font-size: 68px;
     margin: 130px auto 45px auto;
   }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   h1 {
-    font-size: 58px;
-    line-height: 1.05;
+    font-size: 54px;
+    line-height: 1.1;
     margin: 40px auto 30px auto;
     -webkit-transform: rotate(0deg);
        -moz-transform: rotate(0deg);
@@ -600,8 +631,8 @@ text-shadow: 1px 1px 2px #000;
 
 @media only screen and (max-width: 767px) and (min-width: 481px) {
   h1 {
-    font-size: clamp(36px, 7vw, 46px);
-    line-height: 1.1;
+    font-size: clamp(42px, 7vw, 48px);
+    line-height: 1.12;
     margin: 28px auto 22px auto;
     -webkit-transform: rotate(0deg);
        -moz-transform: rotate(0deg);
@@ -617,9 +648,9 @@ text-shadow: 1px 1px 2px #000;
     min-height: 75px;
   }
   h1 {
-    font-size: clamp(26px, 7.8vw, 34px);
+    font-size: clamp(38px, 9vw, 44px);
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.01em;
     margin: 20px auto 16px auto;
     -webkit-transform: rotate(0deg);
        -moz-transform: rotate(0deg);
@@ -636,69 +667,84 @@ text-shadow: 1px 1px 2px #000;
 color: var(--color-bronze);
 line-height: 1.18;
 display: inline-block;
+font-weight: 700 !important;
 }
 
 h2 {
-font-family: 'Oswald', sans-serif;
-font-size: 70px;
+font-family: var(--font-display);
+font-size: 42px;
 font-weight: 400;
-line-height: 1;
-letter-spacing: -0.04em;
-color: #fff;
-margin: 0 0 0 -6px;
+line-height: 1.2;
+letter-spacing: 0.04em;
+color: var(--color-ivory);
+margin: 0 0 20px -6px;
 text-align: center;
 text-transform: uppercase;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 767px) {
   h2 {
-    font-size: 57px;
+    font-size: 34px;
+    line-height: 1.22;
   }
 }
 
 h3 {
-font-family: 'Oswald', sans-serif;
-font-size: 30px;
+font-family: var(--font-display);
+font-size: 24px;
 font-weight: 400;
-line-height: 1;
-letter-spacing: -0.04em;
+line-height: 1.25;
+letter-spacing: 0.04em;
 color: var(--color-bronze);
 margin: 0 auto;
 text-align: center;
 text-transform: uppercase;
 }
 
+@media only screen and (max-width: 767px) {
+  h3 {
+    font-size: 21px;
+  }
+}
+
 h4 {
-font-family: 'Oswald', sans-serif;
-font-size: 30px;
+font-family: var(--font-display);
+font-size: 24px;
 font-weight: 400;
-line-height: 1;
-letter-spacing: -0.04em;
+line-height: 1.3;
+letter-spacing: 0.03em;
 color: var(--color-bronze);
-margin: 60px auto 15px auto;
+margin: 40px auto 15px auto;
 text-align: center;
 text-transform: uppercase;
 }
 
+@media only screen and (max-width: 767px) {
+  h4 {
+    font-size: 21px;
+    margin: 30px auto 12px auto;
+  }
+}
+
 h5 {
-font-family: 'Montserrat', sans-serif;
-font-size: 30px;
-font-weight: 700;
-line-height: 1;
-letter-spacing: -0.08em;
-color: #c5c2b8;
+font-family: var(--font-body);
+font-size: 12px;
+font-weight: 500;
+line-height: 1.4;
+letter-spacing: 0.18em;
+color: var(--color-bronze);
 margin: 0;
 text-align: center;
 text-transform: uppercase;
 }
 
 h6 {
-font-family: 'Oswald', sans-serif;
-font-size: 23px;
-font-weight: 400;
-line-height: 1;
-letter-spacing: -0.04em;
-color: #fff;
+font-family: var(--font-body);
+font-size: 11px;
+font-weight: 500;
+line-height: 1.4;
+letter-spacing: 0.22em;
+color: var(--color-ivory);
 margin: 0 auto;
 text-align: center;
 text-transform: uppercase;
@@ -788,14 +834,14 @@ display: inline-block;
 
 .decoration-effect {
 position: absolute;
-font-family: 'Oswald', sans-serif;
-font-size: 17px;
+font-family: var(--font-body);
+font-size: 14px;
 line-height: 1.5;
 font-style: normal;
 text-transform: uppercase;
 text-align: center;
-font-weight: 300;
-letter-spacing: 1px;
+font-weight: 500;
+letter-spacing: 0.1em;
 background: none;
 width: 202px;
 height: 61px;
@@ -908,14 +954,14 @@ display: inline-block;
 
 .decoration-effect-2 {
 position: absolute;
-font-family: 'Dosis', sans-serif;
-font-size: 17px;
+font-family: var(--font-body);
+font-size: 14px;
 line-height: 1.5;
 font-style: normal;
 text-transform: uppercase;
 text-align: center;
-font-weight: 400;
-letter-spacing: 1px;
+font-weight: 500;
+letter-spacing: 0.1em;
 background: none;
 width: 202px;
 height: 61px;
@@ -989,15 +1035,14 @@ margin: 0 auto;
 }
 
 .quote p {
-font-family: 'Raleway',sans-serif;
-font-size: 18px;
-line-height: 1.5;
+font-family: var(--font-display);
+font-size: 22px;
+line-height: 1.6;
 font-style: italic;
-font-weight: normal;
-text-align: center;
-color: #fff;
 font-weight: 400;
-letter-spacing: 1px;
+text-align: center;
+color: var(--color-ivory);
+letter-spacing: 0.02em;
 }
 
 .quote-mark-l {
@@ -1038,11 +1083,11 @@ z-index: 999;
 
 #main-menu {
 position: fixed;
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-style: normal;
 text-transform: uppercase;
-font-weight: 400;
-letter-spacing: 1px;
+font-weight: 500;
+letter-spacing: 0.08em;
 line-height: 1;
 width: 420px;
 height: 200%;
@@ -1115,7 +1160,7 @@ line-height: .75;
 }
 
 #main-menu .credits {
-font-family: 'Raleway', sans-serif;
+font-family: var(--font-body);
 font-size: 10px;
 line-height: 1;
 letter-spacing: 0.15em;
@@ -1532,11 +1577,11 @@ width: 115px;
 }
 
 ul#countdown li span {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-size: 70px;
-font-weight: 400;
+font-weight: 300;
 line-height: 1;
-letter-spacing: -0.04em;
+letter-spacing: 0.02em;
 color: #fff;
 text-align: center;
 margin: 0;
@@ -1551,11 +1596,11 @@ position: relative;
 }
 
 ul#countdown li span.seconds {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-size: 55px;
-font-weight: 400;
+font-weight: 300;
 line-height: 1.1;
-letter-spacing: -0.04em;
+letter-spacing: 0.02em;
 color: var(--color-bronze);
 text-align: left;
 margin: 0;
@@ -1583,12 +1628,13 @@ position: absolute;
 ul#countdown li p.timeRefDays,
 ul#countdown li p.timeRefHours,
 ul#countdown li p.timeRefMinutes {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 color: #fff;
 text-transform: uppercase;
-font-size: 16px;
+font-size: 12px;
 font-style: normal;
-font-weight: 300;
+font-weight: 500;
+letter-spacing: 0.14em;
 text-align: center;
 margin: 0;
 padding: 0 0 0 5px;
@@ -1603,12 +1649,13 @@ padding: 0 0 0 5px;
 }
 
 ul#countdown li p.timeRefSeconds {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 color: #fff;
 text-transform: uppercase;
-font-size: 16px;
+font-size: 12px;
 font-style: normal;
-font-weight: 300;
+font-weight: 500;
+letter-spacing: 0.14em;
 text-align: center;
 margin: 0;
 padding: 0 0 0 24px;
@@ -1621,12 +1668,12 @@ padding: 0 0 0 24px;
 }
 
 .until-launch {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 color: #fff;
-font-size: 23px;
-font-weight: 700;
-line-height: 1;
-letter-spacing: -0.04em;
+font-size: 13px;
+font-weight: 600;
+line-height: 1.4;
+letter-spacing: 0.15em;
 text-transform: uppercase;
 text-align: center;
 margin: 0 0 10px 0;
@@ -1894,23 +1941,23 @@ margin: 45px 0 0 0;
 }
 
 .intro-years h2 {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-style: normal;
-font-weight: 400;
-font-size: 10px;
+font-weight: 500;
+font-size: 11px;
 text-align: center;
 text-transform: uppercase;
-letter-spacing: 0.65em;
+letter-spacing: 0.25em;
 color: #fff;
 margin: 38px 0 32px 0;
 }
 
 .intro-years h3 {
 position: relative;
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-style: normal;
-font-weight: 700;
-font-size: 105px;
+font-weight: 300;
+font-size: 96px;
 text-align: center;
 text-transform: uppercase;
 letter-spacing: 0.05em;
@@ -1947,8 +1994,8 @@ padding: 0;
 }
 
 .facts-counter-number {
-font-family: 'Montserrat', Arial, sans-serif;
-font-size: 35px;
+font-family: var(--font-display);
+font-size: 38px;
 font-weight: 400;
 line-height: 1.3;
 text-align: center;
@@ -2062,10 +2109,12 @@ max-width: 820px;
 }
 
 blockquote p {
-font-size: 16px;
+font-family: var(--font-display);
+font-size: 19px;
 line-height: 1.6;
-letter-spacing: 0.06em;
+letter-spacing: 0.02em;
 font-style: italic;
+font-weight: 400;
 color: rgba(255, 255, 255, 0.95);
 margin: 0;
 padding: 0;
@@ -2083,26 +2132,26 @@ content: none !important;
 
 /* services */
 .service-heading {
-font-family: 'Oswald', sans-serif;
-font-size: 15px;
+font-family: var(--font-display);
+font-size: 24px;
 font-style: normal;
 font-weight: 400;
 text-transform: uppercase;
 margin: 15px 0;
 text-align: left;
-letter-spacing: 0.05em;
+letter-spacing: 0.04em;
 color: #fff;
 }
 
 .service-number {
 position: absolute;
 top: 0;
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-size: 140px;
-font-weight: 700;
+font-weight: 300;
 text-transform: uppercase;
-letter-spacing: -0.04em;
-color: rgba(182, 161, 126, .45);
+letter-spacing: -0.02em;
+color: rgba(182, 161, 126, .35);
 z-index: -1;
 }
 
@@ -2112,6 +2161,9 @@ text-align: left;
 }
 
 @media only screen and (max-width: 880px) {
+  .service-heading {
+    font-size: 21px;
+  }
   .service-number {
     font-size: 100px;
   }
@@ -2164,9 +2216,10 @@ height: 21px;
 line-height: 21px;
 top: -21px;
 left: 0;
-font-family: 'Montserrat', sans-serif;
-font-size: 10px;
-font-weight: 400;
+font-family: var(--font-body);
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 0.12em;
 text-transform: uppercase;
 color: #fff;
 background: none;
@@ -2278,11 +2331,11 @@ margin: 5px;
    -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
         transition: all 0.3s;
-font-family: 'Raleway', sans-serif;
-font-size: 14px;
+font-family: var(--font-body);
+font-size: 15px;
 line-height: 1.5;
 font-style: normal;
-font-weight: normal;
+font-weight: 400;
 text-align: center;
 }
 
@@ -2305,11 +2358,11 @@ margin: 5px;
    -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
         transition: all 0.3s;
-font-family: 'Raleway', sans-serif;
-font-size: 14px;
+font-family: var(--font-body);
+font-size: 15px;
 line-height: 1.5;
 font-style: normal;
-font-weight: normal;
+font-weight: 400;
 text-align: center;
 }
 
@@ -2323,11 +2376,11 @@ border-color: rgba(255,255,255, .35);
 }
 
 .success {
-font-family: 'Dosis', sans-serif;
-font-size: 11px;
+font-family: var(--font-body);
+font-size: 12px;
 font-style: normal;
 font-weight: 500;
-letter-spacing: 0.15em;
+letter-spacing: 0.12em;
 text-transform: uppercase;
 text-align: center;
 color: #fff;
@@ -2340,14 +2393,14 @@ line-height: 1;
 
 #form .error {
 position: absolute;
-font-size: 9px;
+font-size: 10px;
 text-transform: uppercase;
 text-align: left;
 color: var(--color-bronze);
 display: block;
 margin: -2px 0 0 1px;
 padding: 0;
-letter-spacing: 0.15em;
+letter-spacing: 0.12em;
  -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
@@ -2379,21 +2432,29 @@ textarea:focus::-webkit-input-placeholder { color: transparent; }
 .c-btn {
 position: relative;
 display: inline-block;
+font-family: var(--font-body);
 border: 1px solid var(--color-bronze);
 background: none;
-letter-spacing: 0.25em;
-font-weight: 700;
-font-size: 10px;
+letter-spacing: 0.12em;
+font-weight: 500;
+font-size: 14px;
 text-transform: uppercase;
 text-align: center;
 color: var(--color-ivory);
 margin: 20px 0 0 0;
-padding: 15px 25px;
+padding: 14px 26px;
 -webkit-transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
    -moz-transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     -ms-transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
      -o-transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media only screen and (max-width: 767px) {
+  .c-btn {
+    font-size: 15px;
+    padding: 13px 22px;
+  }
 }
 
 .c-btn.c-btn-dark {
@@ -2457,11 +2518,12 @@ z-index: 2;
 a:hover .c-btn {
 position: relative;
 display: inline-block;
+font-family: var(--font-body);
 border: 1px solid var(--color-bronze);
 background: none;
-letter-spacing: 0.25em;
-font-weight: 700;
-font-size: 10px;
+letter-spacing: 0.12em;
+font-weight: 500;
+font-size: 14px;
 text-transform: uppercase;
 text-align: center;
 color: var(--color-ivory);
@@ -2593,10 +2655,10 @@ z-index: 0;
 }
 
 #works-content .works-grid-inner .relative-container label.works-title {
-font-family: "Montserrat", sans-serif;
-font-size: 11px;
+font-family: var(--font-body);
+font-size: 12px;
 line-height: 1;
-letter-spacing: 0.05em;
+letter-spacing: 0.1em;
 font-style: normal;
 text-transform: uppercase;
 text-align: center;
@@ -2660,10 +2722,10 @@ top: -36px;
 }
 
 #works-content .works-grid-inner .relative-container a.works-button {
-font-family: "Montserrat", sans-serif;
-font-size: 11px;
+font-family: var(--font-body);
+font-size: 12px;
 line-height: 1;
-letter-spacing: 0.05em;
+letter-spacing: 0.1em;
 font-style: normal;
 text-transform: uppercase;
 text-align: center;
@@ -2741,14 +2803,14 @@ text-align: center;
 }
 
 .works-modal .modal-content h2 {
-font-family: "Montserrat", sans-serif;
-font-size: 24px;
-line-height: 1;
-letter-spacing: -0.04em;
+font-family: var(--font-display);
+font-size: 26px;
+line-height: 1.2;
+letter-spacing: 0.04em;
 font-style: normal;
 text-transform: uppercase;
 text-align: right;
-font-weight: 700;
+font-weight: 400;
 color: #000;
 }
 
@@ -2758,12 +2820,12 @@ margin-bottom: 30px;
 }
 
 .works-modal .modal-content p.item-intro {
-font-family: 'Montserrat', sans-serif;
+font-family: var(--font-body);
 padding: 10px 0 0 0;
 font-size: 11px;
-font-weight: 700;
+font-weight: 500;
 text-transform: uppercase;
-letter-spacing: 0.05em;
+letter-spacing: 0.08em;
 color: #5f5f5f;
 text-align: right;
 }
@@ -2837,26 +2899,33 @@ color: #111;
 
 /* ex modal */
 .ex-modal h4 {
-font-family: 'Oswald', sans-serif;
-font-size: 45px;
-font-weight: 700;
-line-height: 1;
-letter-spacing: normal;
+font-family: var(--font-display);
+font-size: 38px;
+font-weight: 400;
+line-height: 1.2;
+letter-spacing: 0.04em;
 color: #111;
 text-align: center;
 text-transform: uppercase;
-margin: 0 0 50px 0;
+margin: 0 0 30px 0;
 padding: 10px 0 0 0;
 }
 
+@media only screen and (max-width: 767px) {
+  .ex-modal h4 {
+    font-size: 30px;
+    margin: 0 0 20px 0;
+  }
+}
+
 .ex-modal h5  {
-font-family: 'Dosis', sans-serif;
+font-family: var(--font-body);
 font-style: normal;
-font-weight: 700;
+font-weight: 500;
 font-size: 12px;
 text-align: center;
 text-transform: uppercase;
-letter-spacing: 0.35em;
+letter-spacing: 0.18em;
 color: #111;
 margin: 0;
 padding: 0;
@@ -2874,8 +2943,10 @@ cursor: pointer;
 }
 
 .ex-modal p {
-font-size: 13px;
-color: #111;
+font-family: var(--font-body);
+font-size: 15px;
+line-height: 1.6;
+color: var(--color-stone-grey);
 text-align: center;
 }
 
@@ -3065,11 +3136,11 @@ background: none;
     -ms-transition: all 0.5s linear;
      -o-transition: all 0.5s linear;
         transition: all 0.5s linear;
-font-family: 'Raleway', sans-serif;
-font-size: 14px;
+font-family: var(--font-body);
+font-size: 15px;
 line-height: 1.5;
 font-style: normal;
-font-weight: normal;
+font-weight: 400;
 text-align: center;
 }
 
@@ -3092,11 +3163,11 @@ border-color: rgba(119, 119, 119, .5);
 }
 
 .subscribe-success {
-font-family: 'Dosis', sans-serif;
-font-size: 11px;
+font-family: var(--font-body);
+font-size: 12px;
 font-style: normal;
 font-weight: 500;
-letter-spacing: 0.15em;
+letter-spacing: 0.12em;
 text-transform: uppercase;
 text-align: center;
 color: #111;
@@ -3167,7 +3238,7 @@ z-index: 1;
 
 /* hero container */ 
 .hero-fullscreen {
-position: absolute;
+position: fixed;
 width: 100%;
 height: 100%;
 left: 0;
@@ -3192,11 +3263,11 @@ background-repeat: no-repeat !important;
     -ms-background-size: min(85vw, 680px) auto !important;
      -o-background-size: min(85vw, 680px) auto !important;
         background-size: min(85vw, 680px) auto !important;
--webkit-transition: -webkit-transform 2s ease, opacity 1.5s ease;
-   -moz-transition: -moz-transform 2s ease-out, opacity 1.5s ease;
-	-ms-transition: -ms-transform 2s ease-out, opacity 1.5s ease;
-     -o-transition: -o-transform 2s ease-out, opacity 1.5s ease;
-        transition: transform 2s ease, opacity 1.5s ease;
+-webkit-transition: -webkit-transform 2s ease, opacity 0.8s ease;
+   -moz-transition: -moz-transform 2s ease-out, opacity 0.8s ease;
+	-ms-transition: -ms-transform 2s ease-out, opacity 0.8s ease;
+     -o-transition: -o-transform 2s ease-out, opacity 0.8s ease;
+        transition: transform 2s ease, opacity 0.8s ease;
 -webkit-transform: scale(1.05);
    -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -3212,6 +3283,18 @@ opacity: 0;
      -o-transform: scale(1);
         transform: scale(1);
 opacity: 0.9 !important;
+}
+
+/* Low visibility logo watermark on inner pages (About, Services, Contact) */
+.hero-bg.hero-bg-low-vis,
+body.inner-page-active #hero-bg,
+body:has(.lower-page.current) #hero-bg {
+  opacity: 0.28 !important;
+  -webkit-transform: scale(1);
+     -moz-transform: scale(1);
+      -ms-transform: scale(1);
+       -o-transform: scale(1);
+          transform: scale(1);
 }
 
 @media only screen and (min-width: 1400px) {
@@ -4348,10 +4431,10 @@ text-decoration: none !important;
 
 .style-num {
 display: block;
-font-family: 'Oswald', sans-serif;
-font-size: 13px;
-font-weight: 700;
-letter-spacing: 0.25em;
+font-family: var(--font-body);
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.18em;
 color: var(--color-bronze);
 margin-bottom: 6px;
 line-height: 1;
@@ -4359,10 +4442,10 @@ text-shadow: 1px 1px 2px #000;
 }
 
 .style-title {
-font-family: 'Oswald', sans-serif;
-font-size: 18px;
+font-family: var(--font-display);
+font-size: 22px;
 font-weight: 400;
-letter-spacing: 0.15em;
+letter-spacing: 0.05em;
 text-transform: uppercase;
 color: #fff;
 margin: 0;
@@ -4373,19 +4456,20 @@ text-shadow: 1px 1px 2px #000;
 
 .style-title small {
 display: block;
-font-family: 'Raleway', sans-serif;
+font-family: var(--font-body);
 font-size: 11px;
 font-weight: 400;
-letter-spacing: 0.12em;
+letter-spacing: 0.08em;
 color: rgba(255, 255, 255, 0.7);
 text-transform: uppercase;
 margin-top: 5px;
 }
 
 .style-note {
+font-family: var(--font-body);
 font-style: italic;
 color: rgba(255, 255, 255, 0.85);
-font-size: 14px;
+font-size: 15px;
 line-height: 1.8;
 margin: 0 auto;
 }
@@ -4399,11 +4483,11 @@ min-height: 105px;
 padding: 18px 10px 16px 10px;
 }
 .style-title {
-font-size: 15px;
-letter-spacing: 0.1em;
+font-size: 18px;
+letter-spacing: 0.04em;
 }
 .style-num {
-font-size: 12px;
+font-size: 11px;
 }
 }
 
@@ -4434,7 +4518,7 @@ top: 50%;
 transform: translateY(-50%);
 color: rgba(255, 255, 255, 0.4);
 font-size: 16px;
-font-family: 'Raleway', sans-serif;
+font-family: var(--font-body);
 z-index: 2;
 pointer-events: none;
 width: 18px;
@@ -4489,10 +4573,10 @@ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(182, 161, 126, 0.25);
 
 .process-num {
 display: block;
-font-family: 'Oswald', sans-serif;
-font-size: 13px;
-font-weight: 700;
-letter-spacing: 0.25em;
+font-family: var(--font-body);
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.18em;
 color: var(--color-bronze);
 margin-bottom: 8px;
 line-height: 1;
@@ -4500,10 +4584,10 @@ text-shadow: 1px 1px 2px #000;
 }
 
 .process-name {
-font-family: 'Oswald', sans-serif;
-font-size: 13px;
+font-family: var(--font-display);
+font-size: 18px;
 font-weight: 400;
-letter-spacing: 0.12em;
+letter-spacing: 0.04em;
 text-transform: uppercase;
 color: #fff;
 margin: 0;
@@ -4522,20 +4606,20 @@ min-height: 105px;
 padding: 16px 8px 14px 8px;
 }
 .process-name {
-font-size: 12px;
-letter-spacing: 0.08em;
+font-size: 16px;
+letter-spacing: 0.03em;
 }
 .process-num {
-font-size: 12px;
+font-size: 11px;
 }
 }
 
 /* About Section - The Person Behind ZEROPOINT */
 .about-subheading {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-size: 24px;
 font-weight: 400;
-letter-spacing: 0.16em;
+letter-spacing: 0.04em;
 text-transform: uppercase;
 color: #ffffff;
 margin: 40px 0 12px 0;
@@ -4578,9 +4662,10 @@ margin-bottom: 10px;
 }
 
 .journey-stat-tag {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-size: 11px;
-letter-spacing: 0.22em;
+font-weight: 500;
+letter-spacing: 0.18em;
 text-transform: uppercase;
 color: rgba(255, 255, 255, 0.7);
 display: block;
@@ -4590,9 +4675,9 @@ line-height: 1.2;
 
 .journey-stat-number {
 display: block;
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-display);
 font-size: 52px;
-font-weight: 700;
+font-weight: 300;
 line-height: 1;
 color: var(--color-bronze);
 letter-spacing: 0.03em;
@@ -4605,9 +4690,9 @@ display: inline-block;
 }
 
 .journey-stat-years {
-font-family: 'Raleway', sans-serif;
+font-family: var(--font-body);
 font-size: 12px;
-letter-spacing: 0.14em;
+letter-spacing: 0.12em;
 color: rgba(255, 255, 255, 0.75);
 text-transform: uppercase;
 display: block;
@@ -4643,7 +4728,7 @@ padding: 6px 14px;
 background: rgba(255, 255, 255, 0.05);
 border: 1px solid rgba(255, 255, 255, 0.2);
 border-radius: 20px;
-font-family: 'Raleway', sans-serif;
+font-family: var(--font-body);
 font-size: 11px;
 letter-spacing: 0.1em;
 text-transform: uppercase;
@@ -4710,9 +4795,10 @@ line-height: 1;
 }
 
 .pillar-title {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-size: 12px;
-letter-spacing: 0.14em;
+font-weight: 500;
+letter-spacing: 0.12em;
 text-transform: uppercase;
 color: #ffffff;
 }
@@ -4752,9 +4838,10 @@ flex: 1;
 }
 
 .accolade-badge {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-size: 11px;
-letter-spacing: 0.22em;
+font-weight: 500;
+letter-spacing: 0.18em;
 text-transform: uppercase;
 color: var(--color-bronze);
 display: block;
@@ -4762,10 +4849,10 @@ margin-bottom: 4px;
 }
 
 .accolade-title {
-font-family: 'Oswald', sans-serif;
-font-size: 18px;
+font-family: var(--font-display);
+font-size: 22px;
 font-weight: 400;
-letter-spacing: 0.12em;
+letter-spacing: 0.04em;
 text-transform: uppercase;
 color: #ffffff;
 margin: 0 0 6px 0;
@@ -4803,9 +4890,10 @@ border-radius: 2px;
 }
 
 .about-signature-badge span {
-font-family: 'Oswald', sans-serif;
+font-family: var(--font-body);
 font-size: 13px;
-letter-spacing: 0.22em;
+font-weight: 500;
+letter-spacing: 0.16em;
 text-transform: uppercase;
 color: #ffffff;
 text-shadow: 1px 1px 2px #000;
@@ -5032,22 +5120,22 @@ letter-spacing: 0.14em;
 }
 
 .closing-box h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
+  font-family: var(--font-display);
+  font-size: 26px;
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.18em;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-charcoal) !important;
   margin: 0 0 10px 0;
 }
 
 .closing-box h5 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
+  font-family: var(--font-body);
+  font-size: 13px;
   font-weight: 700 !important;
-  line-height: 1.3;
-  letter-spacing: 0.14em;
+  line-height: 1.35;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-bronze) !important;
   margin: 0;
@@ -5062,12 +5150,13 @@ letter-spacing: 0.14em;
 }
 
 .closing-box p {
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
   color: var(--color-stone-grey) !important;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
 @media only screen and (max-width: 767px) {
@@ -5076,19 +5165,19 @@ letter-spacing: 0.14em;
   }
   .closing-box h3 {
     font-size: 22px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
   }
   .closing-box h5 {
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.08em;
   }
 }
 
-/* Lower Pages - About, Services, Contact */
+/* Lower Pages - About, Services, Contact (Logo shows through in low visibility) */
 .center-container {
-  background: rgba(23, 24, 21, 0.95) !important;
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
+  background: rgba(23, 24, 21, 0.40) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 .about-card {
