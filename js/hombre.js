@@ -30,12 +30,6 @@ $(function() {
 	
     // 1. & 2. fadeIn (instant on load, preloader removed)
     function initPageAppearance() {
-        $(".hero-bg").css({
-            "background-image": "url('Stormlit%20Brutalist%20Concrete%20Pavilion.png')",
-            "background-size": "cover",
-            "background-position": "center center",
-            "background-repeat": "no-repeat"
-        });
         $(".fadeIn-element").fadeIn(600);
         $(".fadeIn-element-2").fadeIn(600);
         $(".border-left").removeClass("left-position");
@@ -238,13 +232,7 @@ $(function() {
         pauseOnHover: false
     });
 	
-	// 11. Hero Background Image (Stormlit Brutalist Concrete Pavilion)
-    $(".hero-bg").css({
-        "background-image": "url('Stormlit%20Brutalist%20Concrete%20Pavilion.png')",
-        "background-size": "cover",
-        "background-position": "center center",
-        "background-repeat": "no-repeat"
-    });
+
 	
     // 12. MOBILE DETECT
     var isMobile = {
