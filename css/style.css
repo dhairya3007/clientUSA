@@ -644,7 +644,7 @@ strong {
   font-weight: 700 !important;
   line-height: 1.15;
   letter-spacing: clamp(0.8px, calc(0.3px + 0.2vw), 3.5px);
-  color: var(--color-ivory);
+  color: #ffffff;
   text-transform: uppercase;
   text-align: center;
   white-space: nowrap !important;
@@ -657,7 +657,7 @@ strong {
 }
 
 .hero-credo .highlighter {
-  color: var(--color-bronze);
+  color: #B6A17E !important;
   display: inline;
   font-weight: 700 !important;
 }
@@ -969,7 +969,6 @@ h1 {
     margin-top: 10px;
     margin-bottom: 18px;
     border-radius: 5px;
-    background: rgba(8, 8, 8, 0.82);
   }
 
   .hero-lead-box .lead {
