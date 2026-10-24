@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZEROPOINT</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #050505;
+    }
+    svg {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" overflow="visible">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background extended well beyond the viewBox so it fills any screen shape -->
+  <rect x="-5000" y="-5000" width="10200" height="10000" fill="#050505"/>
+  <rect x="-5000" y="-5000" width="10200" height="10000" fill="url(#glow)"/>
+
+  <!-- Motion layer, centred on the logo ring -->
+  <g>
+    <g fill="none" stroke="#ffffff" stroke-width="1.5">
+      <circle cx="516" cy="357" r="60" opacity="0.45">
+        <animate attributeName="r" values="60;420" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.45;0" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="516" cy="357" r="60" opacity="0.45">
+        <animate attributeName="r" values="60;420" dur="6s" begin="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.45;0" dur="6s" begin="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="516" cy="357" r="60" opacity="0.45">
+        <animate attributeName="r" values="60;420" dur="6s" begin="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.45;0" dur="6s" begin="4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <circle cx="516" cy="357" r="300" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="3 12" opacity="0.25">
+      <animateTransform attributeName="transform" type="rotate" from="0 516 357" to="360 516 357" dur="40s" repeatCount="indefinite"/>
+    </circle>
+
+    <g fill="#ffffff">
+      <circle cx="0" cy="0" r="3" opacity="0.7">
+        <animateMotion dur="18s" repeatCount="indefinite" path="M150,760 C 230,600 70,430 170,220 C 210,130 160,60 190,-20"/>
+      </circle>
+      <circle cx="0" cy="0" r="2.5" opacity="0.6">
+        <animateMotion dur="23s" begin="-6s" repeatCount="indefinite" path="M420,780 C 340,620 500,470 400,260 C 360,170 430,80 400,-40"/>
+      </circle>
+      <circle cx="0" cy="0" r="3.5" opacity="0.6">
+        <animateMotion dur="20s" begin="-3s" repeatCount="indefinite" path="M880,780 C 800,640 960,480 860,300 C 820,200 900,120 870,-30"/>
+      </circle>
+      <circle cx="0" cy="0" r="2" opacity="0.5">
+        <animateMotion dur="26s" begin="-10s" repeatCount="indefinite" path="M1060,760 C 980,600 1100,430 1020,250 C 980,160 1050,80 1030,-40"/>
+      </circle>
+      <circle cx="0" cy="0" r="2.5" opacity="0.6">
+        <animateMotion dur="17s" begin="-8s" repeatCount="indefinite" path="M650,800 C 580,650 720,500 640,320 C 600,230 670,120 650,-20"/>
+      </circle>
+      <circle cx="0" cy="0" r="2" opacity="0.5">
+        <animateMotion dur="29s" begin="-14s" repeatCount="indefinite" path="M1140,500 C 1060,380 1180,260 1110,140 C 1080,80 1130,20 1120,-40"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- LOGO: static, centred on the canvas -->
+  <g transform="translate(35,-8)">
+    <g fill="#f5f5f5" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="74" font-weight="400">
+      <text x="130" y="392">Z</text>
+      <text x="231" y="392">E</text>
+      <text x="333" y="392">R</text>
+      <text x="566" y="392">P</text>
+      <text x="666" y="392">O</text>
+      <text x="768" y="392">I</text>
+      <text x="861" y="392">N</text>
+      <text x="958" y="392">T</text>
+    </g>
+    <circle cx="481" cy="365" r="46" fill="none" stroke="#f5f5f5" stroke-width="5"/>
+    <circle cx="481" cy="365" r="4.5" fill="#f5f5f5"/>
+    <text x="1030" y="330" fill="#f5f5f5" font-family="Georgia, serif" font-size="9">TM</text>
+    <text x="600" y="478" text-anchor="middle" fill="#f5f5f5" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-style="italic" font-size="28" letter-spacing="5">Stillness In Motion</text>
+  </g>
+</svg>
+</body>
+</html>

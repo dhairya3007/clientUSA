@@ -55,17 +55,21 @@ $(function() {
         $(this).addClass("active");
     });
 	
-    // 5. wordRotator
-    $("#wordrotator").wordsrotator({
-        autoLoop: true,
-        randomize: false,
-        stopOnHover: false,
-        changeOnClick: false,
-        animationIn: "fadeInLeft",
-        animationOut: "fadeOutRight",
-        speed: 4000,
-        words: ['ZEROPOINT<br><span class="highlighter">STILLNESS IN MOTION</span>', 'PRIVATE. PRECISE.<br><span class="highlighter">PERSONAL.</span>']
-    });
+    // 5. wordRotator (content removed per instruction, box preserved in DOM)
+    /*
+    if ($("#wordrotator").length) {
+        $("#wordrotator").wordsrotator({
+            autoLoop: true,
+            randomize: false,
+            stopOnHover: false,
+            changeOnClick: false,
+            animationIn: "fadeInLeft",
+            animationOut: "fadeOutRight",
+            speed: 4000,
+            words: ['ZEROPOINT', 'STILLNESS IN MOTION']
+        });
+    }
+    */
 	
     // 6. facts counter
     $(".facts-counter-number").appear(function() {
@@ -105,12 +109,12 @@ $(function() {
     // 6-2. Navigation transitions - show logo in low visibility on inner pages
     $("#fire-about, #fire-services, #fire-contact").on("click", function() {
         $("body").addClass("inner-page-active");
-        $("#hero-bg").addClass("hero-bg-low-vis");
+        $("#hero-bg, #hero-fullscreen-iframe").addClass("hero-bg-low-vis");
     });
 
     $("#fire-home").on("click", function() {
         $("body").removeClass("inner-page-active");
-        $("#hero-bg").removeClass("hero-bg-low-vis");
+        $("#hero-bg, #hero-fullscreen-iframe").removeClass("hero-bg-low-vis");
     });
 
     $("#fire-about").on("click", function() {
@@ -279,6 +283,80 @@ $(function() {
         "autoplay": true,
         "loop": true,
         "delay": 1200
+    });
+
+    // 15. ZEROPOINT SERVICES POP-UP MODAL CONTROLLER
+    function openServiceModal(modalId) {
+        if (!modalId) return;
+        var $modal = $("#" + modalId);
+        if ($modal.length) {
+            $(".service-modal-overlay").removeClass("active").attr("aria-hidden", "true");
+            $modal.addClass("active").attr("aria-hidden", "false");
+            $("body").addClass("modal-open").css("overflow", "hidden");
+            setTimeout(function() {
+                $modal.find(".service-modal-close").focus();
+            }, 100);
+        }
+    }
+
+    function closeServiceModals() {
+        $(".service-modal-overlay").removeClass("active").attr("aria-hidden", "true");
+        $("body").removeClass("modal-open").css("overflow", "");
+    }
+
+    // Launch on service card or button click
+    $(document).on("click", ".service-card, .service-modal-launcher", function(e) {
+        var modalId = $(this).attr("data-service-modal") || $(this).closest("[data-service-modal]").attr("data-service-modal");
+        if (modalId) {
+            e.preventDefault();
+            e.stopPropagation();
+            openServiceModal(modalId);
+        }
+    });
+
+    // Close on X button, close button, or backdrop click
+    $(document).on("click", ".service-modal-close, .service-modal-closer-btn, .service-modal-backdrop", function(e) {
+        e.preventDefault();
+        closeServiceModals();
+    });
+
+    // Prevent backdrop close when clicking inside the modal dialog
+    $(document).on("click", ".service-modal-dialog", function(e) {
+        e.stopPropagation();
+    });
+
+    // Close on Escape key press
+    $(document).on("keydown", function(e) {
+        if (e.key === "Escape" || e.keyCode === 27) {
+            closeServiceModals();
+        }
+    });
+
+    // Modal Inquire Button action -> Prefills contact subject and takes to contact page
+    $(document).on("click", ".c-btn-modal-inquire", function(e) {
+        e.preventDefault();
+        var serviceName = $(this).attr("data-service-name") || "Private Dance Engagement";
+        closeServiceModals();
+
+        // Pre-fill contact form
+        if ($("#subject").length) {
+            $("#subject").val("Engagement Request: " + serviceName);
+        }
+
+        // Navigate to contact section
+        if ($("#fire-contact").length) {
+            $("a.menu-state").removeClass("active");
+            $("#fire-contact").addClass("active");
+            $("#fire-contact").trigger("click");
+            
+            // Scroll contact section into view
+            setTimeout(function() {
+                var $target = $("#contact-form");
+                if ($target.length) {
+                    $target[0].scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }, 600);
+        }
     });
 
 
