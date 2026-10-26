@@ -126,6 +126,11 @@ $(function() {
     $(".about-year-counter").appear(function() {
         runAboutYearCounter();
     });
+    if ($(".about-year-counter").length) {
+        setTimeout(function() {
+            runAboutYearCounter();
+        }, 300);
+    }
 	
     // 7. skills bar
     $(".show-skillbar").appear(function() {
@@ -304,13 +309,30 @@ $(function() {
         $("body").removeClass("modal-open").css("overflow", "");
     }
 
-    // Launch on service card or button click
-    $(document).on("click", ".service-card, .service-modal-launcher", function(e) {
-        var modalId = $(this).attr("data-service-modal") || $(this).closest("[data-service-modal]").attr("data-service-modal");
-        if (modalId) {
+    // Navigate to dedicated service page on service card click
+    $(document).on("click", ".service-card", function(e) {
+        if ($(e.target).closest("a").length) {
+            return;
+        }
+        var serviceUrl = $(this).attr("data-service-url");
+        if (serviceUrl) {
+            window.location.href = serviceUrl;
+        }
+    });
+
+    // Sub-menu toggle in navigation
+    $(document).on("click", ".sub-menu-toggle", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $item = $(this).closest(".menu-has-children");
+        $item.toggleClass("is-open");
+    });
+
+    // Legal links handler: smooth handling for in-page anchors
+    $(document).on("click", ".footer-legal-links a.legal-link", function(e) {
+        var href = $(this).attr("href");
+        if (href && href.charAt(0) === "#") {
             e.preventDefault();
-            e.stopPropagation();
-            openServiceModal(modalId);
         }
     });
 
@@ -332,30 +354,20 @@ $(function() {
         }
     });
 
-    // Modal Inquire Button action -> Prefills contact subject and takes to contact page
+    // Modal Inquire Button action -> Takes to contact page with preselected service
     $(document).on("click", ".c-btn-modal-inquire", function(e) {
-        e.preventDefault();
+        var serviceKey = $(this).attr("data-service-key");
         var serviceName = $(this).attr("data-service-name") || "Private Dance Engagement";
         closeServiceModals();
 
-        // Pre-fill contact form
-        if ($("#subject").length) {
-            $("#subject").val("Engagement Request: " + serviceName);
-        }
-
-        // Navigate to contact section
-        if ($("#fire-contact").length) {
-            $("a.menu-state").removeClass("active");
-            $("#fire-contact").addClass("active");
-            $("#fire-contact").trigger("click");
-            
-            // Scroll contact section into view
-            setTimeout(function() {
-                var $target = $("#contact-form");
-                if ($target.length) {
-                    $target[0].scrollIntoView({ behavior: "smooth", block: "center" });
-                }
-            }, 600);
+        var targetParam = serviceKey || encodeURIComponent(serviceName);
+        if ($("#zeropoint-request-form").length) {
+            e.preventDefault();
+            var $target = $("#zeropoint-request-form");
+            $target[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+            window.location.href = "contact.html?service=" + targetParam;
+            e.preventDefault();
         }
     });
 
