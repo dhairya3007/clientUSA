@@ -809,30 +809,38 @@
             // Safe fallback if storage unavailable
         }
 
-        // Post to backend adapter (contact.php or custom endpoint)
+        // Prepare flattened payload for Universal Email Service (Option A: Auto-Discovery Table)
+        var postData = {
+            "_subject": "ZEROPOINT Engagement Request: " + submissionPayload.serviceName,
+            "Service Requested": submissionPayload.serviceName,
+            "Service Category": submissionPayload.serviceKey
+        };
+        for (var fKey in validation.data) {
+            if (validation.data.hasOwnProperty(fKey)) {
+                postData[fKey] = validation.data[fKey];
+            }
+        }
+
+        // Determine handler endpoint: if tested on Live Server (port 5500), forward to local IIS Express (port 8088)
+        var handlerUrl = "../emailmodule/send-email.ashx";
+        if (window.location.port === "5500" || window.location.port === "3000") {
+            handlerUrl = "http://localhost:8088/emailmodule/send-email.ashx";
+        }
+
+        // Post to backend adapter (Universal IIS handler)
         $.ajax({
-            url: "contact.php",
+            url: handlerUrl,
             type: "POST",
-            data: {
-                action: "service_request",
-                service: submissionPayload.serviceKey,
-                payload: JSON.stringify(submissionPayload)
-            },
-            timeout: 6000
+            data: postData,
+            dataType: "json",
+            timeout: 25000
         }).done(function(resp) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
-            // Check if backend indicates an error
-            var isSuccess = true;
-            if (typeof resp === "string") {
-                if (resp.indexOf("error") !== -1 || resp.indexOf("fail") !== -1) {
-                    isSuccess = false;
-                }
-            } else if (resp && typeof resp === "object" && resp.success === false) {
-                isSuccess = false;
-            }
+            // Check if backend indicates success
+            var isSuccess = (resp && (resp.success === true || resp.status === "ok"));
 
             if (!isSuccess) {
-                var errTxt = (resp && resp.message) ? resp.message : "The server could not process the request. Your details remain preserved below.";
+                var errTxt = (resp && (resp.message || resp.error)) ? (resp.message || resp.error) : "The server could not process the request. Your details remain preserved below.";
                 $status.html('<div class="zp-alert zp-alert-error"><i class="ion-alert-circled"></i> ' + escapeHtml(errTxt) + '</div>');
                 return;
             }
@@ -853,17 +861,21 @@
         }).fail(function(xhr, statusText) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
             
-            // Backend note: Static preview / development environments without active PHP runner
-            // Rule 10: Do not claim an email was delivered when the backend is unreachable.
-            // Step 7: Display a useful error message if submission fails. Do not erase the user's valid form data after a failure.
+            var errMessage = '';
+            if (xhr.responseJSON && (xhr.responseJSON.error || xhr.responseJSON.message)) {
+                errMessage = xhr.responseJSON.error || xhr.responseJSON.message;
+            } else {
+                errMessage = "The request could not be dispatched to the email handler. Please ensure your Windows IIS web server with ASP.NET is running on this port.";
+            }
+
             var errorMessage = '';
-            errorMessage += '<div class="zp-alert zp-alert-error" style="text-align: left; margin-bottom: 25px;">';
-            errorMessage += '  <div style="display: flex; align-items: flex-start; gap: 12px;">';
-            errorMessage += '    <i class="ion-alert-circled" style="font-size: 20px; line-height: 1.2; color: #e57373;"></i>';
+            errorMessage += '<div class="zp-alert zp-alert-error" style="text-align: left; margin-bottom: 25px; padding: 16px 20px;">';
+            errorMessage += '  <div style="display: flex; align-items: flex-start; gap: 14px;">';
+            errorMessage += '    <i class="ion-alert-circled" style="font-size: 22px; line-height: 1.2; color: #c9302c; flex-shrink: 0; margin-top: 1px;"></i>';
             errorMessage += '    <div>';
-            errorMessage += '      <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Submission Notice</strong>';
-            errorMessage += '      <p style="margin: 0 0 8px 0; color: #d1c7b7; font-size: 13px; line-height: 1.5;">The request could not be dispatched because the backend submission endpoint (<code>contact.php</code>) is not active in this static environment. Your entered form data has been preserved below so no details are lost.</p>';
-            errorMessage += '      <p style="margin: 0; color: #b6a17e; font-size: 12px; letter-spacing: 0.05em;">For immediate assistance, please reach the concierge directly at <a href="mailto:zeropoint.dance@proton.me" style="color: #ffffff; text-decoration: underline;">zeropoint.dance@proton.me</a>.</p>';
+            errorMessage += '      <strong style="color: #58151c; display: block; margin-bottom: 6px; font-size: 14px; font-weight: 700;">Submission Notice</strong>';
+            errorMessage += '      <p style="margin: 0 0 10px 0; color: #721c24; font-size: 13px; line-height: 1.5; font-weight: 500;">' + escapeHtml(errMessage) + '</p>';
+            errorMessage += '      <p style="margin: 0; color: #721c24; font-size: 12px; letter-spacing: 0.02em;">For immediate assistance, please reach the concierge directly at <a href="mailto:zeropoint.dance@proton.me" style="color: #58151c; font-weight: 700; text-decoration: underline;">zeropoint.dance@proton.me</a>.</p>';
             errorMessage += '    </div>';
             errorMessage += '  </div>';
             errorMessage += '</div>';

@@ -1,0 +1,15 @@
+{
+  "Email": {
+    "Host": "smtp.gmail.com",
+    "Port": 587,
+    "EnableSsl": true,
+    "Username": "info@sarvika.co.uk",
+    "Password": "jldw npww glgx tdkx",
+    "FromAddress": "info@sarvika.co.uk",
+    "FromName": "ZEROPOINT Concierge"
+  },
+  "defaultReceiver": "dhairyapatel3007@gmail.com",
+  "websiteName": "ZEROPOINT",
+  "sendAutoReply": false,
+  "honeypotField": "_gotcha"
+}
