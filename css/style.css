@@ -3206,7 +3206,7 @@ body:has(.lower-page.current) #hero-bg {
 }
 
 .style-num {
-  display: block;
+  display: none !important;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
@@ -5382,7 +5382,17 @@ a.service-btn-open:focus {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(182, 161, 126, 0.22) !important;
   border-radius: 2px !important;
-  cursor: default !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+.home-service-item:hover,
+.home-service-item:focus {
+  background: rgba(182, 161, 126, 0.08) !important;
+  border-color: rgba(182, 161, 126, 0.55) !important;
+  text-decoration: none !important;
+  transform: translateX(4px);
 }
 
 .home-service-num {

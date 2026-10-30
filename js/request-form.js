@@ -863,7 +863,7 @@
             errorMessage += '    <div>';
             errorMessage += '      <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Submission Notice</strong>';
             errorMessage += '      <p style="margin: 0 0 8px 0; color: #d1c7b7; font-size: 13px; line-height: 1.5;">The request could not be dispatched because the backend submission endpoint (<code>contact.php</code>) is not active in this static environment. Your entered form data has been preserved below so no details are lost.</p>';
-            errorMessage += '      <p style="margin: 0; color: #b6a17e; font-size: 12px; letter-spacing: 0.05em;">For immediate assistance, please reach the concierge directly at <a href="mailto:enquiry@zeropointdance.com" style="color: #ffffff; text-decoration: underline;">enquiry@zeropointdance.com</a>.</p>';
+            errorMessage += '      <p style="margin: 0; color: #b6a17e; font-size: 12px; letter-spacing: 0.05em;">For immediate assistance, please reach the concierge directly at <a href="mailto:zeropoint.dance@proton.me" style="color: #ffffff; text-decoration: underline;">zeropoint.dance@proton.me</a>.</p>';
             errorMessage += '    </div>';
             errorMessage += '  </div>';
             errorMessage += '</div>';
