@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>ZEROPOINT FAB option 4: rounded square ring</title>
+  <rect x="0" y="0" width="512" height="512" rx="110" fill="#212121"/>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="#F4F1EB" stroke-width="22"/>
+  <circle cx="256" cy="256" r="28" fill="#C8A96B"/>
+</svg>
