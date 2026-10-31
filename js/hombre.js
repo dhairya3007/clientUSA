@@ -372,4 +372,18 @@ $(function() {
     });
 
 
+    // Sticky header background color change on scroll (#d9d4ca)
+    var $zpHeader = $(".zp-site-header");
+    function updateZpHeaderOnScroll() {
+        var scroller = document.querySelector(".ui-layer-inner");
+        var st = (scroller ? scroller.scrollTop : 0) || window.pageYOffset || document.documentElement.scrollTop || 0;
+        if (st > 10) {
+            $zpHeader.addClass("zp-scrolled zp-header-scrolled");
+        } else {
+            $zpHeader.removeClass("zp-scrolled zp-header-scrolled");
+        }
+    }
+    $(".ui-layer-inner").on("scroll", updateZpHeaderOnScroll);
+    $(window).on("scroll", updateZpHeaderOnScroll);
+    updateZpHeaderOnScroll();
 });

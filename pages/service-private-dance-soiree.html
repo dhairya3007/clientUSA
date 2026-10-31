@@ -4,12 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>ZEROPOINT || The Private Dance Soirée</title>
-    <meta
-        content="A private dance experience created for discerning individuals, couples, organisations and occasions. The Private Dance Soirée."
+    <meta content="An intimate, guided Latin dance experience for birthdays, milestone anniversaries, private dinners, and special gatherings."
         name="description">
     <meta content="ZEROPOINT" name="author">
-    <meta
-        content="private dance party, dance soiree, private event dance, milestone anniversary, private hosting, salsa party"
+    <meta content="private dance party, dance soiree, private event dance, milestone anniversary, private hosting, salsa party"
         name="keywords">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
@@ -17,37 +15,35 @@
     <link href="../css/plugins.css" media="all" rel="stylesheet" type="text/css">
     <link href="../css/style.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Google Fonts: Cormorant Garamond (Display) & Manrope (Body) -->
+    <!-- Mandatory Google Fonts: Cormorant Garamond & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" type="text/css">
 </head>
 
-<body class="inner-page-active services-page-active">
-    <!-- Overlay Cover -->
-    <div class="cover-all"></div>
-
-    <!-- Hero Fullscreen Background -->
-    <div class="hero-fullscreen">
-        <iframe class="hero-fullscreen-iframe hero-bg-low-vis" id="hero-fullscreen-iframe"
-            src="../zeropoint_fullscreen.html" title="ZEROPOINT Responsive Motion Background" tabindex="-1"
-            aria-hidden="true"></iframe>
-        <div class="top-shadow"></div>
-        <div class="hero-bg bg-img-SINGLE-PARTICLES hero-bg-low-vis" id="hero-bg"></div>
-    </div>
-
+<body>
     <!-- UI Layer -->
     <div id="ui-layer">
         <div class="ui-layer-inner">
 
-            <!-- Navigation Menu -->
+            <!-- Preserved Navigation Menu Drawer (Untouched Structure & Behavior) -->
             <div class="fadeIn-element-2" id="menu-wrapper">
-                <button class="lines-button minus menu-toggle" id="main-menu-caller" type="button">
-                    <span class="lines"></span>
-                </button>
                 <div id="main-menu">
+                    <!-- Dedicated High-Contrast Luxury Drawer Close Header -->
+                    <div class="zp-drawer-header">
+                        <div class="zp-drawer-brand-block">
+                            <span class="zp-drawer-brand">ZEROPOINT<sup class="zp-drawer-brand-tm">TM</sup></span>
+                            <span class="zp-drawer-tagline">STILLNESS IN MOTION</span>
+                        </div>
+                        <button class="zp-drawer-close-btn" id="zp-drawer-close" type="button" aria-label="Close Navigation Menu">
+                            <svg class="zp-close-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="menu-nav-wrapper">
                         <nav class="menu-nav">
                             <ul>
@@ -95,6 +91,10 @@
                                     </ul>
                                 </li>
                                 <li class="menu">
+                                    <a class="menu-state link link--kukuri" data-letters="FAQ"
+                                        href="faq.html">FAQ</a>
+                                </li>
+                                <li class="menu">
                                     <a class="menu-state link link--kukuri" data-letters="Contact"
                                         href="contact.html">Contact</a>
                                 </li>
@@ -105,187 +105,314 @@
                         </nav>
                     </div>
                 </div>
+                <!-- Luxury Backdrop Overlay for Slide-out Navigation Drawer -->
+                <div id="zp-nav-backdrop" class="zp-nav-backdrop" aria-hidden="true"></div>
             </div>
 
-            <!-- Page Container -->
-            <div class="lower-page current" id="service-detail" style="display: block;">
-                <div class="center-container">
-                    <div class="center-block">
-                        <div class="lower-content">
-                            <div class="container sections section-service-detail">
+            <!-- Page Container (Warm Ivory & Charcoal Exact Reference Recreation) -->
+            <div class="upper-page current" id="soiree-page">
+                <main class="zp-recreation-wrapper">
 
-                                <!-- Back Link Navigation -->
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-                                        <div class="service-back-nav">
-                                            <a class="service-back-link" href="services.html">
-                                                <i class="ion-ios-arrow-thin-left"></i> All Services &amp; Packages
-                                            </a>
-                                        </div>
-                                    </div>
+                    <!-- SITE HEADER: Logo left, Navbar icon right -->
+                    <header class="zp-site-header">
+                        <div class="zp-container">
+                            <div class="zp-header-inner">
+                                <a href="home.html" class="zp-brand-logo-wrap" aria-label="ZEROPOINT Home">
+                                    <img src="../assets/zeropoint_logo_vector.svg" alt="ZEROPOINT — Stillness In Motion" class="zp-header-logo-img">
+                                </a>
+                                <div class="zp-header-nav-trigger">
+                                    <button class="lines-button minus menu-toggle" id="main-menu-caller" type="button" aria-label="Toggle Navigation Menu">
+                                        <span class="lines"></span>
+                                    </button>
                                 </div>
-
-                                <!-- Editorial Dossier Card -->
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-                                        <div class="service-page-box">
-
-                                            <!-- Header -->
-                                            <div class="service-modal-header">
-                                                <span class="service-modal-badge">04 · Private Gatherings</span>
-                                                <h1 class="service-modal-title">The Private Dance Soirée</h1>
-                                                <h4 class="service-modal-subtitle">Exceptional Hosting. Shared Rhythm.
-                                                    An Evening to Remember.</h4>
-                                                <p class="service-modal-tagline">"An Intimate Gathering. An
-                                                    Extraordinary Shared Experience."</p>
-                                            </div>
-
-                                            <!-- Specs Bar -->
-                                            <div class="service-modal-specs">
-                                                <div class="spec-item spec-investment">
-                                                    <span class="spec-label">Investment</span>
-                                                    <span class="spec-value">$950</span>
-                                                    <span class="spec-note">per event</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <span class="spec-label">Duration</span>
-                                                    <span class="spec-value">90 Minutes</span>
-                                                    <span class="spec-note">curated experience</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <span class="spec-label">Group Size</span>
-                                                    <span class="spec-value">Up to 12</span>
-                                                    <span class="spec-note">adult guests (18+)</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <span class="spec-label">Location</span>
-                                                    <span class="spec-value">Private Venue</span>
-                                                    <span class="spec-note">Residence or Estate</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <span class="spec-label">Eligibility</span>
-                                                    <span class="spec-value">Adults 18+</span>
-                                                    <span class="spec-note">intimate gatherings</span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Body Content -->
-                                            <div class="service-modal-body">
-                                                <div class="modal-section-intro">
-                                                    <p class="lead">
-                                                        Transform a private dinner, milestone anniversary, birthday
-                                                        celebration, or estate gathering into an engaging experience of
-                                                        music, movement, and genuine connection.
-                                                    </p>
-                                                    <p>
-                                                        The Private Dance Soirée brings sophisticated dance instruction
-                                                        into a relaxed, social atmosphere. Designed specifically for
-                                                        intimate gatherings of up to 12 adult guests, the experience
-                                                        requires no prior dance background and ensures every guest feels
-                                                        welcome, comfortable, and delighted.
-                                                    </p>
-                                                </div>
-
-                                                <div class="modal-card-highlight">
-                                                    <h5>The Evening's Flow &amp; Styles</h5>
-                                                    <p>Choose one or two featured styles to anchor your evening:</p>
-                                                    <div class="modal-pill-wrap">
-                                                        <span class="modal-pill">Salsa (Cross Body)</span>
-                                                        <span class="modal-pill">Bachata</span>
-                                                        <span class="modal-pill">Merengue</span>
-                                                    </div>
-                                                    <p class="modal-highlight-sub">
-                                                        We begin with light, accessible foundational steps, progress
-                                                        into playful partner rotations, and culminate in open social
-                                                        dancing where your guests can dance freely with high-fidelity
-                                                        sound and curated rhythms.
-                                                    </p>
-                                                </div>
-
-                                                <div class="modal-features-block">
-                                                    <h4 class="modal-block-heading"><i
-                                                            class="ion-ios-checkmark-outline"></i> Complete Event
-                                                        Inclusions</h4>
-                                                    <ul class="modal-checklist">
-                                                        <li><span class="check-icon">&#10003;</span> 90-minute
-                                                            structured private dance workshop and social dancing
-                                                            experience.</li>
-                                                        <li><span class="check-icon">&#10003;</span> Accommodates up to
-                                                            12 adult guests (couples, friends, or mixed groups).</li>
-                                                        <li><span class="check-icon">&#10003;</span> Premium portable
-                                                            sound equipment and expertly curated Latin music playlist.
-                                                        </li>
-                                                        <li><span class="check-icon">&#10003;</span> Instruction adapted
-                                                            on the fly to suit guest energy, footwear, and mood.</li>
-                                                        <li><span class="check-icon">&#10003;</span> Warm, charismatic
-                                                            hosting that breaks the ice without pressure or awkwardness.
-                                                        </li>
-                                                        <li><span class="check-icon">&#10003;</span> Absolute
-                                                            discretion: client privacy and event confidentiality are
-                                                            strictly honoured.</li>
-                                                    </ul>
-                                                </div>
-
-                                                <div class="modal-standalone-guarantee">
-                                                    <h5>Effortless Hosting for Discerning Hosts</h5>
-                                                    <p>
-                                                        We handle all aspects of music, tempo, and engagement. As host,
-                                                        you are free to enjoy your evening, sip wine with your guests,
-                                                        and share in the joy of effortless dancing.
-                                                    </p>
-                                                    <div class="modal-credo-stamp">
-                                                        <strong>Shared rhythm. Elegant hospitality. An unforgettable
-                                                            evening.</strong>
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-privacy-callout">
-                                                    <i class="ion-ios-locked-outline"></i>
-                                                    <p><strong>Privacy &amp; Event Media:</strong> Your gathering
-                                                        remains private. No images or recordings are published or used
-                                                        for marketing without explicit permission.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Footer Actions -->
-                                            <div class="service-modal-footer">
-                                                <button class="c-btn c-btn-modal-inquire"
-                                                    data-service-key="private-social"
-                                                    data-service-name="The Private Dance Soirée ($950)" type="button">
-                                                    <span>Request This Experience <i
-                                                            class="ion-ios-arrow-thin-right"></i></span>
-                                                </button>
-                                                <a class="c-btn c-btn-modal-page" href="services.html">
-                                                    <span><i class="ion-ios-arrow-thin-left"></i> All Offerings</span>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Footer & Legal Links -->
-                                <footer class="site-footer">
-                                    <div class="footer-legal-links">
-                                        <a class="legal-link" href="terms-of-engagement.html" data-legal="terms">Terms
-                                            of Engagement</a>
-                                        <span class="legal-sep">&middot;</span>
-                                        <a class="legal-link" href="privacy-policy.html" data-legal="privacy">Privacy Policy</a>
-                                        <span class="legal-sep">&middot;</span>
-                                        <a class="legal-link" href="age-disclaimer.html" data-legal="age">18+
-                                            Disclaimer</a>
-                                        <span class="legal-sep">&middot;</span>
-                                        <a class="legal-link" href="disclaimer.html" data-legal="disclaimer">Disclaimer</a>
-                                    </div>
-                                    <p class="footer-copyright">&copy; 2026 ZEROPOINT. All rights reserved.</p>
-                                </footer>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </header>
+
+                    <!-- SECTION 1: HERO (THE EXPERIENCE / 04 - SIDE-BY-SIDE EDITORIAL BLEED) -->
+                    <section class="zp-section zp-corporate-bleed-hero" id="hero">
+                        <div class="zp-container zp-corporate-hero-container">
+                            <div class="zp-corporate-hero-content">
+                                <span class="zp-eyebrow">THE EXPERIENCE / 04</span>
+                                <span class="zp-subheading" style="margin-top: 6px; display: block;">PRIVATE GATHERINGS &amp; OCCASIONS</span>
+                                <h1 class="zp-h1 zp-detail-main-title">The Private Dance<br>Soir&eacute;e</h1>
+                                <p class="zp-detail-tagline">Exceptional Hosting. Shared Rhythm. An Evening to Remember.</p>
+                                <p class="zp-body-p zp-detail-intro-p">
+                                    A private gathering becomes something more when guests have the opportunity to move, connect, and discover something together. An intimate, guided Latin dance experience designed around your occasion.
+                                </p>
+                                <div class="zp-hero-actions" style="margin-top: 24px;">
+                                    <a href="contact.html" class="zp-btn zp-btn-primary"><span>PLAN YOUR PRIVATE SOIR&Eacute;E &rarr;</span></a>
+                                    <a href="#experience" class="zp-btn zp-btn-outline"><span>EXPLORE THE EXPERIENCE &rarr;</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zp-corporate-hero-bleed-media">
+                            <img class="zp-corporate-hero-bleed-img" src="../assets/PRIVATE-SOIREE-PAGE.png" alt="ZEROPOINT The Private Dance Soirée — An Evening Designed Around Your Occasion" loading="eager">
+                            <span class="zp-detail-media-caption">AN EVENING DESIGNED AROUND YOUR OCCASION</span>
+                        </div>
+                    </section>
+
+                    <!-- SPECS BAR SECTION -->
+                    <section class="zp-section zp-corporate-specs-section">
+                        <div class="zp-container">
+                            <div class="zp-specs-bar">
+                                <div class="zp-spec-cell">
+                                    <span class="zp-spec-cell-label">INVESTMENT</span>
+                                    <span class="zp-spec-cell-val">$950</span>
+                                </div>
+                                <div class="zp-spec-cell">
+                                    <span class="zp-spec-cell-label">DURATION</span>
+                                    <span class="zp-spec-cell-val">90 minutes</span>
+                                </div>
+                                <div class="zp-spec-cell">
+                                    <span class="zp-spec-cell-label">GUEST CAPACITY</span>
+                                    <span class="zp-spec-cell-val">Up to 12 adults</span>
+                                </div>
+                                <div class="zp-spec-cell">
+                                    <span class="zp-spec-cell-label">SETTING</span>
+                                    <span class="zp-spec-cell-val">Private residence or venue</span>
+                                </div>
+                            </div>
+                            <div class="zp-specs-cta-wrap">
+                                <a href="contact.html" class="zp-btn zp-btn-outline"><span>PLAN YOUR PRIVATE SOIR&Eacute;E &rarr;</span></a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 2: THE EXPERIENCE -->
+                    <section class="zp-section zp-detail-approach-section" id="experience">
+                        <div class="zp-container">
+                            <span class="zp-eyebrow">THE EXPERIENCE</span>
+                            <h2 class="zp-h2">An intimate gathering. An extraordinary shared experience.</h2>
+                            <div class="zp-detail-text-block">
+                                <p class="zp-body-p">
+                                    Some occasions call for something beyond the familiar dinner, drinks, and conversation. A birthday, milestone anniversary, private dinner, or gathering at a special residence can become an opportunity for guests to participate in a shared activity that feels different from the usual celebration.
+                                </p>
+                                <p class="zp-body-p">
+                                    The Private Dance Soir&eacute;e brings guided dance instruction into a relaxed social setting. Guests are introduced to accessible foundations, explore movement with partners, and have time to enjoy the music together.
+                                </p>
+                                <p class="zp-body-p">
+                                    No previous dance experience is required. The experience is designed to encourage participation without putting guests under pressure to perform.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 3: THE PROGRAMME FLOW -->
+                    <section class="zp-section zp-detail-formats-section" id="flow">
+                        <div class="zp-container">
+                            <span class="zp-eyebrow">THE PROGRAMME FLOW</span>
+                            <h2 class="zp-h2">A natural progression from arrival to enjoyment.</h2>
+
+                            <!-- 3 Flow Cards -->
+                            <div class="zp-formats-grid" style="margin-top: clamp(28px, 3.5vw, 40px);">
+                                <div class="zp-format-card">
+                                    <span class="zp-format-card-eyebrow">01 / ARRIVE</span>
+                                    <h3 class="zp-format-card-title">An easy introduction</h3>
+                                    <p class="zp-format-card-desc">
+                                        Guests are introduced to the music, the rhythm, and accessible foundational movements.
+                                    </p>
+                                </div>
+
+                                <div class="zp-format-card">
+                                    <span class="zp-format-card-eyebrow">02 / PARTICIPATE</span>
+                                    <h3 class="zp-format-card-title">Movement and connection</h3>
+                                    <p class="zp-format-card-desc">
+                                        The group develops simple steps and explores partner interaction at a comfortable pace.
+                                    </p>
+                                </div>
+
+                                <div class="zp-format-card">
+                                    <span class="zp-format-card-eyebrow">03 / ENJOY</span>
+                                    <h3 class="zp-format-card-title">Open social dancing</h3>
+                                    <p class="zp-format-card-desc">
+                                        The session concludes with an opportunity to enjoy the music and put the foundations into practice.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 4: YOUR EXPERIENCE (WHAT YOUR EXPERIENCE INCLUDES) -->
+                    <section class="zp-section zp-detail-includes-section" id="includes">
+                        <div class="zp-container">
+                            <span class="zp-eyebrow">YOUR EXPERIENCE</span>
+                            <h2 class="zp-h2">What your experience includes.</h2>
+                            
+                            <ul class="zp-engagement-checklist">
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">One continuous 90-minute private group dance experience.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">Capacity for up to 12 approved adult guests.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">Salsa (Cross Body), Bachata, and Merengue as the available featured styles.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">A choice of one or two featured styles, agreed before the event.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">Instruction adapted to the group&rsquo;s experience and comfort.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">Guided foundational steps, partner interaction, and social dancing.</span>
+                                </li>
+                                <li>
+                                    <span class="zp-check-dash">&mdash;</span>
+                                    <span class="zp-check-text">Private-event coordination and discreet handling of your occasion.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 5: FREQUENTLY ASKED QUESTIONS (ACCORDIONS) -->
+                    <section class="zp-section zp-detail-faq-section" id="faq">
+                        <div class="zp-container">
+                            <span class="zp-eyebrow">A FEW DETAILS</span>
+                            <h2 class="zp-h2">Frequently asked questions</h2>
+
+                            <div class="zp-accordion zp-detail-accordion">
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">Do guests need dance experience?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>No. The session is designed to introduce accessible foundations and accommodate different experience levels.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">Can we invite more than 12 guests?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>The standard experience is limited to 12 approved adult guests. Any change requires prior review and express approval; additional capacity is not automatic.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">Which styles can we choose?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>Salsa (Cross Body), Bachata, and Merengue. One or two featured styles can anchor the session.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">What does the host need to arrange?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>A suitable location, safe flooring, reasonable access, venue permissions, and the required audio arrangements. No final equipment responsibilities should be confirmed when booking.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">Can guests record the experience?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>Reasonable personal recordings may be permitted with instructor approval and subject to venue rules and third-party rights. Commercial or promotional use requires prior written authorization.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="zp-accordion-item">
+                                    <button class="zp-accordion-header" type="button" aria-expanded="false">
+                                        <span class="zp-accordion-question">What happens if a guest cannot attend?</span>
+                                        <span class="zp-accordion-toggle-icon"></span>
+                                    </button>
+                                    <div class="zp-accordion-collapse">
+                                        <div class="zp-accordion-body">
+                                            <p>Only approved participants who have completed required documentation may take part. Missed places do not create credits or refunds.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 6: FINAL CLOSING CTA BANNER -->
+                    <section class="zp-section" id="soiree-cta">
+                        <div class="zp-container">
+                            <div class="zp-cta-banner">
+                                <span class="zp-eyebrow">THE PRIVATE DANCE SOIR&Eacute;E</span>
+                                <h2 class="zp-h2">Give your gathering a rhythm of its own.</h2>
+                                <p class="zp-body-p">
+                                    Tell us about your occasion, proposed date, location, and anticipated guest count. We&rsquo;ll review the request and outline the available arrangements.
+                                </p>
+                                <span class="zp-micro-copy" style="margin-top: 18px; margin-bottom: 22px;">$950 &middot; 90 MINUTES</span>
+                                <div class="zp-hero-actions" style="justify-content: center;">
+                                    <a href="contact.html" class="zp-btn zp-btn-outline"><span>ENQUIRE ABOUT A PRIVATE SOIR&Eacute;E &rarr;</span></a>
+                                </div>
+                                <span class="zp-micro-copy" style="margin-top: 24px; color: var(--color-champagne);">STILLNESS IN MOTION</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SECTION 7: FOOTER (IDENTICAL TO HOME / ABOUT / SERVICES / FAQ) -->
+                    <footer class="zp-site-footer" id="footer">
+                        <div class="zp-container">
+                            <div class="zp-footer-brand">
+                                ZEROPOINT&trade;
+                            </div>
+                            <span class="zp-footer-subhead">PRIVATE &middot; PRECISE &middot; PERSONAL</span>
+                            <span class="zp-footer-tagline">Stillness In Motion.</span>
+
+                            <ul class="zp-footer-links">
+                                <li><a href="terms-of-engagement.html" class="zp-footer-link">TERMS OF ENGAGEMENT</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="privacy-policy.html" class="zp-footer-link">PRIVACY POLICY</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="age-disclaimer.html" class="zp-footer-link">UK DISCLAIMER</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="disclaimer.html" class="zp-footer-link">DISCLAIMER</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="#accessibility" class="zp-footer-link">ACCESSIBILITY</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="faq.html" class="zp-footer-link">SERVICE FAQ</a></li>
+                            </ul>
+
+                            <p class="zp-copyright">&copy; 2026 ZEROPOINT. ALL RIGHTS RESERVED.</p>
+                        </div>
+                    </footer>
+
+                </main>
             </div>
 
-            <!-- Discreet Private Engagement Modal -->
+            <!-- Preserved Discreet Engagement Modal (ex-modal) -->
             <div class="ex-modal">
                 <div class="center-container-ex-modal">
                     <div class="center-block-ex-modal">
@@ -323,13 +450,43 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="../js/plugins.js" type="text/javascript"></script>
     <script src="../js/hombre.js" type="text/javascript"></script>
+    <script>
+        // Interactive Accordions
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionHeaders = document.querySelectorAll('.zp-accordion-header');
+            accordionHeaders.forEach(function (header) {
+                header.addEventListener('click', function () {
+                    const item = this.closest('.zp-accordion-item');
+                    const isOpen = item.classList.contains('open');
+
+                    const group = item.closest('.zp-accordion');
+                    if (group) {
+                        group.querySelectorAll('.zp-accordion-item').forEach(function (sibling) {
+                            if (sibling !== item) {
+                                sibling.classList.remove('open');
+                                const btn = sibling.querySelector('.zp-accordion-header');
+                                if (btn) btn.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    }
+
+                    if (isOpen) {
+                        item.classList.remove('open');
+                        this.setAttribute('aria-expanded', 'false');
+                    } else {
+                        item.classList.add('open');
+                        this.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

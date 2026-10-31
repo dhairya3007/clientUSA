@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 440" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2D0B0"/>
+      <stop offset="45%" stop-color="#D4BF9B"/>
+      <stop offset="100%" stop-color="#C2A87F"/>
+    </linearGradient>
+    <radialGradient id="subtleGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#D4BF9B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base with Rounded Corners -->
+  <rect width="540" height="440" rx="3" fill="url(#cardGrad)" />
+  <rect width="540" height="440" rx="3" fill="url(#subtleGlow)" />
+  <rect width="540" height="440" rx="3" fill="none" stroke="#BFA67D" stroke-width="1" opacity="0.6"/>
+
+  <!-- Fluid Architectural Wireframe Dancer Contours -->
+  <g fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1.2">
+    <!-- Outer Arch / Veil Curve 1 -->
+    <path d="M 120 340 C 130 180, 210 90, 290 85 C 370 80, 440 170, 435 340" />
+    <path d="M 140 340 C 150 195, 225 105, 290 100 C 355 95, 420 185, 415 340" stroke-opacity="0.3" />
+    <path d="M 160 340 C 170 210, 240 120, 290 115 C 340 110, 400 200, 395 340" stroke-opacity="0.2" />
+
+    <!-- Inner Sweeping Partner Contour (Intertwined) -->
+    <path d="M 220 340 C 230 160, 310 75, 370 90 C 420 105, 460 210, 465 340" stroke-opacity="0.4" />
+    <path d="M 200 340 C 210 175, 290 90, 350 105 C 400 120, 445 225, 450 340" stroke-opacity="0.25" />
+
+    <!-- Motion Flow Diagonal Ribs -->
+    <path d="M 240 340 C 260 240, 310 160, 380 130" stroke-opacity="0.25" stroke-dasharray="2 3"/>
+    <path d="M 280 340 C 295 260, 340 190, 395 155" stroke-opacity="0.25" stroke-dasharray="2 3"/>
+  </g>
+
+  <!-- Fine Charcoal / Champagne Focal Ring & Dot -->
+  <circle cx="288" cy="225" r="32" fill="none" stroke="#212121" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="180 20" opacity="0.65"/>
+  <circle cx="288" cy="225" r="3" fill="#212121" opacity="0.85"/>
+
+  <!-- Bottom Architectural Signature Typography -->
+  <text x="180" y="380" fill="#212121" font-family="'Cormorant Garamond', Garamond, Georgia, serif" font-size="14" font-weight="600" letter-spacing="3" text-anchor="middle">ZEROPOINT&#8482;</text>
+  <line x1="262" y1="376" x2="282" y2="376" stroke="#212121" stroke-width="0.8" opacity="0.4"/>
+  <text x="375" y="380" fill="#212121" font-family="'Inter', -apple-system, sans-serif" font-size="9" font-weight="500" letter-spacing="2.5" text-anchor="middle">STILLNESS IN MOTION</text>
+</svg>
+

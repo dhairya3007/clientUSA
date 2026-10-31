@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ZEROPOINT || Home</title>
+    <title>ZEROPOINT || Stillness In Motion</title>
     <meta content="A private dance experience created for discerning individuals, couples, organisations and occasions."
         name="description">
     <meta content="ZEROPOINT" name="author">
@@ -15,36 +15,35 @@
     <link href="../css/plugins.css" media="all" rel="stylesheet" type="text/css">
     <link href="../css/style.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Google Fonts: Cormorant Garamond (Display) & Manrope (Body) -->
+    <!-- Mandatory Google Fonts: Cormorant Garamond & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <!-- Overlay Cover -->
-    <div class="cover-all"></div>
-
-    <!-- Hero Fullscreen Background -->
-    <div class="hero-fullscreen">
-        <iframe class="hero-fullscreen-iframe" id="hero-fullscreen-iframe" src="../zeropoint_fullscreen.html"
-            title="ZEROPOINT Responsive Motion Background" tabindex="-1" aria-hidden="true"></iframe>
-        <div class="top-shadow"></div>
-        <div class="hero-bg bg-img-SINGLE-PARTICLES" id="hero-bg"></div>
-    </div>
-
     <!-- UI Layer -->
     <div id="ui-layer">
         <div class="ui-layer-inner">
 
-            <!-- Navigation Menu -->
+            <!-- Preserved Navigation Menu Drawer (Untouched Structure & Behavior) -->
             <div class="fadeIn-element-2" id="menu-wrapper">
-                <button class="lines-button minus menu-toggle" id="main-menu-caller" type="button">
-                    <span class="lines"></span>
-                </button>
                 <div id="main-menu">
+                    <!-- Dedicated High-Contrast Luxury Drawer Close Header -->
+                    <div class="zp-drawer-header">
+                        <div class="zp-drawer-brand-block">
+                            <span class="zp-drawer-brand">ZEROPOINT<sup class="zp-drawer-brand-tm">TM</sup></span>
+                            <span class="zp-drawer-tagline">STILLNESS IN MOTION</span>
+                        </div>
+                        <button class="zp-drawer-close-btn" id="zp-drawer-close" type="button" aria-label="Close Navigation Menu">
+                            <svg class="zp-close-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="menu-nav-wrapper">
                         <nav class="menu-nav">
                             <ul>
@@ -92,6 +91,10 @@
                                     </ul>
                                 </li>
                                 <li class="menu">
+                                    <a class="menu-state link link--kukuri" data-letters="FAQ"
+                                        href="faq.html">FAQ</a>
+                                </li>
+                                <li class="menu">
                                     <a class="menu-state link link--kukuri" data-letters="Contact"
                                         href="contact.html">Contact</a>
                                 </li>
@@ -102,303 +105,309 @@
                         </nav>
                     </div>
                 </div>
+                <!-- Luxury Backdrop Overlay for Slide-out Navigation Drawer -->
+                <div id="zp-nav-backdrop" class="zp-nav-backdrop" aria-hidden="true"></div>
             </div>
 
+            <!-- Page Container (Warm Ivory & Charcoal Exact Reference Recreation) -->
             <div class="upper-page current" id="home">
-                <!-- Upper Content Container -->
-                <div class="upper-content">
-                    <div class="container sections section-home">
+                <main class="zp-recreation-wrapper">
 
-                        <!-- HERO INTRO -->
-                        <!-- 1. HERO INTRO -->
-                        <section class="home-section" id="hero">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="fadeIn-element" id="intro-wrapper">
-                                        <div class="hero-credo-top-spacer"></div>
-                                        <div class="word-slide">
-                                            <h2 class="hero-credo">
-                                                PRIVATE || <span class="highlighter">PRECISE</span> || PERSONAL
-                                            </h2>
-                                            <h1 id="wordrotator"></h1>
+                    <!-- SITE HEADER: Logo left, Navbar icon right -->
+                    <header class="zp-site-header zp-home-header">
+                        <div class="zp-container">
+                            <div class="zp-header-inner">
+                                <a href="home.html" class="zp-brand-logo-wrap" aria-label="ZEROPOINT Home">
+                                    <img src="../assets/zeropoint_logo_vector.svg" alt="ZEROPOINT — Stillness In Motion" class="zp-header-logo-img">
+                                </a>
+                                <div class="zp-header-nav-trigger">
+                                    <button class="lines-button minus menu-toggle zp-nav-light" id="main-menu-caller" type="button" aria-label="Toggle Navigation Menu">
+                                        <span class="lines"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- SECTION 1: HERO (FULL BLEED SEAMLESS EDITORIAL HERO) -->
+                    <section class="zp-section zp-bleed-hero-section" id="hero">
+                        <div class="zp-container zp-bleed-hero-container">
+                            <div class="zp-bleed-hero-content">
+                                <span class="zp-eyebrow zp-eyebrow-champagne">PRIVATE DANCE &middot; PRIVATE ENGAGEMENT</span>
+                                <span class="zp-eyebrow zp-eyebrow-credo">PRIVATE. PRECISE. PERSONAL.</span>
+                                <h1 class="zp-h1">A More Personal Approach to<br>Dance.</h1>
+                                <p class="zp-body-p">
+                                    A private dance experience created for discerning individuals, couples,<br>organisations and occasions.
+                                </p>
+                                <p class="zp-body-p">
+                                    We work across private estates, premium hotels, corporate environments,<br>wedding settings and carefully selected venues.
+                                </p>
+                                <div class="zp-hero-actions">
+                                    <a href="#services" class="zp-btn zp-btn-primary"><span>EXPLORE OUR SERVICES &rarr;</span></a>
+                                    <a href="contact.html" class="zp-btn zp-btn-outline"><span>MAKE AN ENQUIRY &rarr;</span></a>
+                                </div>
+                                <span class="zp-closing-label">A PRIVATE EXPERIENCE, DESIGNED AROUND YOU.</span>
+                            </div>
+                        </div>
+                        <div class="zp-bleed-hero-media">
+                            <img class="zp-bleed-hero-img" src="../assets/HOMEPAGE%20HERO%20PHOTO.png" alt="ZEROPOINT Luxury Private Dance" loading="eager">
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 2: PHILOSOPHY (01 / THE PHILOSOPHY) -->
+                    <section class="zp-section" id="philosophy">
+                        <div class="zp-container">
+                            <div class="zp-editorial-grid">
+                                <div>
+                                    <span class="zp-eyebrow">01 / THE PHILOSOPHY</span>
+                                    <h2 class="zp-h2">What is ZEROPOINT?</h2>
+                                    <span class="zp-subheading">PRIVATE DANCE LEARNING.</span>
+                                </div>
+                                <div>
+                                    <p class="zp-body-p">
+                                        We provide a private dance learning experience brought directly to you.
+                                    </p>
+                                    <p class="zp-body-p">
+                                        Your environment becomes the classroom. Your objective shapes the engagement. We bring the expertise to you.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 3: EXPERTISE (02 / OUR EXPERTISE) -->
+                    <section class="zp-section" id="expertise">
+                        <div class="zp-container">
+                            <div class="zp-editorial-grid">
+                                <div>
+                                    <span class="zp-eyebrow">02 / OUR EXPERTISE</span>
+                                    <h2 class="zp-h2">What We Do</h2>
+                                    <span class="zp-subheading">INSTRUCTION &amp; CHOREOGRAPHY</span>
+                                </div>
+                                <div>
+                                    <p class="zp-body-p">
+                                        We provide professionally guided dance instruction and choreography designed around the individual, the occasion and the environment.
+                                    </p>
+                                    <p class="zp-body-p">
+                                        Instruction may include movement fundamentals, choreography, refinement, Lead &amp; Follow technique, partnering, musicality and practical rehearsal.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 4: PROCESS (03 / HOW WE DO IT) -->
+                    <section class="zp-section" id="process">
+                        <div class="zp-container">
+                            <div class="zp-editorial-grid">
+                                <div>
+                                    <span class="zp-eyebrow">03 / HOW WE DO IT</span>
+                                    <h2 class="zp-h2">How We Do It</h2>
+                                    <span class="zp-subheading">A TAILORED PROCESS</span>
+                                </div>
+                                <div>
+                                    <p class="zp-body-p">
+                                        Precisely 60 minutes to learn, practice or refine your passion. Not half of your day travelling back and forth to the studio.
+                                    </p>
+                                    <p class="zp-body-p">
+                                        You tell us what you want to achieve. We review the request, determine what the engagement requires, and structure the instruction around your objective.
+                                    </p>
+                                    <p class="zp-body-p">
+                                        Once confirmed, we coordinate the mutually agreed day, time and location.
+                                    </p>
+                                    <span class="zp-tagline">We come to you.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 5: DISCIPLINES (04 / OUR DISCIPLINES) -->
+                    <section class="zp-section" id="styles">
+                        <div class="zp-container">
+                            <div class="zp-styles-wrapper">
+                                <span class="zp-eyebrow">04 / OUR DISCIPLINES</span>
+                                <h2 class="zp-h2">Styles</h2>
+                                <p class="zp-body-p">
+                                    Explore a selection of partner dance disciplines offered through ZEROPOINT.
+                                </p>
+                                <div class="zp-styles-table">
+                                    <div class="zp-style-cell">
+                                        <div class="zp-style-img-wrap">
+                                            <img src="../assets/Salsa%20Crossbody%20800x1000px.png" alt="Salsa (Crossbody) — ZEROPOINT Disciplines" class="zp-style-img" loading="lazy">
+                                            <div class="zp-style-overlay">
+                                                <h3 class="zp-style-name">Salsa</h3>
+                                                <span class="zp-style-sub">(CROSSBODY)</span>
+                                            </div>
                                         </div>
-                                        <div class="hero-credo-mid-spacer"></div>
-                                        <div class="row" style="margin-top: clamp(280px, 48vh, 520px);">
-                                            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                                                <div class="hero-lead-box">
-                                                    <p class="lead">
-                                                        A private dance experience created for discerning individuals,
-                                                        couples, organisations and occasions.
-                                                    </p>
-                                                    <div class="hero-lead-divider"></div>
-                                                    <p>
-                                                        We work across private estates, premium hotels, corporate
-                                                        environments, wedding settings and carefully selected venues.
-                                                    </p>
-                                                    <p>
-                                                        Every engagement is conducted with discretion. Your privacy is
-                                                        respected throughout; client identities, experiences and
-                                                        references
-                                                        are never used for publicity or marketing.
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="zp-style-cell">
+                                        <div class="zp-style-img-wrap">
+                                            <img src="../assets/zeropoint_bachata_4x5_800x1000-2.png" alt="Bachata — ZEROPOINT Disciplines" class="zp-style-img" loading="lazy">
+                                            <div class="zp-style-overlay">
+                                                <h3 class="zp-style-name">Bachata</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="zp-style-cell">
+                                        <div class="zp-style-img-wrap">
+                                            <img src="../assets/zeropoint_merengue_4x5_800x1000-3.png" alt="Merengue — ZEROPOINT Disciplines" class="zp-style-img" loading="lazy">
+                                            <div class="zp-style-overlay">
+                                                <h3 class="zp-style-name">Merengue</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="zp-style-cell">
+                                        <div class="zp-style-img-wrap">
+                                            <img src="../assets/zeropoint_kizomba_4x5_800x1000-2.png" alt="Kizomba — ZEROPOINT Disciplines" class="zp-style-img" loading="lazy">
+                                            <div class="zp-style-overlay">
+                                                <h3 class="zp-style-name">Kizomba</h3>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <p class="zp-style-note">
+                                    For wedding choreography, additional Latin or partner dance styles may be incorporated where appropriate to the music, vision and experience of the couple.
+                                </p>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
+                    <hr class="zp-divider">
 
-                        <!-- 2. WHAT IS ZEROPOINT? -->
-                        <section class="home-section" id="what-is-zeropoint">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <h2>WHAT IS ZEROPOINT?</h2>
-                                    <div class="decoration-2">
-                                        <div class="decoration-left-2"></div>
-                                        <div class="decoration-effect-2">
-                                            <a class="effect-bubba-2" href="#what-is-zeropoint">Private Dance
-                                                Learning</a>
-                                        </div>
-                                        <div class="decoration-right-2"></div>
+                    <!-- SECTION 6: SERVICES (05 / OUR SERVICES) -->
+                    <section class="zp-section" id="services">
+                        <div class="zp-container">
+                            <div class="zp-services-header">
+                                <span class="zp-eyebrow">05 / OUR SERVICES</span>
+                                <h2 class="zp-h2">Our Services</h2>
+                                <p class="zp-body-p">
+                                    Private dance instruction and choreography thoughtfully tailored around the individual, the couple, and the occasion.
+                                </p>
+                            </div>
+                            <div class="zp-services-grid">
+                                <a href="service-private-dance-introduction.html" class="zp-service-card">
+                                    <div>
+                                        <span class="zp-service-category">EXPERIENCE / 01</span>
+                                        <h3 class="zp-service-title">Private Dance Introduction</h3>
+                                        <span class="zp-service-subhead">A STANDALONE PRIVATE EXPERIENCE</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <p class="lead">
-                                        We provide a private dance learning experience brought directly to you.
-                                    </p>
-                                    <p>
-                                        Your environment becomes the classroom. Your objective shapes the
-                                        engagement. We bring the expertise to you.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                                    <span class="zp-service-card-arrow">&nearr;</span>
+                                </a>
 
-
-                        <!-- 3. WHAT WE DO -->
-                        <section class="home-section" id="what-we-do">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <h2>WHAT WE DO</h2>
-                                    <div class="decoration-2">
-                                        <div class="decoration-left-2"></div>
-                                        <div class="decoration-effect-2">
-                                            <a class="effect-bubba-2" href="#what-we-do">Instruction &amp;
-                                                Choreography</a>
-                                        </div>
-                                        <div class="decoration-right-2"></div>
+                                <a href="service-private-dance-mastery.html" class="zp-service-card">
+                                    <div>
+                                        <span class="zp-service-category">EXPERIENCE / 02</span>
+                                        <h3 class="zp-service-title">Private Dance Mastery</h3>
+                                        <span class="zp-service-subhead">A STRUCTURED PRIVATE PROGRAMME</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <p class="lead">
-                                        We provide professionally guided dance instruction and choreography
-                                        designed around the individual, the occasion and the environment.
-                                    </p>
-                                    <p>
-                                        Instruction may include movement fundamentals, choreography, refinement,
-                                        Lead &amp; Follow technique, partnering, musicality and practical rehearsal.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                                    <span class="zp-service-card-arrow">&nearr;</span>
+                                </a>
 
-
-                        <!-- 4. HOW WE DO IT -->
-                        <section class="home-section" id="how-we-do-it">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <h2>HOW WE DO IT</h2>
-                                    <div class="decoration-2">
-                                        <div class="decoration-left-2"></div>
-                                        <div class="decoration-effect-2">
-                                            <a class="effect-bubba-2" href="#how-we-do-it">Tailored Process</a>
-                                        </div>
-                                        <div class="decoration-right-2"></div>
+                                <a href="service-signature-first-dance.html" class="zp-service-card">
+                                    <div>
+                                        <span class="zp-service-category">EXPERIENCE / 03</span>
+                                        <h3 class="zp-service-title">The Signature First Dance</h3>
+                                        <span class="zp-service-subhead">YOUR PERSONAL FIRST DANCE</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <p class="lead">
-                                        Precisely 60 minutes to learn, practice or refine your passion. Not half of
-                                        your day travelling back and forth to the studio.
-                                    </p>
-                                    <p>
-                                        You tell us what you want to achieve. We review the request, determine what the
-                                        engagement requires, and structure the instruction around your objective.
-                                    </p>
-                                    <p>
-                                        Once confirmed, we coordinate the mutually agreed day, time and location.
-                                    </p>
-                                    <p class="lead">
-                                        <strong>We come to you.</strong>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                                    <span class="zp-service-card-arrow">&nearr;</span>
+                                </a>
 
-
-                        <!-- 5. STYLES -->
-                        <section class="home-section" id="styles">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <h2>STYLES</h2>
-                                    <div class="decoration-2">
-                                        <div class="decoration-left-2"></div>
-                                        <div class="decoration-effect-2">
-                                            <a class="effect-bubba-2" href="#styles">Dance Disciplines</a>
-                                        </div>
-                                        <div class="decoration-right-2"></div>
+                                <a href="service-private-dance-soiree.html" class="zp-service-card">
+                                    <div>
+                                        <span class="zp-service-category">EXPERIENCE / 04</span>
+                                        <h3 class="zp-service-title">The Private Dance Soir&eacute;e</h3>
+                                        <span class="zp-service-subhead">AN EXCLUSIVE PRIVATE EXPERIENCE</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row styles-grid">
-                                <div class="col-md-3 col-sm-6 col-xs-6 style-col">
-                                    <a class="style-card" href="#styles">
-                                        <h4 class="style-title">Salsa <small>(Crossbody)</small></h4>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 style-col">
-                                    <a class="style-card" href="#styles">
-                                        <h4 class="style-title">Bachata</h4>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 style-col">
-                                    <a class="style-card" href="#styles">
-                                        <h4 class="style-title">Merengue</h4>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 style-col">
-                                    <a class="style-card" href="#styles">
-                                        <h4 class="style-title">Kizomba</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <p class="style-note">
-                                        For wedding choreography, additional Latin or partner dance styles may be
-                                        incorporated where appropriate to the music, vision and experience of the
-                                        couple.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                                    <span class="zp-service-card-arrow">&nearr;</span>
+                                </a>
 
-
-                        <!-- 6. SERVICES (5 Approved Categories) -->
-                        <section class="home-section" id="services">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <h2>SERVICES</h2>
-                                    <div class="decoration-2">
-                                        <div class="decoration-left-2"></div>
-                                        <div class="decoration-effect-2">
-                                            <a class="effect-bubba-2" href="#services">Curated Offerings</a>
-                                        </div>
-                                        <div class="decoration-right-2"></div>
+                                <a href="service-corporate-connection.html" class="zp-service-card zp-service-card-full">
+                                    <div>
+                                        <span class="zp-service-category">EXPERIENCE / 05</span>
+                                        <h3 class="zp-service-title">The Corporate Connection</h3>
+                                        <span class="zp-service-subhead">ORGANISATIONS, BUSINESSES &amp; TEAMS</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <p class="lead">
-                                        Private dance instruction and choreography thoughtfully tailored around the
-                                        individual, the couple, and the occasion.
-                                    </p>
-                                </div>
+                                    <span class="zp-service-card-arrow">&nearr;</span>
+                                </a>
                             </div>
 
-                            <!-- Elegant Minimalist Services List -->
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                                    <ul class="home-services-list">
-                                        <li>
-                                            <a class="home-service-item" href="service-private-dance-introduction.html">
-                                                <span class="home-service-num">01</span>
-                                                <span class="home-service-title">Private Dance Introduction</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="home-service-item" href="service-private-dance-mastery.html">
-                                                <span class="home-service-num">02</span>
-                                                <span class="home-service-title">Private Dance Mastery</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="home-service-item" href="service-signature-first-dance.html">
-                                                <span class="home-service-num">03</span>
-                                                <span class="home-service-title">The Signature First Dance</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="home-service-item" href="service-private-dance-soiree.html">
-                                                <span class="home-service-num">04</span>
-                                                <span class="home-service-title">The Private Dance Soir&eacute;e</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="home-service-item" href="service-corporate-connection.html">
-                                                <span class="home-service-num">05</span>
-                                                <span class="home-service-title">The Corporate Connection</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="zp-services-actions">
+                                <a href="services.html" class="zp-btn zp-btn-primary"><span>EXPLORE ALL SERVICES &amp; PACKAGES &rarr;</span></a>
+                                <a href="contact.html" class="zp-btn zp-btn-outline"><span>MAKE AN ENQUIRY &rarr;</span></a>
                             </div>
+                        </div>
+                    </section>
 
-                            <!-- Actions / CTAs -->
-                            <div class="row text-center" style="margin-top: 25px; margin-bottom: 10px;">
-                                <div class="col-xs-12">
-                                    <a class="c-btn" href="services.html" style="margin: 0 8px 15px 8px;"><span>Explore
-                                            All Services &amp; Packages</span></a>
-                                    <a class="c-btn" href="contact.html"
-                                        style="margin: 0 8px 15px 8px;"><span>Make an Enquiry</span></a>
-                                </div>
+                    <hr class="zp-divider">
+
+                    <!-- SECTION 7: COMMITMENT (06 / OUR COMMITMENT - INSET TINTED PANEL) -->
+                    <section class="zp-section zp-section-commitment-wrap" id="commitment">
+                        <div class="zp-container">
+                            <div class="zp-commitment-panel">
+                                <span class="zp-eyebrow">06 / OUR COMMITMENT</span>
+                                <h2 class="zp-h2">Discretion is not an extra.<br>It is part of the experience.</h2>
+                                <p class="zp-body-p">
+                                    Every engagement is conducted with discretion. Your privacy is respected throughout; client identities, experiences and references are never used for publicity or marketing.
+                                </p>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
+                    <hr class="zp-divider">
 
-                        <!-- 7. BRAND CLOSING STATEMENT -->
-                        <section class="home-section" id="closing">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                                    <div class="closing-box">
-                                        <h3>PRIVATE. PRECISE. PERSONAL.</h3>
-                                        <h5><strong>Stillness In Motion.</strong></h5>
-                                        <div class="closing-divider"></div>
-                                    </div>
-                                </div>
+                    <!-- SECTION 8: FINAL CALL TO ACTION (07 / YOUR NEXT MOVEMENT) -->
+                    <section class="zp-section" id="final-cta">
+                        <div class="zp-container">
+                            <div class="zp-final-cta">
+                                <span class="zp-eyebrow">07 / YOUR NEXT MOVEMENT</span>
+                                <h2 class="zp-h2">Make room for movement.</h2>
+                                <p class="zp-body-p">
+                                    Tell us what you would like to explore. Every enquiry is reviewed individually before an engagement is confirmed.
+                                </p>
+                                <a href="contact.html" class="zp-btn zp-btn-primary"><span>REQUEST A PRIVATE ENGAGEMENT &rarr;</span></a>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
-                        <!-- Footer & Legal Links -->
-                        <footer class="site-footer">
-                            <div class="footer-legal-links">
-                                <a class="legal-link" href="terms-of-engagement.html" data-legal="terms">Terms of Engagement</a>
-                                <span class="legal-sep">&middot;</span>
-                                <a class="legal-link" href="privacy-policy.html" data-legal="privacy">Privacy Policy</a>
-                                <span class="legal-sep">&middot;</span>
-                                <a class="legal-link" href="age-disclaimer.html" data-legal="age">18+ Disclaimer</a>
-                                <span class="legal-sep">&middot;</span>
-                                <a class="legal-link" href="disclaimer.html" data-legal="disclaimer">Disclaimer</a>
+                    <!-- SECTION 9: FOOTER -->
+                    <footer class="zp-site-footer" id="footer">
+                        <div class="zp-container">
+                            <div class="zp-footer-brand">
+                                ZEROPOINT&trade;
                             </div>
-                            <p class="footer-copyright">&copy; 2026 ZEROPOINT. All rights reserved.</p>
-                        </footer>
+                            <span class="zp-footer-subhead">PRIVATE &middot; PRECISE &middot; PERSONAL</span>
+                            <span class="zp-footer-tagline">Stillness In Motion.</span>
 
-                    </div>
-                </div>
+                            <ul class="zp-footer-links">
+                                <li><a href="terms-of-engagement.html" class="zp-footer-link">TERMS OF ENGAGEMENT</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="privacy-policy.html" class="zp-footer-link">PRIVACY POLICY</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="age-disclaimer.html" class="zp-footer-link">UK DISCLAIMER</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="disclaimer.html" class="zp-footer-link">DISCLAIMER</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="#accessibility" class="zp-footer-link">ACCESSIBILITY</a></li>
+                                <li class="zp-footer-sep">&middot;</li>
+                                <li><a href="faq.html" class="zp-footer-link">SERVICE FAQ</a></li>
+                            </ul>
+
+                            <p class="zp-copyright">&copy; 2026 ZEROPOINT. ALL RIGHTS RESERVED.</p>
+                        </div>
+                    </footer>
+
+                </main>
             </div>
 
-            <!-- ======================================================== -->
-            <!-- DISCREET ENGAGEMENT MODAL (ex-modal)                    -->
-            <!-- ======================================================== -->
+            <!-- Preserved Discreet Engagement Modal (ex-modal) -->
             <div class="ex-modal">
                 <div class="center-container-ex-modal">
                     <div class="center-block-ex-modal">

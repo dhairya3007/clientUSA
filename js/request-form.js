@@ -828,13 +828,15 @@
         }
 
         // Post to backend adapter (Universal IIS handler)
-        $.ajax({
+        var jqXHR = $.ajax({
             url: handlerUrl,
             type: "POST",
             data: postData,
             dataType: "json",
             timeout: 25000
-        }).done(function(resp) {
+        });
+
+        jqXHR.done(function(resp) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
             // Check if backend indicates success
             var isSuccess = (resp && (resp.success === true || resp.status === "ok"));
@@ -858,7 +860,9 @@
                 successHtml += '</div>';
                 $status.html(successHtml);
             });
-        }).fail(function(xhr, statusText) {
+        });
+
+        jqXHR.fail(function(xhr, statusText) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
             
             var errMessage = '';
