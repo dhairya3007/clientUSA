@@ -31,6 +31,64 @@
 </head>
 
 <body>
+    <!-- ZEROPOINT™ — 03 / Orbital Equilibrium Signature Preloader -->
+    <div id="zp-preloader" role="status" aria-label="Loading ZEROPOINT Stillness In Motion">
+        <div class="zp-preloader-scene">
+            <div class="zp-lockup-row">
+                <div class="zp-word-group">
+                    <span class="zp-preloader-char zp-left-char" style="animation-delay: 1.45s;">Z</span>
+                    <span class="zp-preloader-char zp-left-char" style="animation-delay: 1.25s;">E</span>
+                    <span class="zp-preloader-char zp-left-char" style="animation-delay: 1.05s;">R</span>
+                </div>
+
+                <div class="zp-enso-box" id="zp-enso-target">
+                    <svg viewBox="0 0 120 120" width="100%" height="100%" style="overflow: visible;">
+                        <!-- Orbiting Plane 1: Primary Heavy Sumi-e Brush Ring -->
+                        <g class="zp-orbit-1">
+                            <path d="M 60,12 C 86.5,12 108,33.5 108,60 C 108,86.5 86.5,108 60,108 C 33.5,108 12,86.5 12,60 C 12,35 31,14.5 55,12.2"
+                                  fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" />
+                            <path d="M 91,24 C 106,40 107,67 94,86 C 80,104 53,108 34,96"
+                                  fill="none" stroke="var(--zp-preloader-bg)" stroke-width="1.2" stroke-dasharray="16 9 22 7 12 14" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Orbiting Plane 2: Feathered Calligraphic Bristles -->
+                        <g class="zp-orbit-2">
+                            <path d="M 60,8.5 C 88.4,8.5 111.5,31.6 111.5,60 C 111.5,88.4 88.4,111.5 60,111.5 C 34,111.5 12,92 9,66"
+                                  fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="28 5 12 4 34 6" stroke-linecap="round" opacity="0.9" />
+                            <path d="M 103.5,60 C 103.5,84 84,103.5 60,103.5 C 36,103.5 16.5,84 16.5,60 C 16.5,38 33,19.5 54,17"
+                                  fill="none" stroke="currentColor" stroke-width="1.35" stroke-dasharray="22 6 14 4 26 7" stroke-linecap="round" opacity="0.82" />
+                        </g>
+
+                        <!-- Orbiting Plane 3: Golden Harmonic Horizon Ring -->
+                        <g class="zp-orbit-3">
+                            <circle cx="60" cy="60" r="48" fill="none" stroke="#C8A96B" stroke-width="1" stroke-dasharray="18 10 6 10" />
+                        </g>
+
+                        <!-- Zero-Point Singularity -->
+                        <circle cx="60" cy="60" r="9.5" fill="#C8A96B" />
+                    </svg>
+                </div>
+
+                <div class="zp-word-group">
+                    <span class="zp-preloader-char zp-right-char" style="animation-delay: 1.05s;">P</span>
+                    <span class="zp-preloader-char zp-right-char" style="animation-delay: 1.20s;">O</span>
+                    <span class="zp-preloader-char zp-right-char" style="animation-delay: 1.35s;">I</span>
+                    <span class="zp-preloader-char zp-right-char" style="animation-delay: 1.50s;">N</span>
+                    <span class="zp-preloader-char zp-right-char" style="animation-delay: 1.65s; letter-spacing: 0.06em;">
+                        T<span class="zp-preloader-tm">TM</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="zp-tagline-row">
+                <div class="zp-flank-line"></div>
+                <p class="zp-tagline-text">Stillness In Motion</p>
+                <div class="zp-flank-line"></div>
+            </div>
+        </div>
+    </div>
+    <canvas id="zp-particle-canvas"></canvas>
+
     <!-- UI Layer -->
     <div id="ui-layer">
         <div class="ui-layer-inner">
@@ -458,6 +516,200 @@
     <!-- Scripts -->
     <script src="../js/plugins.js" type="text/javascript"></script>
     <script src="../js/hombre.js" type="text/javascript"></script>
-</body>
+    <!-- ZEROPOINT Signature Preloader: Orbital Equilibrium + Particle Dissolve Engine -->
+    <script>
+        (function() {
+            var preloader = document.getElementById('zp-preloader');
+            var canvas = document.getElementById('zp-particle-canvas');
+            if (!preloader) return;
 
+            var startTime = Date.now();
+            var minDisplayTime = 3100; // Let the 3D orbital convergence lock into 2D equilibrium
+            var isShattered = false;
+
+            function shatterZeroPointIntoParticles() {
+                if (isShattered) return;
+                isShattered = true;
+
+                if (!canvas) {
+                    preloader.classList.add('zp-loaded');
+                    setTimeout(function() { preloader.style.display = 'none'; }, 600);
+                    return;
+                }
+
+                var ctx = canvas.getContext('2d');
+                if (!ctx) {
+                    preloader.classList.add('zp-loaded');
+                    setTimeout(function() { preloader.style.display = 'none'; }, 600);
+                    return;
+                }
+
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                var width = window.innerWidth;
+                var height = window.innerHeight;
+                canvas.width = width * dpr;
+                canvas.height = height * dpr;
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+                var ensoTarget = document.getElementById('zp-enso-target') || preloader.querySelector('.zp-enso-box');
+                var ensoRect = ensoTarget ? ensoTarget.getBoundingClientRect() : { left: width / 2 - 50, top: height / 2 - 50, width: 100, height: 100 };
+                var cx = ensoRect.left + ensoRect.width / 2;
+                var cy = ensoRect.top + ensoRect.height / 2;
+                var r = ensoRect.width * 0.40;
+
+                var ink = '#212121';
+                var gold = '#C8A96B';
+                var goldLight = '#D9BE8E';
+                var pts = [];
+
+                // 1. Central Gold Singularity Core Particles
+                for (var i = 0; i < 95; i++) {
+                    var a = Math.random() * Math.PI * 2;
+                    var dist = Math.random() * (r * 0.22);
+                    var x = cx + Math.cos(a) * dist;
+                    var y = cy + Math.sin(a) * dist;
+                    var speed = 1.2 + Math.random() * 4.8;
+                    pts.push({
+                        x: x, y: y,
+                        vx: Math.cos(a) * speed + (Math.random() - 0.5) * 1.5,
+                        vy: Math.sin(a) * speed - Math.random() * 1.8,
+                        s: 1.5 + Math.random() * 3.4,
+                        c: Math.random() > 0.35 ? gold : goldLight,
+                        a: 1,
+                        decay: 0.007 + Math.random() * 0.009,
+                        turb: 0.04 + Math.random() * 0.05,
+                        p: Math.random() * Math.PI * 2,
+                        delay: Math.random() * 6
+                    });
+                }
+
+                // 2. Enso Brush Ring Calligraphic Ink Particles
+                var ringCount = 380;
+                for (var j = 0; j < ringCount; j++) {
+                    var a2 = (j / ringCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.08;
+                    var radiusJitter = r + (Math.random() - 0.5) * 11;
+                    var x2 = cx + Math.cos(a2) * radiusJitter;
+                    var y2 = cy + Math.sin(a2) * radiusJitter;
+                    var radialSpeed = 0.8 + Math.random() * 3.8;
+                    var tangentSpeed = (Math.random() - 0.3) * 2.6;
+                    pts.push({
+                        x: x2, y: y2,
+                        vx: Math.cos(a2) * radialSpeed - Math.sin(a2) * tangentSpeed,
+                        vy: Math.sin(a2) * radialSpeed + Math.cos(a2) * tangentSpeed - 0.6,
+                        s: 1.1 + Math.random() * 2.8,
+                        c: Math.random() > 0.14 ? ink : gold,
+                        a: 0.95,
+                        decay: 0.008 + Math.random() * 0.011,
+                        turb: 0.035 + Math.random() * 0.045,
+                        p: a2,
+                        delay: Math.random() * 10
+                    });
+                }
+
+                // 3. Letters, TM Badge & Tagline Particles
+                var letterEls = preloader.querySelectorAll('.zp-preloader-char, .zp-preloader-tm, .zp-tagline-text, .zp-flank-line');
+                letterEls.forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.width === 0 || rect.height === 0) return;
+                    var isLine = el.classList.contains('zp-flank-line');
+                    var isTagline = el.classList.contains('zp-tagline-text');
+                    var count = isLine ? 28 : (isTagline ? 90 : 52);
+
+                    for (var k = 0; k < count; k++) {
+                        var px = rect.left + Math.random() * rect.width;
+                        var py = rect.top + Math.random() * rect.height;
+                        var dx = px - cx;
+                        var dy = py - cy;
+                        var distFromCenter = Math.max(Math.hypot(dx, dy), 1);
+                        var burst = 1.1 + Math.random() * 3.4;
+
+                        pts.push({
+                            x: px, y: py,
+                            vx: (dx / distFromCenter) * burst + (Math.random() - 0.5) * 1.8,
+                            vy: (dy / distFromCenter) * (burst * 0.65) - (0.8 + Math.random() * 2.4),
+                            s: isLine ? 1.1 : (1.0 + Math.random() * 2.4),
+                            c: Math.random() > 0.18 ? ink : gold,
+                            a: 0.92,
+                            decay: 0.008 + Math.random() * 0.012,
+                            turb: 0.03 + Math.random() * 0.05,
+                            p: Math.random() * Math.PI * 2,
+                            delay: (distFromCenter / Math.max(width, 600)) * 18
+                        });
+                    }
+                });
+
+                // Trigger smooth blur-out on DOM elements
+                preloader.classList.add('zp-shattered');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 400);
+
+                var frame = 0;
+                function renderParticles() {
+                    frame++;
+                    ctx.clearRect(0, 0, width, height);
+
+                    var aliveCount = 0;
+                    for (var m = 0; m < pts.length; m++) {
+                        var p = pts[m];
+                        if (frame < p.delay) {
+                            aliveCount++;
+                            ctx.globalAlpha = p.a;
+                            ctx.fillStyle = p.c;
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+                            ctx.fill();
+                            continue;
+                        }
+
+                        if (p.a <= 0.01) continue;
+                        aliveCount++;
+
+                        p.p += p.turb;
+                        p.vx += Math.cos(p.p) * 0.055;
+                        p.vy += Math.sin(p.p) * 0.045 - 0.018; // gentle zen buoyancy
+                        p.vx *= 0.985;
+                        p.vy *= 0.985;
+
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.a -= p.decay;
+                        p.s *= 0.996;
+
+                        ctx.globalAlpha = Math.max(0, p.a);
+                        ctx.fillStyle = p.c;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, Math.max(0.5, p.s), 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (aliveCount > 0) {
+                        requestAnimationFrame(renderParticles);
+                    } else {
+                        if (canvas && canvas.parentNode) {
+                            canvas.parentNode.removeChild(canvas);
+                        }
+                    }
+                }
+
+                requestAnimationFrame(renderParticles);
+            }
+
+            function triggerPreloaderExit() {
+                var elapsed = Date.now() - startTime;
+                var remaining = Math.max(0, minDisplayTime - elapsed);
+                setTimeout(shatterZeroPointIntoParticles, remaining);
+            }
+
+            if (document.readyState === 'complete') {
+                triggerPreloaderExit();
+            } else {
+                window.addEventListener('load', triggerPreloaderExit);
+                setTimeout(triggerPreloaderExit, 4800); // Fail-safe cap
+            }
+        })();
+    </script>
+</body>
 </html>
