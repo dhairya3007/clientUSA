@@ -6936,3 +6936,454 @@ blockquote.zp-pull-quote-text {
     to { width: 12px !important; }
   }
 }
+
+
+/* ======================================================== */
+/* ZEROPOINT DISCIPLINE DETAIL PAGE (FULL-BLEED EDITORIAL SPLIT) */
+/* ======================================================== */
+
+.zp-style-cell {
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.zp-style-cell:focus-visible {
+  outline: 2px solid var(--color-champagne) !important;
+  outline-offset: 3px !important;
+}
+
+/* Discipline Page Layout: Exact 50/50 Split Screen Match */
+.zp-discipline-section {
+  background-color: var(--color-ivory, #F4F1EA) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  min-height: calc(100vh - 72px) !important;
+  position: relative !important;
+}
+
+.zp-discipline-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.zp-discipline-grid {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  gap: 0 !important;
+  align-items: start !important;
+  min-height: calc(100vh - 72px) !important;
+}
+
+/* Left Column: Editorial Breakdown */
+.zp-discipline-content {
+  padding: clamp(36px, 4vw, 56px) clamp(28px, 4vw, 48px) 60px clamp(28px, 5vw, 64px) !important;
+  background-color: var(--color-ivory, #F4F1EA) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.zp-discipline-eyebrow-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+.zp-discipline-eyebrow {
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.24em !important;
+  text-transform: uppercase !important;
+  color: var(--color-charcoal) !important;
+}
+
+.zp-discipline-eyebrow-line {
+  display: inline-block !important;
+  width: 48px !important;
+  height: 1px !important;
+  background-color: var(--color-charcoal) !important;
+  opacity: 0.55 !important;
+}
+
+.zp-discipline-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(30px, 3.2vw, 42px) !important;
+  font-weight: 500 !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: uppercase !important;
+  color: var(--color-charcoal) !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.zp-discipline-subtitle {
+  font-family: var(--font-heading) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(21px, 2.2vw, 25px) !important;
+  line-height: 1.3 !important;
+  color: var(--color-charcoal) !important;
+  margin: 0 0 26px 0 !important;
+}
+
+.zp-discipline-paragraphs {
+  margin-bottom: 32px !important;
+}
+
+.zp-discipline-p {
+  font-family: var(--font-body) !important;
+  font-size: 14.5px !important;
+  line-height: 1.8 !important;
+  color: var(--color-body) !important;
+  margin: 0 0 18px 0 !important;
+  font-weight: 400 !important;
+}
+
+.zp-discipline-p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Sections & Structural Dividers */
+.zp-discipline-block {
+  margin-top: 38px !important;
+  padding-top: 32px !important;
+  border-top: 1px solid var(--color-border) !important;
+}
+
+.zp-discipline-block-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(21px, 2.3vw, 25px) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--color-charcoal) !important;
+  margin: 0 0 6px 0 !important;
+}
+
+.zp-discipline-block-sub {
+  font-family: var(--font-heading) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(17px, 1.8vw, 20px) !important;
+  line-height: 1.35 !important;
+  color: var(--color-charcoal) !important;
+  margin: 0 0 20px 0 !important;
+}
+
+/* 3-Step / 4-Step Mechanics List (01 / 02 / 03 / 04) */
+.zp-discipline-steps {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  margin: 26px 0 26px 0 !important;
+}
+
+.zp-discipline-step {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+}
+
+.zp-discipline-step-num {
+  font-family: var(--font-heading) !important;
+  font-size: 32px !important;
+  font-weight: 500 !important;
+  color: var(--color-champagne) !important;
+  line-height: 1 !important;
+  padding-right: 20px !important;
+  border-right: 1px solid var(--color-border) !important;
+  min-width: 56px !important;
+  flex-shrink: 0 !important;
+}
+
+.zp-discipline-step-content {
+  flex: 1 !important;
+}
+
+.zp-discipline-step-title {
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--color-charcoal) !important;
+  margin: 0 0 5px 0 !important;
+}
+
+.zp-discipline-step-text {
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: var(--color-body) !important;
+  margin: 0 !important;
+}
+
+/* Back Link */
+.zp-discipline-back-wrap {
+  margin-top: 48px !important;
+  padding-top: 30px !important;
+  border-top: 1px solid var(--color-border) !important;
+}
+
+.zp-discipline-back-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--color-charcoal) !important;
+  text-decoration: none !important;
+  transition: color 0.25s ease, transform 0.25s ease !important;
+}
+
+.zp-discipline-back-link .zp-back-arrow {
+  font-size: 14px !important;
+  transition: transform 0.25s ease !important;
+}
+
+.zp-discipline-back-link:hover {
+  color: var(--color-champagne) !important;
+}
+
+.zp-discipline-back-link:hover .zp-back-arrow {
+  transform: translateX(-4px) !important;
+}
+
+/* Right Column: Full Bleed Architectural Visual & Identity Panel matching Screenshot */
+.zp-discipline-media-col {
+  position: sticky !important;
+  top: 72px !important;
+  height: calc(100vh - 72px) !important;
+  align-self: start !important;
+  background-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+  z-index: 10 !important;
+}
+
+.zp-discipline-card {
+  position: relative !important;
+  height: 100% !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.zp-discipline-img-wrap {
+  position: relative !important;
+  height: 100% !important;
+  width: auto !important;
+  display: block !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.zp-discipline-img {
+  height: 100% !important;
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Seamless blend from the photo floor into the solid dark floor */
+.zp-discipline-img-wrap::after {
+  display: none !important;
+}
+
+/* Exact Bottom Branding sitting comfortably over the floor of the photo with zero wasted space */
+.zp-discipline-card-overlay,
+.zp-discipline-brand-block,
+.zp-discipline-card-footer {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  padding: 40px 16px 20px 16px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  background: linear-gradient(to bottom, rgba(18, 12, 8, 0) 0%, rgba(18, 12, 8, 0.45) 40%, rgba(18, 12, 8, 0.88) 100%) !important;
+  border-top: none !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+}
+
+.zp-discipline-card-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(26px, 2.8vw, 32px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.38em !important;
+  text-indent: 0.38em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin: 0 0 6px 0 !important;
+}
+
+.zp-discipline-card-subtitle {
+  font-family: var(--font-heading) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(16px, 1.7vw, 19px) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  margin: 0 0 12px 0 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.zp-discipline-card-divider {
+  width: 48px !important;
+  height: 1px !important;
+  background-color: var(--color-champagne) !important;
+  margin: 0 auto 12px auto !important;
+  opacity: 0.85 !important;
+}
+
+.zp-discipline-card-tagline {
+  font-family: var(--font-body) !important;
+  font-size: 9.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.28em !important;
+  text-indent: 0.28em !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  margin: 0 !important;
+}
+
+/* ======================================================== */
+/* RESPONSIVE BREAKPOINTS FOR FULL-BLEED DISCIPLINE PAGE    */
+/* ======================================================== */
+
+@media screen and (max-width: 991px) {
+  .zp-discipline-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .zp-discipline-media-col {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+    min-height: auto !important;
+    max-height: none !important;
+    order: -1 !important; /* Visual hero at top on mobile/tablet */
+  }
+  .zp-discipline-card {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .zp-discipline-img-wrap {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .zp-discipline-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .zp-discipline-card-overlay,
+  .zp-discipline-brand-block,
+  .zp-discipline-card-footer {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+  }
+  .zp-discipline-content {
+    max-width: 100% !important;
+    padding: 36px 24px 60px 24px !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .zp-discipline-media-col {
+    min-height: auto !important;
+  }
+  .zp-discipline-content {
+    padding: 28px 18px 48px 18px !important;
+  }
+  .zp-discipline-title {
+    font-size: clamp(26px, 7vw, 32px) !important;
+    line-height: 1.18 !important;
+  }
+  .zp-discipline-subtitle {
+    font-size: 19px !important;
+    margin-bottom: 20px !important;
+  }
+  .zp-discipline-p {
+    font-size: 14px !important;
+    line-height: 1.72 !important;
+    margin-bottom: 16px !important;
+  }
+  .zp-discipline-block {
+    margin-top: 30px !important;
+    padding-top: 24px !important;
+  }
+  .zp-discipline-block-title {
+    font-size: 20px !important;
+  }
+  .zp-discipline-block-sub {
+    font-size: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  .zp-discipline-step {
+    gap: 14px !important;
+  }
+  .zp-discipline-step-num {
+    font-size: 26px !important;
+    min-width: 44px !important;
+    padding-right: 14px !important;
+  }
+  .zp-discipline-step-title {
+    font-size: 11px !important;
+  }
+  .zp-discipline-step-text {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+  .zp-discipline-card-overlay,
+  .zp-discipline-card-footer {
+    padding: 90px 18px 32px 18px !important;
+  }
+  .zp-discipline-card-title {
+    font-size: 26px !important;
+    letter-spacing: 0.28em !important;
+    text-indent: 0.28em !important;
+  }
+  .zp-discipline-card-subtitle {
+    font-size: 17px !important;
+    margin-bottom: 14px !important;
+  }
+  .zp-discipline-card-divider {
+    margin-bottom: 14px !important;
+  }
+  .zp-discipline-card-tagline {
+    font-size: 9.5px !important;
+    letter-spacing: 0.24em !important;
+    text-indent: 0.24em !important;
+  }
+}

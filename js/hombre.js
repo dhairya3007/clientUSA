@@ -320,6 +320,14 @@ $(function() {
         }
     });
 
+    // Navigate to dedicated discipline page on style cell click
+    $(document).on("click", ".zp-style-cell", function(e) {
+        var disciplineUrl = $(this).attr("href") || $(this).attr("data-discipline-url");
+        if (disciplineUrl) {
+            window.location.href = disciplineUrl;
+        }
+    });
+
     // Sub-menu toggle in navigation
     $(document).on("click", ".sub-menu-toggle", function(e) {
         e.preventDefault();
