@@ -8,11 +8,178 @@
 
     // 1. Service Definitions & Form Schemas
     var SERVICES = {
-        "wedding": {
-            id: "wedding-first-dance",
-            key: "wedding",
-            name: "Wedding / First Dance",
-            badge: "Bespoke Couple Choreography",
+        "private-intro": {
+            id: "private-dance-introduction",
+            key: "private-intro",
+            name: "Private Dance Introduction",
+            description: "A standalone private experience shaped entirely around you — your space, your pace, and your chosen music.",
+            disclaimer: "Submitting an enquiry does not constitute a confirmed booking. Each private introduction is reviewed individually based on location, requested experience, and schedule availability.",
+            fields: [
+                {
+                    name: "participation_format",
+                    type: "radio",
+                    label: "PARTICIPATION FORMAT",
+                    required: true,
+                    col: "col-xs-12",
+                    options: [
+                        { value: "solo", label: "SOLO" },
+                        { value: "duo", label: "DUO" }
+                    ]
+                },
+                {
+                    name: "full_name",
+                    type: "text",
+                    label: "Full Name",
+                    placeholder: "Enter your full name",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "email",
+                    type: "email",
+                    label: "Preferred Email Address",
+                    placeholder: "you@example.com",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "phone",
+                    type: "tel",
+                    label: "Preferred Phone Number",
+                    placeholder: "Enter your phone number",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "preferred_location",
+                    type: "text",
+                    label: "Where Would You Like the Session to Take Place?",
+                    placeholder: "City / Town, State (or Private Studio)",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "preferred_timing",
+                    type: "text",
+                    label: "Preferred Days or Timeframe",
+                    placeholder: "e.g., Weekday evenings, Saturday mornings",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "music_style_interest",
+                    type: "text",
+                    label: "Music Style or Discipline of Interest",
+                    placeholder: "e.g., Salsa, Bachata, Merengue, Kizomba, or Open",
+                    required: false,
+                    col: "col-xs-12"
+                },
+                {
+                    name: "desired_experience",
+                    type: "textarea",
+                    label: "What Would You Like to Explore?",
+                    placeholder: "Tell us about your interests, comfort level, musical preferences, or any specific dance discipline you are curious about.",
+                    required: true,
+                    col: "col-xs-12"
+                },
+                {
+                    name: "additional_information",
+                    type: "textarea",
+                    label: "Anything Else We Should Know?",
+                    placeholder: "Share anything relevant to your requested session, environment, or timing.",
+                    required: false,
+                    col: "col-xs-12"
+                }
+            ]
+        },
+        "private-mastery": {
+            id: "private-dance-mastery",
+            key: "private-mastery",
+            name: "Private Dance Mastery",
+            description: "An intensive, ongoing private practice designed for dedicated personal or partnership advancement.",
+            disclaimer: "Submitting an enquiry does not constitute a confirmed booking. Each private mastery engagement is reviewed individually based on goals, location, and scheduling availability.",
+            fields: [
+                {
+                    name: "participation_format",
+                    type: "radio",
+                    label: "PARTICIPATION FORMAT",
+                    required: true,
+                    col: "col-xs-12",
+                    options: [
+                        { value: "solo", label: "SOLO" },
+                        { value: "duo", label: "DUO" }
+                    ]
+                },
+                {
+                    name: "full_name",
+                    type: "text",
+                    label: "Full Name",
+                    placeholder: "Enter your full name",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "email",
+                    type: "email",
+                    label: "Preferred Email Address",
+                    placeholder: "you@example.com",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "phone",
+                    type: "tel",
+                    label: "Preferred Phone Number",
+                    placeholder: "Enter your phone number",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "engagement_location",
+                    type: "text",
+                    label: "Where Would Sessions Take Place?",
+                    placeholder: "City / Town, State",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "experience_level",
+                    type: "text",
+                    label: "Current Movement or Dance Background",
+                    placeholder: "e.g., Complete beginner, experienced social dancer, previous formal training",
+                    required: true,
+                    col: "col-sm-6 col-xs-12"
+                },
+                {
+                    name: "mastery_focus",
+                    type: "textarea",
+                    label: "What Are You Looking to Master?",
+                    placeholder: "Describe the specific technique, musicality, lead/follow dynamics, body mechanics, or disciplines you wish to develop.",
+                    required: true,
+                    col: "col-xs-12"
+                },
+                {
+                    name: "preferred_cadence",
+                    type: "text",
+                    label: "Preferred Cadence & Timing",
+                    placeholder: "e.g., Weekly, bi-weekly, intensive block",
+                    required: true,
+                    col: "col-xs-12"
+                },
+                {
+                    name: "additional_information",
+                    type: "textarea",
+                    label: "Anything Else We Should Know?",
+                    placeholder: "Share anything relevant to your schedule, location, or goals.",
+                    required: false,
+                    col: "col-xs-12"
+                }
+            ]
+        },
+        "first-dance": {
+            id: "signature-first-dance",
+            key: "first-dance",
+            name: "The Signature First Dance",
             description: "A personalized ZEROPOINT wedding choreography engagement for couples.",
             disclaimer: "Submitting a request does not constitute a confirmed booking. Each wedding engagement is reviewed individually based on timing, location, requested experience, and availability.",
             fields: [
@@ -93,12 +260,11 @@
                 }
             ]
         },
-        "private-social": {
-            id: "private-social-ensemble",
-            key: "private-social",
-            name: "Private Social Ensemble",
-            badge: "Intimate Group Occasion",
-            description: "A private ensemble experience for a group or social occasion.",
+        "private-soiree": {
+            id: "private-dance-soiree",
+            key: "private-soiree",
+            name: "The Private Dance Soirée",
+            description: "A private ensemble experience for a social gathering, celebration, or private event.",
             disclaimer: "Submitting a request does not constitute a confirmed booking. Participant capacity, location, schedule, environment, and overall fit are reviewed before acceptance.",
             fields: [
                 {
@@ -137,21 +303,11 @@
                 {
                     name: "participant_count",
                     type: "number",
-                    label: "Expected Number of Participants",
+                    label: "Expected Number of Guests / Participants",
                     placeholder: "Enter participant count",
-                    helpText: "Maximum: 20 participants.",
                     min: 1,
-                    max: 20,
                     required: true,
                     col: "col-sm-6 col-xs-12"
-                },
-                {
-                    name: "occasion_purpose",
-                    type: "textarea",
-                    label: "Occasion / Purpose",
-                    placeholder: "What is the occasion or reason for the private ensemble?",
-                    required: true,
-                    col: "col-xs-12"
                 },
                 {
                     name: "preferred_date",
@@ -164,10 +320,18 @@
                 {
                     name: "preferred_time_window",
                     type: "text",
-                    label: "Preferred General Time Window",
-                    placeholder: "For example, morning or afternoon",
+                    label: "Preferred Time Window",
+                    placeholder: "e.g., Evening, afternoon",
                     required: true,
-                    col: "col-sm-6 col-xs-12"
+                    col: "col-xs-12"
+                },
+                {
+                    name: "occasion_purpose",
+                    type: "textarea",
+                    label: "Occasion & Desired Atmosphere",
+                    placeholder: "What is the occasion, and what tone or atmosphere would you like to create for your guests?",
+                    required: true,
+                    col: "col-xs-12"
                 },
                 {
                     name: "additional_information",
@@ -179,12 +343,11 @@
                 }
             ]
         },
-        "corporate": {
-            id: "corporate",
-            key: "corporate",
-            name: "Corporate",
-            badge: "Executive & Team Connection",
-            description: "A tailored ZEROPOINT engagement for an organization or corporate group.",
+        "corporate-connection": {
+            id: "corporate-connection",
+            key: "corporate-connection",
+            name: "The Corporate Connection",
+            description: "A tailored ZEROPOINT movement engagement for leadership teams, offsites, and corporate groups.",
             disclaimer: "Submitting a request does not constitute a confirmed booking. Corporate engagements are reviewed individually based on objectives, participant capacity, location, schedule, environment, and overall fit.",
             fields: [
                 {
@@ -269,105 +432,30 @@
                     col: "col-xs-12"
                 }
             ]
-        },
-        "solo-duo": {
-            id: "solo-duo",
-            key: "solo-duo",
-            name: "Solo / Duo",
-            badge: "Executive Mastery & Partnership",
-            description: "An Individual Executive Program or Private Partnership Program.",
-            disclaimer: "Submitting a request does not constitute a confirmed booking. Each engagement is reviewed individually for location, availability, requested experience, and overall fit.",
-            fields: [
-                {
-                    name: "engagement_type",
-                    type: "radio",
-                    label: "Engagement Type",
-                    required: true,
-                    col: "col-xs-12",
-                    options: [
-                        { value: "solo", label: "Individual Executive Program — SOLO" },
-                        { value: "duo", label: "Private Partnership Program — DUO" }
-                    ]
-                },
-                {
-                    name: "full_name",
-                    type: "text",
-                    label: "Full Name",
-                    placeholder: "Enter your full name",
-                    required: true,
-                    col: "col-sm-6 col-xs-12"
-                },
-                {
-                    name: "email",
-                    type: "email",
-                    label: "Preferred Email Address",
-                    placeholder: "you@example.com",
-                    required: true,
-                    col: "col-sm-6 col-xs-12"
-                },
-                {
-                    name: "phone",
-                    type: "tel",
-                    label: "Preferred Phone Number",
-                    placeholder: "Enter your phone number",
-                    required: true,
-                    col: "col-sm-6 col-xs-12"
-                },
-                {
-                    name: "engagement_location",
-                    type: "text",
-                    label: "Where Would the Engagement Take Place?",
-                    placeholder: "City / Town, State",
-                    helpText: "Exact address can be provided after acceptance.",
-                    required: true,
-                    col: "col-sm-6 col-xs-12"
-                },
-                {
-                    name: "desired_outcome",
-                    type: "textarea",
-                    label: "What Are You Looking to Achieve?",
-                    placeholder: "Describe what you would like ZEROPOINT to help you accomplish.",
-                    required: true,
-                    col: "col-xs-12"
-                },
-                {
-                    name: "preferred_timing",
-                    type: "text",
-                    label: "Preferred Timing",
-                    placeholder: "Preferred days, general time window, or target date",
-                    required: true,
-                    col: "col-xs-12"
-                },
-                {
-                    name: "additional_information",
-                    type: "textarea",
-                    label: "Anything Else We Should Know?",
-                    placeholder: "Share anything relevant to your requested experience, environment, or objective.",
-                    required: false,
-                    col: "col-xs-12"
-                }
-            ]
         }
     };
 
     // 2. Safe mapping helper for incoming query parameters / button data attributes
     function resolveServiceKey(rawParam) {
-        if (!rawParam) return "wedding";
+        if (!rawParam) return "private-intro";
         var cleaned = String(rawParam).toLowerCase().trim();
 
-        if (cleaned === "wedding" || cleaned === "wedding-first-dance" || cleaned.indexOf("first dance") !== -1 || cleaned.indexOf("wedding") !== -1) {
-            return "wedding";
+        if (cleaned === "private-intro" || cleaned === "intro" || cleaned === "introduction" || cleaned.indexOf("intro") !== -1) {
+            return "private-intro";
         }
-        if (cleaned === "private-social" || cleaned === "private-social-ensemble" || cleaned.indexOf("soiree") !== -1 || cleaned.indexOf("soirée") !== -1 || cleaned.indexOf("social") !== -1) {
-            return "private-social";
+        if (cleaned === "private-mastery" || cleaned === "mastery" || cleaned.indexOf("mastery") !== -1 || cleaned === "solo-duo" || cleaned === "solo" || cleaned === "duo") {
+            return "private-mastery";
         }
-        if (cleaned === "corporate" || cleaned.indexOf("corporate") !== -1) {
-            return "corporate";
+        if (cleaned === "first-dance" || cleaned === "wedding" || cleaned === "wedding-first-dance" || cleaned.indexOf("first dance") !== -1 || cleaned.indexOf("first-dance") !== -1 || cleaned.indexOf("wedding") !== -1) {
+            return "first-dance";
         }
-        if (cleaned === "solo-duo" || cleaned === "solo" || cleaned === "duo" || cleaned.indexOf("introduction") !== -1 || cleaned.indexOf("mastery") !== -1 || cleaned.indexOf("solo") !== -1 || cleaned.indexOf("duo") !== -1) {
-            return "solo-duo";
+        if (cleaned === "private-soiree" || cleaned === "private-social" || cleaned === "private-social-ensemble" || cleaned.indexOf("soiree") !== -1 || cleaned.indexOf("soirée") !== -1 || cleaned.indexOf("social") !== -1) {
+            return "private-soiree";
         }
-        return "wedding";
+        if (cleaned === "corporate-connection" || cleaned === "corporate" || cleaned.indexOf("corporate") !== -1) {
+            return "corporate-connection";
+        }
+        return "private-intro";
     }
 
     // Get today's ISO date string (YYYY-MM-DD) for min date attributes
@@ -395,22 +483,38 @@
     // 3. Dynamic Form Generator
     function ZeroPointRequestManager($container) {
         this.$container = $container;
-        this.currentServiceKey = "wedding";
+        this.currentServiceKey = "private-intro";
         this.init();
     }
 
     ZeroPointRequestManager.prototype.init = function() {
         var self = this;
 
-        // Parse query parameter
+        // Parse query parameter or hash
         var urlParams = new URLSearchParams(window.location.search);
-        var initialService = resolveServiceKey(urlParams.get("service") || urlParams.get("offering"));
+        var rawParam = urlParams.get("service") || urlParams.get("offering");
+        if (!rawParam && window.location.hash) {
+            rawParam = window.location.hash.replace("#", "");
+        }
+        var initialService = resolveServiceKey(rawParam);
 
         // Render base shell
         this.renderShell();
 
         // Activate initial service
         this.switchService(initialService, false);
+
+        // Auto-scroll to form if a specific service was requested in URL
+        if (rawParam) {
+            setTimeout(function() {
+                var $target = $("#zeropoint-request-form");
+                if ($target.length) {
+                    $('html, body').animate({
+                        scrollTop: $target.offset().top - 90
+                    }, 400);
+                }
+            }, 200);
+        }
 
         // Bind global service selector tabs
         this.$container.on("click", ".zp-service-pill", function(e) {
@@ -452,11 +556,11 @@
         html += '  <div class="zp-service-selector-wrap" role="tablist" aria-label="Select Service">';
         html += '    <div class="zp-service-selector-grid">';
         
-        var serviceKeys = ["wedding", "private-social", "corporate", "solo-duo"];
+        var serviceKeys = ["private-intro", "private-mastery", "first-dance", "private-soiree", "corporate-connection"];
         for (var i = 0; i < serviceKeys.length; i++) {
             var s = SERVICES[serviceKeys[i]];
             html += '      <button type="button" class="zp-service-pill" data-service-key="' + s.key + '" role="tab" id="tab-' + s.key + '" aria-selected="false" aria-controls="panel-' + s.key + '">';
-            html += '        <span class="zp-pill-badge">' + escapeHtml(s.badge) + '</span>';
+
             html += '        <span class="zp-pill-name">' + escapeHtml(s.name) + '</span>';
             html += '      </button>';
         }
