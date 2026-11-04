@@ -504,16 +504,31 @@
         // Activate initial service
         this.switchService(initialService, false);
 
-        // Auto-scroll to form if a specific service was requested in URL
-        if (rawParam) {
-            setTimeout(function() {
+        // Auto-scroll to form if a specific service or hash was requested in URL
+        var hasRequestedTarget = !!(rawParam || window.location.hash.indexOf("enquiry-form") !== -1);
+        if (hasRequestedTarget) {
+            function scrollToForm(smooth) {
                 var $target = $("#zeropoint-request-form");
                 if ($target.length) {
-                    $('html, body').animate({
-                        scrollTop: $target.offset().top - 90
-                    }, 400);
+                    var targetTop = Math.max(0, $target.offset().top - 85);
+                    if (smooth) {
+                        $('html, body').stop(true).animate({ scrollTop: targetTop }, 350);
+                    } else {
+                        window.scrollTo(0, targetTop);
+                    }
                 }
-            }, 200);
+            }
+
+            // Quick initial placement so user lands directly at the form
+            setTimeout(function() { scrollToForm(false); }, 50);
+
+            // Smooth adjustment once dynamic elements settle
+            setTimeout(function() { scrollToForm(true); }, 250);
+
+            // Re-align after full window load to account for any layout shifts
+            $(window).on("load", function() {
+                setTimeout(function() { scrollToForm(true); }, 100);
+            });
         }
 
         // Bind global service selector tabs
