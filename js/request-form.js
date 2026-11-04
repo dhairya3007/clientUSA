@@ -11,7 +11,7 @@
         "private-intro": {
             id: "private-dance-introduction",
             key: "private-intro",
-            name: "Private Dance Introduction",
+            name: "The Private Dance Introduction",
             description: "A standalone private experience shaped entirely around you — your space, your pace, and your chosen music.",
             disclaimer: "Submitting an enquiry does not constitute a confirmed booking. Each private introduction is reviewed individually based on location, requested experience, and schedule availability.",
             fields: [
@@ -95,7 +95,7 @@
         "private-mastery": {
             id: "private-dance-mastery",
             key: "private-mastery",
-            name: "Private Dance Mastery",
+            name: "The Private Dance Mastery",
             description: "An intensive, ongoing private practice designed for dedicated personal or partnership advancement.",
             disclaimer: "Submitting an enquiry does not constitute a confirmed booking. Each private mastery engagement is reviewed individually based on goals, location, and scheduling availability.",
             fields: [
