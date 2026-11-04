@@ -53,7 +53,7 @@
                 {
                     name: "preferred_location",
                     type: "text",
-                    label: "Where Would You Like the Session to Take Place?",
+                    label: "Where would you like your ZEROPOINT engagement to take place?",
                     placeholder: "City / Town, State (or Private Studio)",
                     required: true,
                     col: "col-sm-6 col-xs-12"
@@ -137,7 +137,7 @@
                 {
                     name: "engagement_location",
                     type: "text",
-                    label: "Where Would Sessions Take Place?",
+                    label: "Where would you like your ZEROPOINT engagement to take place?",
                     placeholder: "City / Town, State",
                     required: true,
                     col: "col-sm-6 col-xs-12"
@@ -218,7 +218,7 @@
                 {
                     name: "wedding_location",
                     type: "text",
-                    label: "Where Will the Wedding Take Place?",
+                    label: "Where would you like your ZEROPOINT engagement to take place?",
                     placeholder: "Venue / City / State",
                     required: true,
                     col: "col-xs-12"
@@ -294,7 +294,7 @@
                 {
                     name: "event_location",
                     type: "text",
-                    label: "Where Would the Experience Take Place?",
+                    label: "Where would you like your ZEROPOINT engagement to take place?",
                     placeholder: "City / Town, State",
                     helpText: "Exact address can be provided after acceptance.",
                     required: true,
@@ -402,7 +402,7 @@
                 {
                     name: "engagement_location",
                     type: "text",
-                    label: "Where Would the Engagement Take Place?",
+                    label: "Where would you like your ZEROPOINT engagement to take place?",
                     placeholder: "City / Town, State",
                     required: true,
                     col: "col-sm-6 col-xs-12"
