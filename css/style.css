@@ -3872,6 +3872,7 @@ body:has(.lower-page.current) #hero-bg {
   text-transform: uppercase;
   color: #171815 !important;
   margin: 0 0 4px 0;
+  text-align: left !important;
 }
 
 .terms-body p,
@@ -5329,7 +5330,7 @@ blockquote.zp-pull-quote-text {
   padding: 0 !important;
   min-height: clamp(500px, 50vw, 620px);
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   background: var(--color-ivory) !important;
 }
 
@@ -5346,8 +5347,8 @@ blockquote.zp-pull-quote-text {
   position: relative !important;
   z-index: 3 !important;
   width: 100% !important;
-  padding-top: clamp(44px, 5.5vw, 70px) !important;
-  padding-bottom: clamp(44px, 5.5vw, 70px) !important;
+  padding-top: clamp(24px, 3.5vw, 42px) !important;
+  padding-bottom: clamp(24px, 3.5vw, 42px) !important;
   pointer-events: auto !important;
 }
 
@@ -5429,10 +5430,14 @@ blockquote.zp-pull-quote-text {
     align-items: flex-start !important;
   }
   
-  .zp-bleed-hero-container,
-  .zp-about-hero-container {
+  .zp-bleed-hero-container {
     padding-top: clamp(80px, 10vw, 100px) !important;
     padding-bottom: 24px !important;
+  }
+
+  .zp-about-hero-container {
+    padding-top: clamp(12px, 2vw, 20px) !important;
+    padding-bottom: 16px !important;
   }
 
   .zp-bleed-hero-content,
@@ -6557,6 +6562,17 @@ blockquote.zp-pull-quote-text {
   text-transform: uppercase !important;
   color: var(--color-charcoal) !important;
   margin: 0 0 8px 0 !important;
+  text-align: left !important;
+}
+
+.terms-section-header-wrap {
+  text-align: center !important;
+}
+
+.terms-section-header-wrap .disclaimer-section-num,
+.terms-section-header-wrap .terms-main-section-title,
+.terms-section-header-wrap p {
+  text-align: center !important;
 }
 
 .zp-legal-page-section .disclaimer-section-num {
