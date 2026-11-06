@@ -115,6 +115,9 @@ public class UniversalEmailHandler : IHttpHandler
             string senderEmail = ExtractSenderEmail(fields);
             string senderName = ExtractSenderName(fields);
 
+            string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "emailmodule", "email_activity.log");
+            try { File.AppendAllText(logPath, string.Format("[{0}] SUBMISSION: SENDER='{1}', ADMIN='{2}', AUTOREPLY_CFG={3}\n", DateTime.Now.ToString("s"), senderEmail, toEmail, config.sendAutoReply)); } catch { }
+
             if (string.IsNullOrWhiteSpace(toEmail))
             {
                 toEmail = config.smtp.user;
@@ -197,12 +200,13 @@ public class UniversalEmailHandler : IHttpHandler
                                 autoReply.IsBodyHtml = true;
                                 autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
                                 autoSmtp.Send(autoReply);
+                                try { File.AppendAllText(logPath, string.Format("[{0}] AUTOREPLY SENT to '{1}'\n", DateTime.Now.ToString("s"), senderEmail)); } catch { }
                             }
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        // Don't fail the primary notification if user email bounces
+                        try { File.AppendAllText(logPath, string.Format("[{0}] AUTOREPLY EXCEPTION: {1}\n", DateTime.Now.ToString("s"), ex.ToString())); } catch { }
                     }
                 }
             }

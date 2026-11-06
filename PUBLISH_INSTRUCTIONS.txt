@@ -1,0 +1,70 @@
+================================================================================
+ZEROPOINT - WINDOWS IIS PRODUCTION DEPLOYMENT INSTRUCTIONS
+Website: thezeropoint.dance
+Platform: Windows Server (IIS 10 / ASP.NET 4.8)
+================================================================================
+
+1. PREREQUISITES ON WINDOWS SERVER
+--------------------------------------------------------------------------------
+Ensure the following Windows Server features are installed:
+- Web Server (IIS) with Static Content, Default Document, and HTTP Errors
+- Application Development Features: "ASP.NET 4.7" or "ASP.NET 4.8"
+- Outbound firewall rule allowing TCP outbound on Port 587 (or 465) to smtp.gmail.com
+  (required for the contact form email dispatcher).
+
+
+2. DEPLOYMENT STEPS
+--------------------------------------------------------------------------------
+Step 1: Extract all contents of this package into your destination directory:
+        e.g., C:\inetpub\wwwroot\thezeropoint
+
+Step 2: Set Folder Security Permissions:
+        - Right-click website folder -> Properties -> Security
+        - Add "IIS_IUSRS" and "IUSR" with permissions:
+          [x] Read & execute
+          [x] List folder contents
+          [x] Read
+        - For the "emailmodule" subfolder, grant Write / Modify permission
+          so the handler can log activity if needed.
+
+Step 3: Create Website in IIS Manager:
+        - Open IIS Manager (inetmgr)
+        - Right-click "Sites" -> "Add Website..."
+        - Site name: thezeropoint.dance
+        - Application pool: Create or assign an AppPool configured with:
+            * .NET CLR Version: v4.0.30319
+            * Managed pipeline mode: Integrated
+            * Identity: ApplicationPoolIdentity
+        - Physical path: C:\inetpub\wwwroot\thezeropoint
+        - Host name: thezeropoint.dance (and www.thezeropoint.dance)
+        - Bindings: Port 80 (HTTP) and Port 443 (HTTPS with your SSL Certificate)
+
+Step 4: Verify Deployment:
+        - Test Health Endpoint:
+          Open https://thezeropoint.dance/emailmodule/send-email.ashx
+          It should return JSON:
+          {"status":"ok","service":"Universal IIS Email Service","dynamic":true}
+
+        - Test Home Page:
+          Open https://thezeropoint.dance/
+          Verify the site loads smoothly with fonts and the vector logo.
+
+        - Test Contact Form:
+          Open https://thezeropoint.dance/pages/contact.html
+          Submit a test inquiry. The admin and client confirmation emails
+          will be delivered immediately via the configured SMTP service.
+
+
+3. FILE STRUCTURE IN THIS PACKAGE
+--------------------------------------------------------------------------------
+- /assets/         : Optimized brand photography, vector logo, and favicons
+- /css/            : Production CSS stylesheets (style.css, plugins.css)
+- /fonts/          : Ionicons vector web fonts
+- /js/             : Application scripts (request-form.js, hombre.js, plugins.js)
+- /pages/          : All 19 public HTML website pages
+- /emailmodule/    : Universal ASP.NET email dispatch service and config
+- index.html       : Canonical entry point and root redirect
+- web.config       : Root IIS configuration (MIME types, ASP.NET handlers, Default Doc)
+- PUBLISH_INSTRUCTIONS.txt : This document
+================================================================================
+

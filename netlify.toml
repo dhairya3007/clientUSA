@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/emailmodule/send-email.ashx"
+  to = "/.netlify/functions/send-email"
+  status = 200
+  force = true
+

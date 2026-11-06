@@ -3,12 +3,12 @@
     "Host": "smtp.gmail.com",
     "Port": 587,
     "EnableSsl": true,
-    "Username": "dhairyapatel3007@gmail.com",
-    "Password": "qamm mufm jiuf fbvj",
-    "FromAddress": "dhairyapatel3007@gmail.com",
+    "Username": "thezeropoint.dance@gmail.com",
+    "Password": "dysk edfp rfzd jlia",
+    "FromAddress": "thezeropoint.dance@gmail.com",
     "FromName": "ZEROPOINT Concierge"
   },
-  "defaultReceiver": "dhairyapatel3007@gmail.com",
+  "defaultReceiver": "thezeropoint.dance@gmail.com",
   "websiteName": "ZEROPOINT",
   "sendAutoReply": true,
   "honeypotField": "_gotcha"

@@ -940,11 +940,15 @@
             }
         }
 
-        // Determine handler endpoint: route local dev environments to local IIS Express (port 8088)
-        var handlerUrl = "../emailmodule/send-email.ashx";
-        var isLocalDev = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:");
-        if (isLocalDev && window.location.port !== "8088") {
+        // Determine handler endpoint: same-origin & same-port on IIS, with fallback for file:// or static live servers
+        var handlerUrl = (window.location.pathname.indexOf("/pages/") !== -1) 
+            ? "../emailmodule/send-email.ashx" 
+            : "emailmodule/send-email.ashx";
+
+        if (window.location.protocol === "file:" || window.location.port === "5500" || window.location.port === "3000") {
             handlerUrl = "http://localhost:8088/emailmodule/send-email.ashx";
+        } else if (window.location.hostname.indexOf("netlify.app") !== -1) {
+            handlerUrl = "/.netlify/functions/send-email";
         }
 
         // Post to backend adapter (Universal IIS handler)
@@ -988,8 +992,10 @@
             var errMessage = '';
             if (xhr.responseJSON && (xhr.responseJSON.error || xhr.responseJSON.message)) {
                 errMessage = xhr.responseJSON.error || xhr.responseJSON.message;
+            } else if (xhr.statusText === "timeout") {
+                errMessage = "The connection timed out while dispatching your request. Please check your internet connection.";
             } else {
-                errMessage = "The request could not be dispatched to the email handler. Please ensure your Windows IIS web server with ASP.NET is running on this port.";
+                errMessage = "The request could not be dispatched to the email handler. Please ensure the email backend service is running or check your network connection.";
             }
 
             var errorMessage = '';
