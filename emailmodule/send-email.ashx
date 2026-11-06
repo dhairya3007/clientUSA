@@ -34,7 +34,7 @@ public class UniversalEmailHandler : IHttpHandler
         {
             smtp = new SmtpSettings();
             websiteName = "Website Notification";
-            sendAutoReply = false;
+            sendAutoReply = true;
             honeypotField = "_gotcha";
         }
     }
@@ -112,8 +112,8 @@ public class UniversalEmailHandler : IHttpHandler
             string subject = GetValue(fields, "_subject", "subject", "New Inquiry");
             string toEmail = GetValue(fields, "_to", "to", config.defaultReceiver);
             string templateName = GetValue(fields, "_template", "template", "");
-            string senderEmail = GetValue(fields, "email", "email_address", "");
-            string senderName = GetValue(fields, "name", "full_name", "Website Visitor");
+            string senderEmail = ExtractSenderEmail(fields);
+            string senderName = ExtractSenderName(fields);
 
             if (string.IsNullOrWhiteSpace(toEmail))
             {
@@ -174,15 +174,24 @@ public class UniversalEmailHandler : IHttpHandler
                 {
                     try
                     {
-                        using (var autoReply = new MailMessage())
+                        using (var autoSmtp = new SmtpClient(config.smtp.host, config.smtp.port))
                         {
-                            string fromDisplayName = !string.IsNullOrEmpty(config.smtp.fromName) ? config.smtp.fromName : config.websiteName;
-                            autoReply.From = new MailAddress(config.smtp.user, fromDisplayName);
-                            autoReply.To.Add(senderEmail);
-                            autoReply.Subject = "Form Submitted Successfully";
-                            autoReply.IsBodyHtml = true;
-                            autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
-                            smtp.Send(autoReply);
+                            autoSmtp.EnableSsl = config.smtp.enableSsl;
+                            autoSmtp.UseDefaultCredentials = false;
+                            autoSmtp.Credentials = new NetworkCredential(config.smtp.user, config.smtp.pass);
+                            autoSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            autoSmtp.Timeout = 20000;
+
+                            using (var autoReply = new MailMessage())
+                            {
+                                string fromDisplayName = !string.IsNullOrEmpty(config.smtp.fromName) ? config.smtp.fromName : config.websiteName;
+                                autoReply.From = new MailAddress(config.smtp.user, fromDisplayName);
+                                autoReply.To.Add(senderEmail);
+                                autoReply.Subject = "Form Submitted Successfully";
+                                autoReply.IsBodyHtml = true;
+                                autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
+                                autoSmtp.Send(autoReply);
+                            }
                         }
                     }
                     catch
@@ -430,6 +439,11 @@ public class UniversalEmailHandler : IHttpHandler
                             config.defaultReceiver = val;
                         else if (string.Equals(key, "websiteName", StringComparison.OrdinalIgnoreCase))
                             config.websiteName = val;
+                        else if (string.Equals(key, "sendAutoReply", StringComparison.OrdinalIgnoreCase) || string.Equals(key, "autoReply", StringComparison.OrdinalIgnoreCase) || string.Equals(key, "autoreply", StringComparison.OrdinalIgnoreCase))
+                        {
+                            bool ar;
+                            if (bool.TryParse(val, out ar)) config.sendAutoReply = ar;
+                        }
                         else if (string.Equals(key, "honeypotField", StringComparison.OrdinalIgnoreCase))
                             config.honeypotField = val;
                     }
@@ -454,6 +468,38 @@ public class UniversalEmailHandler : IHttpHandler
         if (dict.ContainsKey(aliasKey) && !string.IsNullOrWhiteSpace(dict[aliasKey]))
             return dict[aliasKey].Trim();
         return fallback;
+    }
+
+    private string ExtractSenderEmail(Dictionary<string, string> dict)
+    {
+        string[] candidates = { "email", "email_address", "sender_email", "user_email", "mail", "e-mail", "Preferred Email Address", "Preferred Business Email" };
+        foreach (var c in candidates)
+        {
+            if (dict.ContainsKey(c) && !string.IsNullOrWhiteSpace(dict[c]))
+                return dict[c].Trim();
+        }
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key.IndexOf("email", StringComparison.OrdinalIgnoreCase) >= 0 && !string.IsNullOrWhiteSpace(kvp.Value))
+                return kvp.Value.Trim();
+        }
+        return "";
+    }
+
+    private string ExtractSenderName(Dictionary<string, string> dict)
+    {
+        string[] candidates = { "name", "full_name", "fullname", "sender_name", "client_name", "Full Name" };
+        foreach (var c in candidates)
+        {
+            if (dict.ContainsKey(c) && !string.IsNullOrWhiteSpace(dict[c]))
+                return dict[c].Trim();
+        }
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key.IndexOf("name", StringComparison.OrdinalIgnoreCase) >= 0 && !string.IsNullOrWhiteSpace(kvp.Value))
+                return kvp.Value.Trim();
+        }
+        return "Website Visitor";
     }
 
     private string FormatKey(string key)
