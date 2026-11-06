@@ -290,7 +290,7 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("<meta name='supported-color-schemes' content='light dark'>");
         sb.Append("<title>ZEROPOINT</title>");
         sb.Append("<style>");
-        sb.Append(":root { color-scheme: light dark; supported-color-schemes: light dark; }");
+        sb.Append(":root { color-scheme: light dark; }");
         sb.Append("body, .email-body { margin:0; padding:24px 12px; background-color:#ffffff !important; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }");
         sb.Append(".email-container { max-width:600px; margin:0 auto; background-color:#ffffff !important; border:1px solid #eaeaea !important; border-radius:4px; overflow:hidden; }");
         sb.Append(".email-header { background-color:#ffffff !important; text-align:center; padding:32px 24px; border-bottom:1px solid #eeeeee !important; }");
