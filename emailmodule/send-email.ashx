@@ -153,8 +153,8 @@ public class UniversalEmailHandler : IHttpHandler
                     }
 
                     mail.Subject = subject;
-                    mail.Body = emailBody;
                     mail.IsBodyHtml = true;
+                    mail.Body = emailBody;
 
                     // Handle file attachments dynamically (if multipart form uploaded files)
                     for (int i = 0; i < context.Request.Files.Count; i++)
@@ -270,10 +270,10 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("<div style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #e5dfd5; border-radius:4px; overflow:hidden;'>");
 
         // ZEROPOINT Logo Header
-        sb.Append("<div style='background-color:#faf8f5; text-align:center; padding:32px 24px 26px 24px; border-bottom:1px solid #e8e3d9;'>");
-        sb.Append("<img src='https://thezeropoint.dance/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT' width='220' style='max-width:220px; width:220px; height:auto; display:block; margin:0 auto 10px auto; border:0;' />");
-        sb.Append("<div style='font-family:\"Cormorant Garamond\", Georgia, \"Times New Roman\", serif; font-size:24px; font-weight:500; letter-spacing:0.18em; color:#171815; text-transform:uppercase;'>ZEROPOINT</div>");
-        sb.Append("<div style='font-family:-apple-system, Arial, sans-serif; font-size:9.5px; font-weight:600; letter-spacing:0.24em; color:#C8A96B; text-transform:uppercase; margin-top:4px;'>STILLNESS IN MOTION</div>");
+        sb.Append("<div style='background-color:#faf8f5; text-align:center; padding:32px 24px; border-bottom:1px solid #e8e3d9;'>");
+        sb.Append("<a href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block;'>");
+        sb.Append("<img src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT — Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
+        sb.Append("</a>");
         sb.Append("</div>");
 
         // Client Confirmation Subheader if client email

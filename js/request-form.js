@@ -940,9 +940,10 @@
             }
         }
 
-        // Determine handler endpoint: if tested on Live Server (port 5500), forward to local IIS Express (port 8088)
+        // Determine handler endpoint: route local dev environments to local IIS Express (port 8088)
         var handlerUrl = "../emailmodule/send-email.ashx";
-        if (window.location.port === "5500" || window.location.port === "3000") {
+        var isLocalDev = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:");
+        if (isLocalDev && window.location.port !== "8088") {
             handlerUrl = "http://localhost:8088/emailmodule/send-email.ashx";
         }
 
