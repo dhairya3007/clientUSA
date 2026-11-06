@@ -930,7 +930,7 @@
 
         // Prepare flattened payload for Universal Email Service (Option A: Auto-Discovery Table)
         var postData = {
-            "_subject": "ZEROPOINT Engagement Request: " + submissionPayload.serviceName,
+            "_subject": "New Inquiry",
             "Service Requested": submissionPayload.serviceName,
             "Service Category": submissionPayload.serviceKey
         };

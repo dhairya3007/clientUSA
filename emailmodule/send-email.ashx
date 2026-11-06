@@ -109,7 +109,7 @@ public class UniversalEmailHandler : IHttpHandler
             }
 
             // 6. Extract Subject, Recipient, and Template
-            string subject = GetValue(fields, "_subject", "subject", "New Website Contact Inquiry");
+            string subject = GetValue(fields, "_subject", "subject", "New Inquiry");
             string toEmail = GetValue(fields, "_to", "to", config.defaultReceiver);
             string templateName = GetValue(fields, "_template", "template", "");
             string senderEmail = GetValue(fields, "email", "email_address", "");
@@ -169,26 +169,19 @@ public class UniversalEmailHandler : IHttpHandler
                     smtp.Send(mail);
                 }
 
-                // B. Optional Auto-Confirmation to the Sender
+                // B. Client Confirmation (Form Submitted Successfully)
                 if (config.sendAutoReply && !string.IsNullOrWhiteSpace(senderEmail))
                 {
                     try
                     {
                         using (var autoReply = new MailMessage())
                         {
-                            autoReply.From = new MailAddress(config.smtp.user, config.websiteName);
+                            string fromDisplayName = !string.IsNullOrEmpty(config.smtp.fromName) ? config.smtp.fromName : config.websiteName;
+                            autoReply.From = new MailAddress(config.smtp.user, fromDisplayName);
                             autoReply.To.Add(senderEmail);
-                            autoReply.Subject = "Thank you for contacting " + config.websiteName;
+                            autoReply.Subject = "Form Submitted Successfully";
                             autoReply.IsBodyHtml = true;
-                            autoReply.Body = string.Format(
-                                "<div style='font-family: Arial, sans-serif; max-width: 500px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;'>" +
-                                "<h3 style='color: #1e293b; margin-top: 0;'>Thank you, {0}!</h3>" +
-                                "<p style='color: #475569;'>We have received your message and our team will get in touch with you shortly.</p>" +
-                                "<p style='color: #94a3b8; font-size: 13px; margin-top: 25px;'>Best regards,<br/>{1}</p>" +
-                                "</div>",
-                                HttpUtility.HtmlEncode(senderName),
-                                HttpUtility.HtmlEncode(config.websiteName)
-                            );
+                            autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
                             smtp.Send(autoReply);
                         }
                     }
@@ -249,6 +242,8 @@ public class UniversalEmailHandler : IHttpHandler
                     return config.websiteName;
                 if (token.Equals("year", StringComparison.OrdinalIgnoreCase))
                     return DateTime.Now.Year.ToString();
+                if (token.Equals("form_details", StringComparison.OrdinalIgnoreCase) || token.Equals("details", StringComparison.OrdinalIgnoreCase))
+                    return BuildTableRows(fields);
 
                 // 2. Dynamic form fields (case-insensitive lookup)
                 foreach (var kvp in fields)
@@ -263,32 +258,63 @@ public class UniversalEmailHandler : IHttpHandler
             });
         }
 
-        // Fallback: If no template exists, automatically build a clean HTML table
-        return BuildDynamicHtmlTable(fields, config, context);
+        // Fallback: Build clean ZEROPOINT HTML table
+        return BuildDynamicHtmlTable(fields, config, context, false);
     }
 
-    private string BuildDynamicHtmlTable(Dictionary<string, string> fields, ModuleConfig config, HttpContext context)
+    private string BuildDynamicHtmlTable(Dictionary<string, string> fields, ModuleConfig config, HttpContext context, bool isClientConfirmation = false)
     {
         var sb = new StringBuilder();
-        sb.Append("<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);'>");
-        sb.Append("<div style='background: #0f172a; color: #ffffff; padding: 18px 24px;'><h3 style='margin: 0; font-size: 18px;'>" + HttpUtility.HtmlEncode(config.websiteName) + " - New Inquiry</h3></div>");
-        sb.Append("<table style='width: 100%; border-collapse: collapse;'>");
+        sb.Append("<!DOCTYPE html><html><head><meta charset='utf-8'><title>ZEROPOINT</title></head>");
+        sb.Append("<body style='margin:0; padding:24px 12px; background-color:#f5f2eb; font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>");
+        sb.Append("<div style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #e5dfd5; border-radius:4px; overflow:hidden;'>");
 
+        // ZEROPOINT Logo Header
+        sb.Append("<div style='background-color:#faf8f5; text-align:center; padding:32px 24px 26px 24px; border-bottom:1px solid #e8e3d9;'>");
+        sb.Append("<img src='https://thezeropoint.dance/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT' width='220' style='max-width:220px; width:220px; height:auto; display:block; margin:0 auto 10px auto; border:0;' />");
+        sb.Append("<div style='font-family:\"Cormorant Garamond\", Georgia, \"Times New Roman\", serif; font-size:24px; font-weight:500; letter-spacing:0.18em; color:#171815; text-transform:uppercase;'>ZEROPOINT</div>");
+        sb.Append("<div style='font-family:-apple-system, Arial, sans-serif; font-size:9.5px; font-weight:600; letter-spacing:0.24em; color:#C8A96B; text-transform:uppercase; margin-top:4px;'>STILLNESS IN MOTION</div>");
+        sb.Append("</div>");
+
+        // Client Confirmation Subheader if client email
+        if (isClientConfirmation)
+        {
+            sb.Append("<div style='padding:22px 28px 14px 28px; text-align:center; background:#ffffff; border-bottom:1px solid #f2ede4;'>");
+            sb.Append("<h3 style='margin:0 0 6px 0; font-size:17px; color:#171815; font-weight:600;'>Form Submitted Successfully</h3>");
+            sb.Append("<p style='margin:0; font-size:13.5px; color:#666666; line-height:1.5;'>Thank you. Your inquiry has been received. A copy of your submitted details is provided below:</p>");
+            sb.Append("</div>");
+        }
+
+        // Form Details Table
+        sb.Append("<table style='width:100%; border-collapse:collapse;'>");
+        sb.Append(BuildTableRows(fields));
+        sb.Append("</table>");
+
+        // Subtle timestamp footer
+        sb.Append("<div style='padding:12px 20px; font-size:11px; color:#999999; text-align:center; background:#faf8f5; border-top:1px solid #eee8df;'>");
+        sb.Append("Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt"));
+        sb.Append("</div>");
+
+        sb.Append("</div>");
+        sb.Append("</body></html>");
+        return sb.ToString();
+    }
+
+    private string BuildTableRows(Dictionary<string, string> fields)
+    {
+        var sb = new StringBuilder();
         int index = 0;
         foreach (var entry in fields)
         {
             if (string.IsNullOrEmpty(entry.Key) || entry.Key.StartsWith("_")) continue;
 
-            string bg = (index++ % 2 == 0) ? "#ffffff" : "#f8fafc";
+            string bg = (index++ % 2 == 0) ? "#ffffff" : "#fcfbfa";
             string label = FormatKey(entry.Key);
-            sb.AppendFormat("<tr style='background: {0}; border-bottom: 1px solid #edf2f7;'>", bg);
-            sb.AppendFormat("<td style='padding: 12px 20px; font-weight: bold; width: 35%; color: #475569;'>{0}</td>", HttpUtility.HtmlEncode(label));
-            sb.AppendFormat("<td style='padding: 12px 20px; color: #0f172a;'>{0}</td>", HttpUtility.HtmlEncode(entry.Value));
+            sb.AppendFormat("<tr style='background:{0}; border-bottom:1px solid #f0ece3;'>", bg);
+            sb.AppendFormat("<td style='padding:12px 22px; font-weight:600; width:36%; color:#555555; font-size:13px; vertical-align:top;'>{0}</td>", HttpUtility.HtmlEncode(label));
+            sb.AppendFormat("<td style='padding:12px 22px; color:#171815; font-size:13.5px; line-height:1.5;'>{0}</td>", HttpUtility.HtmlEncode(entry.Value));
             sb.Append("</tr>");
         }
-
-        sb.AppendFormat("<tr style='background: #f1f5f9;'><td style='padding: 10px 20px; font-size: 12px; color: #64748b;'>Submitted At</td><td style='padding: 10px 20px; font-size: 12px; color: #64748b;'>{0}</td></tr>", DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt"));
-        sb.Append("</table></div>");
         return sb.ToString();
     }
 
