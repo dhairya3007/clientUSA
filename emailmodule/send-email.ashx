@@ -284,23 +284,55 @@ public class UniversalEmailHandler : IHttpHandler
     private string BuildDynamicHtmlTable(Dictionary<string, string> fields, ModuleConfig config, HttpContext context, bool isClientConfirmation = false)
     {
         var sb = new StringBuilder();
-        sb.Append("<!DOCTYPE html><html><head><meta charset='utf-8'><title>ZEROPOINT</title></head>");
-        sb.Append("<body style='margin:0; padding:24px 12px; background-color:#f5f2eb; font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>");
-        sb.Append("<div style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #e5dfd5; border-radius:4px; overflow:hidden;'>");
+        sb.Append("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>");
+        sb.Append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+        sb.Append("<meta name='color-scheme' content='light dark'>");
+        sb.Append("<meta name='supported-color-schemes' content='light dark'>");
+        sb.Append("<title>ZEROPOINT</title>");
+        sb.Append("<style>");
+        sb.Append(":root { color-scheme: light dark; supported-color-schemes: light dark; }");
+        sb.Append("body, .email-body { margin:0; padding:24px 12px; background-color:#ffffff !important; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }");
+        sb.Append(".email-container { max-width:600px; margin:0 auto; background-color:#ffffff !important; border:1px solid #eaeaea !important; border-radius:4px; overflow:hidden; }");
+        sb.Append(".email-header { background-color:#ffffff !important; text-align:center; padding:32px 24px; border-bottom:1px solid #eeeeee !important; }");
+        sb.Append(".email-footer { padding:14px 20px; font-size:11px; color:#888888 !important; text-align:center; background-color:#ffffff !important; border-top:1px solid #eeeeee !important; }");
+        sb.Append(".email-subhead { padding:22px 28px 14px 28px; text-align:center; background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
+        sb.Append(".email-row-even { background-color:#ffffff !important; border-bottom:1px solid #f0f0f0 !important; }");
+        sb.Append(".email-row-odd { background-color:#fafafa !important; border-bottom:1px solid #f0f0f0 !important; }");
+        sb.Append(".email-text-title { color:#171815 !important; }");
+        sb.Append(".email-text-muted { color:#666666 !important; }");
+        sb.Append(".email-text-label { color:#555555 !important; }");
+        sb.Append(".email-text-body { color:#171815 !important; }");
+        sb.Append("@media (prefers-color-scheme: dark) {");
+        sb.Append("  body, .email-body { background-color:#121212 !important; color:#e8e8e8 !important; }");
+        sb.Append("  .email-container { background-color:#1c1c1c !important; border:1px solid #2e2e2e !important; }");
+        sb.Append("  .email-header { background-color:#181818 !important; border-bottom:1px solid #282828 !important; }");
+        sb.Append("  .email-footer { background-color:#181818 !important; border-top:1px solid #282828 !important; color:#777777 !important; }");
+        sb.Append("  .email-subhead { background-color:#1c1c1c !important; border-bottom:1px solid #282828 !important; }");
+        sb.Append("  .email-text-title { color:#f5f5f5 !important; }");
+        sb.Append("  .email-text-muted { color:#9e9e9e !important; }");
+        sb.Append("  .email-row-even { background-color:#1c1c1c !important; border-bottom:1px solid #282828 !important; }");
+        sb.Append("  .email-row-odd { background-color:#222222 !important; border-bottom:1px solid #282828 !important; }");
+        sb.Append("  .email-text-label { color:#a0a0a0 !important; }");
+        sb.Append("  .email-text-body { color:#f0f0f0 !important; }");
+        sb.Append("  .email-logo-img { filter:invert(1) hue-rotate(180deg) brightness(1.2) !important; }");
+        sb.Append("}");
+        sb.Append("</style></head>");
+        sb.Append("<body class='email-body' style='margin:0; padding:24px 12px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>");
+        sb.Append("<div class='email-container' style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #eaeaea; border-radius:4px; overflow:hidden;'>");
 
         // ZEROPOINT Logo Header
-        sb.Append("<div style='background-color:#faf8f5; text-align:center; padding:32px 24px; border-bottom:1px solid #e8e3d9;'>");
+        sb.Append("<div class='email-header' style='background-color:#ffffff; text-align:center; padding:32px 24px; border-bottom:1px solid #eeeeee;'>");
         sb.Append("<a href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block;'>");
-        sb.Append("<img src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
+        sb.Append("<img class='email-logo-img' src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
         sb.Append("</a>");
         sb.Append("</div>");
 
         // Client Confirmation Subheader if client email
         if (isClientConfirmation)
         {
-            sb.Append("<div style='padding:22px 28px 14px 28px; text-align:center; background:#ffffff; border-bottom:1px solid #f2ede4;'>");
-            sb.Append("<h3 style='margin:0 0 6px 0; font-size:17px; color:#171815; font-weight:600;'>Form Submitted Successfully</h3>");
-            sb.Append("<p style='margin:0; font-size:13.5px; color:#666666; line-height:1.5;'>Thank you. Your inquiry has been received. A copy of your submitted details is provided below:</p>");
+            sb.Append("<div class='email-subhead' style='padding:22px 28px 14px 28px; text-align:center; background-color:#ffffff; border-bottom:1px solid #eeeeee;'>");
+            sb.Append("<h3 class='email-text-title' style='margin:0 0 6px 0; font-size:17px; color:#171815; font-weight:600;'>Form Submitted Successfully</h3>");
+            sb.Append("<p class='email-text-muted' style='margin:0; font-size:13.5px; color:#666666; line-height:1.5;'>Thank you. Your inquiry has been received. A copy of your submitted details is provided below:</p>");
             sb.Append("</div>");
         }
 
@@ -310,7 +342,7 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("</table>");
 
         // Subtle timestamp footer
-        sb.Append("<div style='padding:12px 20px; font-size:11px; color:#999999; text-align:center; background:#faf8f5; border-top:1px solid #eee8df;'>");
+        sb.Append("<div class='email-footer' style='padding:14px 20px; font-size:11px; color:#888888; text-align:center; background-color:#ffffff; border-top:1px solid #eeeeee;'>");
         sb.Append("Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt"));
         sb.Append("</div>");
 
@@ -327,11 +359,13 @@ public class UniversalEmailHandler : IHttpHandler
         {
             if (string.IsNullOrEmpty(entry.Key) || entry.Key.StartsWith("_")) continue;
 
-            string bg = (index++ % 2 == 0) ? "#ffffff" : "#fcfbfa";
+            bool isEven = (index++ % 2 == 0);
+            string bg = isEven ? "#ffffff" : "#fafafa";
+            string rowClass = isEven ? "email-row-even" : "email-row-odd";
             string label = FormatKey(entry.Key);
-            sb.AppendFormat("<tr style='background:{0}; border-bottom:1px solid #f0ece3;'>", bg);
-            sb.AppendFormat("<td style='padding:12px 22px; font-weight:600; width:36%; color:#555555; font-size:13px; vertical-align:top;'>{0}</td>", HttpUtility.HtmlEncode(label));
-            sb.AppendFormat("<td style='padding:12px 22px; color:#171815; font-size:13.5px; line-height:1.5;'>{0}</td>", HttpUtility.HtmlEncode(entry.Value));
+            sb.AppendFormat("<tr class='{0}' style='background-color:{1}; border-bottom:1px solid #f0f0f0;'>", rowClass, bg);
+            sb.AppendFormat("<td class='email-text-label' style='padding:12px 22px; font-weight:600; width:36%; color:#555555; font-size:13px; vertical-align:top;'>{0}</td>", HttpUtility.HtmlEncode(label));
+            sb.AppendFormat("<td class='email-text-body' style='padding:12px 22px; color:#171815; font-size:13.5px; line-height:1.5;'>{0}</td>", HttpUtility.HtmlEncode(entry.Value));
             sb.Append("</tr>");
         }
         return sb.ToString();

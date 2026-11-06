@@ -1,16 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
   <title>ZEROPOINT</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+    body, .email-body {
+      margin: 0;
+      padding: 24px 12px;
+      background-color: #ffffff !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff !important;
+      border: 1px solid #eaeaea !important;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .email-header {
+      background-color: #ffffff !important;
+      text-align: center;
+      padding: 32px 24px;
+      border-bottom: 1px solid #eeeeee !important;
+    }
+    .email-footer {
+      padding: 14px 20px;
+      font-size: 11px;
+      color: #888888 !important;
+      text-align: center;
+      background-color: #ffffff !important;
+      border-top: 1px solid #eeeeee !important;
+    }
+    .email-row-even {
+      background-color: #ffffff !important;
+      border-bottom: 1px solid #f0f0f0 !important;
+    }
+    .email-row-odd {
+      background-color: #fafafa !important;
+      border-bottom: 1px solid #f0f0f0 !important;
+    }
+    .email-text-label {
+      color: #555555 !important;
+    }
+    .email-text-body {
+      color: #171815 !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body, .email-body {
+        background-color: #121212 !important;
+        color: #e8e8e8 !important;
+      }
+      .email-container {
+        background-color: #1c1c1c !important;
+        border: 1px solid #2e2e2e !important;
+      }
+      .email-header {
+        background-color: #181818 !important;
+        border-bottom: 1px solid #282828 !important;
+      }
+      .email-footer {
+        background-color: #181818 !important;
+        border-top: 1px solid #282828 !important;
+        color: #777777 !important;
+      }
+      .email-subhead {
+        background-color: #1c1c1c !important;
+        border-bottom: 1px solid #282828 !important;
+      }
+      .email-text-title {
+        color: #f5f5f5 !important;
+      }
+      .email-text-muted {
+        color: #9e9e9e !important;
+      }
+      .email-row-even {
+        background-color: #1c1c1c !important;
+        border-bottom: 1px solid #282828 !important;
+      }
+      .email-row-odd {
+        background-color: #222222 !important;
+        border-bottom: 1px solid #282828 !important;
+      }
+      .email-text-label {
+        color: #a0a0a0 !important;
+      }
+      .email-text-body {
+        color: #f0f0f0 !important;
+      }
+      .email-logo-img {
+        filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
+      }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 24px 12px; background-color: #f5f2eb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5dfd5; border-radius: 4px; overflow: hidden;">
+<body class="email-body" style="margin: 0; padding: 24px 12px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <div class="email-container" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 4px; overflow: hidden;">
     
     <!-- ZEROPOINT Logo Header -->
-    <div style="background-color: #faf8f5; text-align: center; padding: 32px 24px; border-bottom: 1px solid #e8e3d9;">
+    <div class="email-header" style="background-color: #ffffff; text-align: center; padding: 32px 24px; border-bottom: 1px solid #eeeeee;">
       <a href="https://thezeropoint.dance" target="_blank" style="text-decoration: none; display: inline-block;">
-        <img src="https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg" alt="ZEROPOINT - Stillness In Motion" width="280" style="max-width: 280px; width: 280px; height: auto; display: block; margin: 0 auto; border: 0;" />
+        <img class="email-logo-img" src="https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg" alt="ZEROPOINT - Stillness In Motion" width="280" style="max-width: 280px; width: 280px; height: auto; display: block; margin: 0 auto; border: 0;" />
       </a>
     </div>
 
@@ -20,11 +119,10 @@
     </table>
 
     <!-- Timestamp Footer -->
-    <div style="padding: 12px 20px; font-size: 11px; color: #999999; text-align: center; background: #faf8f5; border-top: 1px solid #eee8df;">
+    <div class="email-footer" style="padding: 14px 20px; font-size: 11px; color: #888888; text-align: center; background-color: #ffffff; border-top: 1px solid #eeeeee;">
       Date: {{submission_date}}
     </div>
 
   </div>
 </body>
 </html>
-
