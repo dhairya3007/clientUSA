@@ -973,16 +973,20 @@
 
             $form.slideUp(300, function () {
                 var successHtml = '';
-                successHtml += '<div class="zp-success-card text-center">';
-                successHtml += '  <div class="zp-success-ring"><i class="ion-ios-checkmark-empty"></i></div>';
-                successHtml += '  <h4>Engagement Request Received</h4>';
-                successHtml += '  <p class="zp-success-lead">Thank you. Your request for <strong>' + escapeHtml(submissionPayload.serviceName) + '</strong> has been submitted to the ZEROPOINT principal concierge.</p>';
-                successHtml += '  <p class="zp-success-sub">Every engagement is reviewed individually with strict confidentiality. You will be contacted via your preferred details within 24 to 48 hours.</p>';
+                successHtml += '<div class="zp-success-card text-center" style="padding: 40px 24px; margin-top: 15px;">';
+                successHtml += '  <div class="zp-success-ring" style="margin-bottom: 18px;"><i class="ion-ios-checkmark-empty" style="font-size: 34px; color: #C8A96B;"></i></div>';
+                successHtml += '  <h3 style="font-family: var(--font-heading); font-size: 28px; color: #171815; margin: 0 0 10px 0;">Thank You For Your Submission</h3>';
+                successHtml += '  <p class="zp-success-lead" style="font-size: 15px; color: #333333; max-width: 580px; margin: 0 auto 10px auto; line-height: 1.6;">Thank you. Your request for <strong>' + escapeHtml(submissionPayload.serviceName) + '</strong> has been received by the ZEROPOINT concierge.</p>';
+                successHtml += '  <p class="zp-success-sub" style="font-size: 13.5px; color: #666666; max-width: 540px; margin: 0 auto 24px auto; line-height: 1.6;">Every inquiry is reviewed individually with strict confidentiality. A confirmation copy has been dispatched to your email address.</p>';
                 successHtml += '  <div class="zp-success-actions">';
-                successHtml += '    <a href="services.html" class="c-btn"><span>Explore Offerings</span></a>';
+                successHtml += '    <a href="services.html" class="zp-btn zp-btn-outline"><span>Explore Offerings &rarr;</span></a>';
                 successHtml += '  </div>';
                 successHtml += '</div>';
                 $status.html(successHtml);
+
+                $('html, body').animate({
+                    scrollTop: self.$container.offset().top - 90
+                }, 350);
             });
         });
 

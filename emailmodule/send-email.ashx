@@ -293,7 +293,9 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append(":root { color-scheme: light dark; }");
         sb.Append("body, .email-body { margin:0; padding:24px 12px; background-color:#ffffff !important; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }");
         sb.Append(".email-container { max-width:600px; margin:0 auto; background-color:#ffffff !important; border:1px solid #eaeaea !important; border-radius:4px; overflow:hidden; }");
-        sb.Append(".email-header { background-color:#ffffff !important; text-align:center; padding:32px 24px; border-bottom:1px solid #eeeeee !important; }");
+        sb.Append(".email-header { background-color:#ffffff !important; text-align:center; padding:30px 24px; border-bottom:1px solid #eeeeee !important; }");
+        sb.Append(".email-logo-wrap { background-color:#ffffff !important; display:inline-block; padding:10px 18px; border-radius:6px; }");
+        sb.Append(".email-logo-img { background-color:#ffffff !important; border-radius:4px; }");
         sb.Append(".email-footer { padding:14px 20px; font-size:11px; color:#888888 !important; text-align:center; background-color:#ffffff !important; border-top:1px solid #eeeeee !important; }");
         sb.Append(".email-subhead { padding:22px 28px 14px 28px; text-align:center; background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
         sb.Append(".email-row-even { background-color:#ffffff !important; border-bottom:1px solid #f0f0f0 !important; }");
@@ -306,6 +308,8 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("  body, .email-body { background-color:#121212 !important; color:#e8e8e8 !important; }");
         sb.Append("  .email-container { background-color:#1c1c1c !important; border:1px solid #2e2e2e !important; }");
         sb.Append("  .email-header { background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
+        sb.Append("  .email-logo-wrap { background-color:#ffffff !important; }");
+        sb.Append("  .email-logo-img { background-color:#ffffff !important; }");
         sb.Append("  .email-footer { background-color:#181818 !important; border-top:1px solid #282828 !important; color:#777777 !important; }");
         sb.Append("  .email-subhead { background-color:#1c1c1c !important; border-bottom:1px solid #282828 !important; }");
         sb.Append("  .email-text-title { color:#f5f5f5 !important; }");
@@ -320,9 +324,9 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("<div class='email-container' style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #eaeaea; border-radius:4px; overflow:hidden;'>");
 
         // ZEROPOINT Logo Header
-        sb.Append("<div class='email-header' style='background-color:#ffffff; text-align:center; padding:32px 24px; border-bottom:1px solid #eeeeee;'>");
-        sb.Append("<a href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block;'>");
-        sb.Append("<img class='email-logo-img' src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
+        sb.Append("<div class='email-header' style='background-color:#ffffff !important; text-align:center; padding:30px 24px; border-bottom:1px solid #eeeeee;'>");
+        sb.Append("<a class='email-logo-wrap' href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block; background-color:#ffffff !important; padding:10px 18px; border-radius:6px;'>");
+        sb.Append("<img class='email-logo-img' src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_email_logo.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0; background-color:#ffffff !important; border-radius:4px;' />");
         sb.Append("</a>");
         sb.Append("</div>");
 
