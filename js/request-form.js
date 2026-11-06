@@ -995,17 +995,17 @@
             } else if (xhr.statusText === "timeout") {
                 errMessage = "The connection timed out while dispatching your request. Please check your internet connection.";
             } else {
-                errMessage = "The request could not be dispatched to the email handler. Please ensure the email backend service is running or check your network connection.";
+                errMessage = "We were unable to transmit your inquiry at this moment. Please check your internet connection or try again in a few moments.";
             }
 
             var errorMessage = '';
-            errorMessage += '<div class="zp-alert zp-alert-error" style="text-align: left; margin-bottom: 25px; padding: 16px 20px;">';
+            errorMessage += '<div class="zp-alert zp-alert-error" style="text-align: left; margin-bottom: 25px; padding: 18px 22px; border-radius: 4px;">';
             errorMessage += '  <div style="display: flex; align-items: flex-start; gap: 14px;">';
             errorMessage += '    <i class="ion-alert-circled" style="font-size: 22px; line-height: 1.2; color: #c9302c; flex-shrink: 0; margin-top: 1px;"></i>';
             errorMessage += '    <div>';
             errorMessage += '      <strong style="color: #58151c; display: block; margin-bottom: 6px; font-size: 14px; font-weight: 700;">Submission Notice</strong>';
             errorMessage += '      <p style="margin: 0 0 10px 0; color: #721c24; font-size: 13px; line-height: 1.5; font-weight: 500;">' + escapeHtml(errMessage) + '</p>';
-            errorMessage += '      <p style="margin: 0; color: #721c24; font-size: 12px; letter-spacing: 0.02em;">For immediate assistance, please reach the concierge directly at <a href="mailto:zeropoint.dance@proton.me" style="color: #58151c; font-weight: 700; text-decoration: underline;">zeropoint.dance@proton.me</a>.</p>';
+            errorMessage += '      <p style="margin: 0; color: #721c24; font-size: 12.5px; line-height: 1.5;">For immediate personal assistance, please contact the concierge directly at <a href="mailto:thezeropoint.dance@gmail.com" style="color: #58151c; font-weight: 700; text-decoration: underline;">thezeropoint.dance@gmail.com</a>.</p>';
             errorMessage += '    </div>';
             errorMessage += '  </div>';
             errorMessage += '</div>';
