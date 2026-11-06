@@ -3,7 +3,7 @@
  * Vanilla JavaScript / jQuery architecture matching master specification
  */
 
-(function($) {
+(function ($) {
     "use strict";
 
     // 1. Service Definitions & Form Schemas
@@ -54,7 +54,7 @@
                     name: "preferred_location",
                     type: "text",
                     label: "Where would you like your ZEROPOINT engagement to take place?",
-                    placeholder: "City / Town, State (or Private Studio)",
+                    placeholder: "City / Town, State ",
                     required: true,
                     col: "col-sm-6 col-xs-12"
                 },
@@ -487,7 +487,7 @@
         this.init();
     }
 
-    ZeroPointRequestManager.prototype.init = function() {
+    ZeroPointRequestManager.prototype.init = function () {
         var self = this;
 
         // Parse query parameter or hash
@@ -520,47 +520,47 @@
             }
 
             // Quick initial placement so user lands directly at the form
-            setTimeout(function() { scrollToForm(false); }, 50);
+            setTimeout(function () { scrollToForm(false); }, 50);
 
             // Smooth adjustment once dynamic elements settle
-            setTimeout(function() { scrollToForm(true); }, 250);
+            setTimeout(function () { scrollToForm(true); }, 250);
 
             // Re-align after full window load to account for any layout shifts
-            $(window).on("load", function() {
-                setTimeout(function() { scrollToForm(true); }, 100);
+            $(window).on("load", function () {
+                setTimeout(function () { scrollToForm(true); }, 100);
             });
         }
 
         // Bind global service selector tabs
-        this.$container.on("click", ".zp-service-pill", function(e) {
+        this.$container.on("click", ".zp-service-pill", function (e) {
             e.preventDefault();
             var targetKey = $(this).attr("data-service-key");
             self.switchService(targetKey, true);
         });
 
         // Bind conditional field listeners (e.g., song selected -> show title/artist)
-        this.$container.on("change", 'input[name="chosen_song_status"]', function() {
+        this.$container.on("change", 'input[name="chosen_song_status"]', function () {
             self.updateConditionals();
         });
 
         // Bind form submission
-        this.$container.on("submit", "#zp-dynamic-form", function(e) {
+        this.$container.on("submit", "#zp-dynamic-form", function (e) {
             e.preventDefault();
             self.submitForm($(this));
         });
 
         // Listen for browser popstate
-        window.addEventListener("popstate", function(e) {
+        window.addEventListener("popstate", function (e) {
             if (e.state && e.state.serviceKey) {
                 self.switchService(e.state.serviceKey, false);
             }
         });
     };
 
-    ZeroPointRequestManager.prototype.renderShell = function() {
+    ZeroPointRequestManager.prototype.renderShell = function () {
         var html = '';
         html += '<div class="zp-request-shell">';
-        
+
         // Header
         html += '  <div class="zp-request-header text-center">';
         html += '    <h3 class="zp-request-title">Request an Engagement</h3>';
@@ -570,7 +570,7 @@
         // Service Selector Cards / Pills
         html += '  <div class="zp-service-selector-wrap" role="tablist" aria-label="Select Service">';
         html += '    <div class="zp-service-selector-grid">';
-        
+
         var serviceKeys = ["private-intro", "private-mastery", "first-dance", "private-soiree", "corporate-connection"];
         for (var i = 0; i < serviceKeys.length; i++) {
             var s = SERVICES[serviceKeys[i]];
@@ -579,7 +579,7 @@
             html += '        <span class="zp-pill-name">' + escapeHtml(s.name) + '</span>';
             html += '      </button>';
         }
-        
+
         html += '    </div>';
         html += '  </div>';
 
@@ -602,12 +602,12 @@
         this.$container.html(html);
     };
 
-    ZeroPointRequestManager.prototype.switchService = function(serviceKey, updateHistory) {
+    ZeroPointRequestManager.prototype.switchService = function (serviceKey, updateHistory) {
         var resolvedKey = resolveServiceKey(serviceKey);
         this.currentServiceKey = resolvedKey;
 
         // Update Pill States
-        this.$container.find(".zp-service-pill").each(function() {
+        this.$container.find(".zp-service-pill").each(function () {
             var $pill = $(this);
             var isCurrent = ($pill.attr("data-service-key") === resolvedKey);
             $pill.toggleClass("active", isCurrent);
@@ -627,7 +627,7 @@
         this.$container.find("#zp-form-status-target").empty();
     };
 
-    ZeroPointRequestManager.prototype.renderServiceFields = function(serviceKey) {
+    ZeroPointRequestManager.prototype.renderServiceFields = function (serviceKey) {
         var service = SERVICES[serviceKey];
         if (!service) return;
 
@@ -732,9 +732,9 @@
         this.updateConditionals();
     };
 
-    ZeroPointRequestManager.prototype.updateConditionals = function() {
+    ZeroPointRequestManager.prototype.updateConditionals = function () {
         var self = this;
-        this.$container.find('[data-conditional-parent]').each(function() {
+        this.$container.find('[data-conditional-parent]').each(function () {
             var $col = $(this);
             var parentName = $col.attr("data-conditional-parent");
             var reqValue = $col.attr("data-conditional-value");
@@ -752,7 +752,7 @@
         });
     };
 
-    ZeroPointRequestManager.prototype.validate = function() {
+    ZeroPointRequestManager.prototype.validate = function () {
         var service = SERVICES[this.currentServiceKey];
         if (!service) return { isValid: false, data: {} };
 
@@ -888,7 +888,7 @@
         return { isValid: isValid, data: data };
     };
 
-    ZeroPointRequestManager.prototype.submitForm = function($form) {
+    ZeroPointRequestManager.prototype.submitForm = function ($form) {
         var self = this;
         var validation = this.validate();
         var $status = this.$container.find("#zp-form-status-target");
@@ -896,7 +896,7 @@
 
         if (!validation.isValid) {
             $status.html('<div class="zp-alert zp-alert-error"><i class="ion-alert-circled"></i> Please complete the highlighted required fields before submitting.</div>');
-            
+
             // Scroll to first error
             var $firstError = this.$container.find(".has-error").first();
             if ($firstError.length) {
@@ -956,7 +956,7 @@
             timeout: 25000
         });
 
-        jqXHR.done(function(resp) {
+        jqXHR.done(function (resp) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
             // Check if backend indicates success
             var isSuccess = (resp && (resp.success === true || resp.status === "ok"));
@@ -967,7 +967,7 @@
                 return;
             }
 
-            $form.slideUp(300, function() {
+            $form.slideUp(300, function () {
                 var successHtml = '';
                 successHtml += '<div class="zp-success-card text-center">';
                 successHtml += '  <div class="zp-success-ring"><i class="ion-ios-checkmark-empty"></i></div>';
@@ -982,9 +982,9 @@
             });
         });
 
-        jqXHR.fail(function(xhr, statusText) {
+        jqXHR.fail(function (xhr, statusText) {
             $submitBtn.prop("disabled", false).removeClass("zp-btn-loading");
-            
+
             var errMessage = '';
             if (xhr.responseJSON && (xhr.responseJSON.error || xhr.responseJSON.message)) {
                 errMessage = xhr.responseJSON.error || xhr.responseJSON.message;
@@ -1012,7 +1012,7 @@
     };
 
     // Auto-initialize on ready
-    $(function() {
+    $(function () {
         var $requestContainer = $("#zeropoint-request-form");
         if ($requestContainer.length) {
             new ZeroPointRequestManager($requestContainer);

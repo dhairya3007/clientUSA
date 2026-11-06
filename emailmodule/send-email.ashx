@@ -153,6 +153,9 @@ public class UniversalEmailHandler : IHttpHandler
                     }
 
                     mail.Subject = subject;
+                    mail.SubjectEncoding = Encoding.UTF8;
+                    mail.BodyEncoding = Encoding.UTF8;
+                    mail.HeadersEncoding = Encoding.UTF8;
                     mail.IsBodyHtml = true;
                     mail.Body = emailBody;
 
@@ -188,6 +191,9 @@ public class UniversalEmailHandler : IHttpHandler
                                 autoReply.From = new MailAddress(config.smtp.user, fromDisplayName);
                                 autoReply.To.Add(senderEmail);
                                 autoReply.Subject = "Form Submitted Successfully";
+                                autoReply.SubjectEncoding = Encoding.UTF8;
+                                autoReply.BodyEncoding = Encoding.UTF8;
+                                autoReply.HeadersEncoding = Encoding.UTF8;
                                 autoReply.IsBodyHtml = true;
                                 autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
                                 autoSmtp.Send(autoReply);
@@ -233,7 +239,7 @@ public class UniversalEmailHandler : IHttpHandler
         // If template file exists on server, dynamically substitute all {{placeholders}}
         if (!string.IsNullOrEmpty(templatePath) && File.Exists(templatePath))
         {
-            string rawHtml = File.ReadAllText(templatePath);
+            string rawHtml = File.ReadAllText(templatePath, Encoding.UTF8);
             var regex = new Regex(@"\{\{\s*([a-zA-Z0-9_\-]+)\s*\}\}", RegexOptions.IgnoreCase);
 
             return regex.Replace(rawHtml, match =>
@@ -281,7 +287,7 @@ public class UniversalEmailHandler : IHttpHandler
         // ZEROPOINT Logo Header
         sb.Append("<div style='background-color:#faf8f5; text-align:center; padding:32px 24px; border-bottom:1px solid #e8e3d9;'>");
         sb.Append("<a href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block;'>");
-        sb.Append("<img src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT — Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
+        sb.Append("<img src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_logo_vector.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
         sb.Append("</a>");
         sb.Append("</div>");
 
