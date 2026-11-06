@@ -305,7 +305,7 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("@media (prefers-color-scheme: dark) {");
         sb.Append("  body, .email-body { background-color:#121212 !important; color:#e8e8e8 !important; }");
         sb.Append("  .email-container { background-color:#1c1c1c !important; border:1px solid #2e2e2e !important; }");
-        sb.Append("  .email-header { background-color:#181818 !important; border-bottom:1px solid #282828 !important; }");
+        sb.Append("  .email-header { background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
         sb.Append("  .email-footer { background-color:#181818 !important; border-top:1px solid #282828 !important; color:#777777 !important; }");
         sb.Append("  .email-subhead { background-color:#1c1c1c !important; border-bottom:1px solid #282828 !important; }");
         sb.Append("  .email-text-title { color:#f5f5f5 !important; }");
@@ -314,7 +314,6 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("  .email-row-odd { background-color:#222222 !important; border-bottom:1px solid #282828 !important; }");
         sb.Append("  .email-text-label { color:#a0a0a0 !important; }");
         sb.Append("  .email-text-body { color:#f0f0f0 !important; }");
-        sb.Append("  .email-logo-img { filter:invert(1) hue-rotate(180deg) brightness(1.2) !important; }");
         sb.Append("}");
         sb.Append("</style></head>");
         sb.Append("<body class='email-body' style='margin:0; padding:24px 12px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>");
