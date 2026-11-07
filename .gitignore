@@ -3,3 +3,4 @@
 *.zip
 build/
 _publish_staging/
+assets_original_raw/

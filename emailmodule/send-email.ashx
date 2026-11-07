@@ -159,8 +159,7 @@ public class UniversalEmailHandler : IHttpHandler
                     mail.SubjectEncoding = Encoding.UTF8;
                     mail.BodyEncoding = Encoding.UTF8;
                     mail.HeadersEncoding = Encoding.UTF8;
-                    mail.IsBodyHtml = true;
-                    mail.Body = emailBody;
+                    SetEmailBody(mail, emailBody);
 
                     // Handle file attachments dynamically (if multipart form uploaded files)
                     for (int i = 0; i < context.Request.Files.Count; i++)
@@ -197,8 +196,8 @@ public class UniversalEmailHandler : IHttpHandler
                                 autoReply.SubjectEncoding = Encoding.UTF8;
                                 autoReply.BodyEncoding = Encoding.UTF8;
                                 autoReply.HeadersEncoding = Encoding.UTF8;
-                                autoReply.IsBodyHtml = true;
-                                autoReply.Body = BuildDynamicHtmlTable(fields, config, context, true);
+                                string clientBody = BuildDynamicHtmlTable(fields, config, context, true);
+                                SetEmailBody(autoReply, clientBody);
                                 autoSmtp.Send(autoReply);
                                 try { File.AppendAllText(logPath, string.Format("[{0}] AUTOREPLY SENT to '{1}'\n", DateTime.Now.ToString("s"), senderEmail)); } catch { }
                             }
@@ -217,6 +216,16 @@ public class UniversalEmailHandler : IHttpHandler
         {
             SendJson(context, false, "Delivery Error: " + ex.Message, 500);
         }
+    }
+
+    // -------------------------------------------------------------------------
+    // EMAIL BODY ENCODING & CONFIGURATION (0 attachments, no noname.pdf)
+    // -------------------------------------------------------------------------
+    private static void SetEmailBody(MailMessage mail, string htmlBody)
+    {
+        mail.IsBodyHtml = true;
+        mail.BodyEncoding = Encoding.UTF8;
+        mail.Body = htmlBody;
     }
 
     // -------------------------------------------------------------------------
@@ -293,9 +302,8 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append(":root { color-scheme: light dark; }");
         sb.Append("body, .email-body { margin:0; padding:24px 12px; background-color:#ffffff !important; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }");
         sb.Append(".email-container { max-width:600px; margin:0 auto; background-color:#ffffff !important; border:1px solid #eaeaea !important; border-radius:4px; overflow:hidden; }");
-        sb.Append(".email-header { background-color:#ffffff !important; text-align:center; padding:30px 24px; border-bottom:1px solid #eeeeee !important; }");
-        sb.Append(".email-logo-wrap { background-color:#ffffff !important; display:inline-block; padding:10px 18px; border-radius:6px; }");
-        sb.Append(".email-logo-img { background-color:#ffffff !important; border-radius:4px; }");
+        sb.Append(".email-header-table, .email-header-td, .email-logo-box { background:#ffffff !important; background-color:#ffffff !important; background-image:linear-gradient(#ffffff, #ffffff) !important; }");
+        sb.Append(".email-logo-img { background:#ffffff !important; background-color:#ffffff !important; border-radius:4px; }");
         sb.Append(".email-footer { padding:14px 20px; font-size:11px; color:#888888 !important; text-align:center; background-color:#ffffff !important; border-top:1px solid #eeeeee !important; }");
         sb.Append(".email-subhead { padding:22px 28px 14px 28px; text-align:center; background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
         sb.Append(".email-row-even { background-color:#ffffff !important; border-bottom:1px solid #f0f0f0 !important; }");
@@ -307,9 +315,8 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("@media (prefers-color-scheme: dark) {");
         sb.Append("  body, .email-body { background-color:#121212 !important; color:#e8e8e8 !important; }");
         sb.Append("  .email-container { background-color:#1c1c1c !important; border:1px solid #2e2e2e !important; }");
-        sb.Append("  .email-header { background-color:#ffffff !important; border-bottom:1px solid #eeeeee !important; }");
-        sb.Append("  .email-logo-wrap { background-color:#ffffff !important; }");
-        sb.Append("  .email-logo-img { background-color:#ffffff !important; }");
+        sb.Append("  .email-header-table, .email-header-td, .email-logo-box { background:#ffffff !important; background-color:#ffffff !important; background-image:linear-gradient(#ffffff, #ffffff) !important; }");
+        sb.Append("  .email-logo-img { background:#ffffff !important; background-color:#ffffff !important; }");
         sb.Append("  .email-footer { background-color:#181818 !important; border-top:1px solid #282828 !important; color:#777777 !important; }");
         sb.Append("  .email-subhead { background-color:#1c1c1c !important; border-bottom:1px solid #282828 !important; }");
         sb.Append("  .email-text-title { color:#f5f5f5 !important; }");
@@ -323,12 +330,12 @@ public class UniversalEmailHandler : IHttpHandler
         sb.Append("<body class='email-body' style='margin:0; padding:24px 12px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>");
         sb.Append("<div class='email-container' style='max-width:600px; margin:0 auto; background-color:#ffffff; border:1px solid #eaeaea; border-radius:4px; overflow:hidden;'>");
 
-        // ZEROPOINT Logo Header
-        sb.Append("<div class='email-header' style='background-color:#ffffff !important; text-align:center; padding:30px 24px; border-bottom:1px solid #eeeeee;'>");
-        sb.Append("<a class='email-logo-wrap' href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block; background-color:#ffffff !important; padding:10px 18px; border-radius:6px;'>");
-        sb.Append("<img class='email-logo-img' src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_email_logo.svg' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0; background-color:#ffffff !important; border-radius:4px;' />");
-        sb.Append("</a>");
-        sb.Append("</div>");
+        // ZEROPOINT Logo Header (Forced #ffffff in all Dark Mode clients)
+        sb.Append("<table role='presentation' cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' class='email-header-table' style='width:100%; background:#ffffff !important; background-color:#ffffff !important; background-image:linear-gradient(#ffffff, #ffffff) !important; border-bottom:1px solid #eeeeee;'>");
+        sb.Append("<tr><td align='center' bgcolor='#ffffff' class='email-header-td' style='background:#ffffff !important; background-color:#ffffff !important; background-image:linear-gradient(#ffffff, #ffffff) !important; padding:32px 20px; text-align:center;'>");
+        sb.Append("<a href='https://thezeropoint.dance' target='_blank' style='text-decoration:none; display:inline-block;'>");
+        sb.Append("<img class='email-logo-img' src='https://raw.githubusercontent.com/dhairya3007/clientUSA/main/assets/zeropoint_email_logo.png' alt='ZEROPOINT - Stillness In Motion' width='280' style='max-width:280px; width:280px; height:auto; display:block; margin:0 auto; border:0;' />");
+        sb.Append("</a></td></tr></table>");
 
         // Client Confirmation Subheader if client email
         if (isClientConfirmation)

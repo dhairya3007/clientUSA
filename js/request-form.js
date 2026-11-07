@@ -931,6 +931,7 @@
         // Prepare flattened payload for Universal Email Service (Option A: Auto-Discovery Table)
         var postData = {
             "_subject": "New Inquiry",
+            "_template": "contact",
             "Service Requested": submissionPayload.serviceName,
             "Service Category": submissionPayload.serviceKey
         };
@@ -941,7 +942,7 @@
         }
 
         // Determine handler endpoint: same-origin & same-port on IIS, with fallback for file:// or static live servers
-        var handlerUrl = (window.location.pathname.indexOf("/pages/") !== -1) 
+        var handlerUrl = (window.location.pathname.indexOf("/service/") !== -1 || window.location.pathname.indexOf("/pages/") !== -1) 
             ? "../emailmodule/send-email.ashx" 
             : "emailmodule/send-email.ashx";
 
@@ -971,23 +972,43 @@
                 return;
             }
 
-            $form.slideUp(300, function () {
-                var successHtml = '';
-                successHtml += '<div class="zp-success-card text-center" style="padding: 40px 24px; margin-top: 15px;">';
-                successHtml += '  <div class="zp-success-ring" style="margin-bottom: 18px;"><i class="ion-ios-checkmark-empty" style="font-size: 34px; color: #C8A96B;"></i></div>';
-                successHtml += '  <h3 style="font-family: var(--font-heading); font-size: 28px; color: #171815; margin: 0 0 10px 0;">Thank You For Your Submission</h3>';
-                successHtml += '  <p class="zp-success-lead" style="font-size: 15px; color: #333333; max-width: 580px; margin: 0 auto 10px auto; line-height: 1.6;">Thank you. Your request for <strong>' + escapeHtml(submissionPayload.serviceName) + '</strong> has been received by the ZEROPOINT concierge.</p>';
-                successHtml += '  <p class="zp-success-sub" style="font-size: 13.5px; color: #666666; max-width: 540px; margin: 0 auto 24px auto; line-height: 1.6;">Every inquiry is reviewed individually with strict confidentiality. A confirmation copy has been dispatched to your email address.</p>';
-                successHtml += '  <div class="zp-success-actions">';
-                successHtml += '    <a href="services.html" class="zp-btn zp-btn-outline"><span>Explore Offerings &rarr;</span></a>';
-                successHtml += '  </div>';
-                successHtml += '</div>';
-                $status.html(successHtml);
+            // Lock form inputs to prevent duplicate submission
+            $form.find("input, select, textarea").prop("disabled", true);
+            $form.find(".zp-form-submit-wrap").slideUp(200);
 
-                $('html, body').animate({
-                    scrollTop: self.$container.offset().top - 90
-                }, 350);
+            var successHtml = '';
+            successHtml += '<div class="zp-success-card text-center" style="padding: 38px 24px; margin-top: 15px; border-left: 4px solid #C8A96B; box-shadow: 0 4px 18px rgba(0,0,0,0.05);">';
+            successHtml += '  <div class="zp-success-ring" style="margin-bottom: 18px;"><i class="ion-ios-checkmark-empty" style="font-size: 34px; color: #C8A96B;"></i></div>';
+            successHtml += '  <h3 style="font-family: var(--font-heading); font-size: 26px; color: #171815; margin: 0 0 10px 0;">Request Successfully Submitted</h3>';
+            successHtml += '  <p class="zp-success-lead" style="font-size: 15px; color: #333333; max-width: 580px; margin: 0 auto 10px auto; line-height: 1.6;">Thank you. Your request for <strong>' + escapeHtml(submissionPayload.serviceName) + '</strong> has been received by the ZEROPOINT concierge.</p>';
+            successHtml += '  <p class="zp-success-sub" style="font-size: 13.5px; color: #666666; max-width: 540px; margin: 0 auto 24px auto; line-height: 1.6;">Every inquiry is reviewed individually with strict confidentiality. A confirmation copy has been dispatched to your email address.</p>';
+            successHtml += '  <div class="zp-success-actions" style="display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap;">';
+            successHtml += '    <a href="services.html" class="zp-btn zp-btn-outline"><span>Explore Offerings &rarr;</span></a>';
+            successHtml += '    <button type="button" class="zp-reset-form-btn" style="background: none; border: 1px solid #d4af37; color: #171815; padding: 10px 20px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease;"><span>Submit Another Inquiry</span></button>';
+            successHtml += '  </div>';
+            successHtml += '</div>';
+
+            $status.hide().html(successHtml).fadeIn(300);
+
+            // Bind "Submit Another Inquiry" button to reset form
+            $status.find(".zp-reset-form-btn").on("click", function () {
+                $form[0].reset();
+                $form.find("input, select, textarea").prop("disabled", false);
+                $form.find(".zp-form-submit-wrap").slideDown(200);
+                $status.empty();
             });
+
+            // Keep user in place - do NOT move or scroll to the top of the page.
+            // If the success card happens to be slightly out of the viewport, gently align it in view.
+            var statusTop = $status.offset().top;
+            var currentScroll = $(window).scrollTop();
+            var viewportHeight = $(window).height();
+
+            if (statusTop < currentScroll + 20 || statusTop > currentScroll + viewportHeight - 100) {
+                $('html, body').stop(true).animate({
+                    scrollTop: Math.max(0, statusTop - 100)
+                }, 300);
+            }
         });
 
         jqXHR.fail(function (xhr, statusText) {
