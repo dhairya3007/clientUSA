@@ -4905,12 +4905,29 @@ body:has(.lower-page.current) #hero-bg {
 
 .zp-footer-brand {
   font-family: var(--font-heading) !important;
-  font-size: 24px !important;
+  font-size: clamp(28px, 3.2vw, 34px) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.16em !important;
   color: var(--color-charcoal) !important;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zp-footer-logo-wrap {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.zp-footer-logo-img {
+  width: clamp(240px, 30vw, 340px) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
 }
 
 .zp-footer-subhead {
@@ -5711,6 +5728,88 @@ blockquote.zp-pull-quote-text {
   color: var(--color-body) !important;
   font-size: 15px !important;
   line-height: 1.85 !important;
+}
+
+.zp-faq-table-title {
+  font-family: var(--font-heading) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  color: var(--color-charcoal) !important;
+  margin-top: 24px !important;
+  margin-bottom: 12px !important;
+  text-transform: uppercase !important;
+}
+
+.zp-travel-table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 16px 0 20px 0 !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.zp-travel-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  text-align: left !important;
+  font-family: var(--font-body) !important;
+  font-size: 14.5px !important;
+  line-height: 1.6 !important;
+}
+
+.zp-travel-table th {
+  background: #F7F4EE !important;
+  color: var(--color-charcoal) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+.zp-travel-table td {
+  padding: 13px 20px !important;
+  color: var(--color-charcoal) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  vertical-align: middle !important;
+}
+
+.zp-travel-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.zp-travel-table tbody tr:hover {
+  background: rgba(200, 169, 107, 0.04) !important;
+}
+
+.zp-travel-table td:nth-child(2) {
+  font-weight: 500 !important;
+  color: #1A1816 !important;
+}
+
+.zp-travel-table-note {
+  font-size: 13.5px !important;
+  color: #7A7265 !important;
+  font-style: italic !important;
+  margin-top: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.zp-enquiry-travel-note {
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  color: #7A7265 !important;
+  font-style: italic !important;
+  margin-top: 16px !important;
+  margin-bottom: 0 !important;
+  max-width: 640px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
 }
 
 @media (max-width: 768px) {

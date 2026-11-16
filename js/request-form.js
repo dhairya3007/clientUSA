@@ -593,6 +593,7 @@
         html += '        <button type="submit" class="c-btn zp-btn-submit" id="zp-submit-button">';
         html += '          <span>SUBMIT REQUEST &rarr;</span>';
         html += '        </button>';
+        html += '        <p class="zp-enquiry-travel-note" style="margin-top: 18px;">Based in New Jersey, ZEROPOINT brings the experience to you. Applicable travel fees, if any, will be included in your personalized quotation before confirmation.</p>';
         html += '      </div>';
         html += '    </form>';
         html += '  </div>';
