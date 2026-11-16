@@ -5940,8 +5940,8 @@ blockquote.zp-pull-quote-text {
   }
 
   .zp-services-hero-bleed-img {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
-    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
   }
 }
 
@@ -6163,8 +6163,8 @@ blockquote.zp-pull-quote-text {
   }
 
   .zp-corporate-hero-bleed-img {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
-    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
   }
 }
 
