@@ -593,7 +593,6 @@
         html += '        <button type="submit" class="c-btn zp-btn-submit" id="zp-submit-button">';
         html += '          <span>SUBMIT REQUEST &rarr;</span>';
         html += '        </button>';
-        html += '        <p class="zp-enquiry-travel-note" style="margin-top: 18px;">Based in New Jersey, ZEROPOINT brings the experience to you. Applicable travel fees, if any, will be included in your personalized quotation before confirmation.</p>';
         html += '      </div>';
         html += '    </form>';
         html += '  </div>';
@@ -943,8 +942,8 @@
         }
 
         // Determine handler endpoint: same-origin & same-port on IIS, with fallback for file:// or static live servers
-        var handlerUrl = (window.location.pathname.indexOf("/service/") !== -1 || window.location.pathname.indexOf("/pages/") !== -1) 
-            ? "../emailmodule/send-email.ashx" 
+        var handlerUrl = (window.location.pathname.indexOf("/service/") !== -1 || window.location.pathname.indexOf("/pages/") !== -1)
+            ? "../emailmodule/send-email.ashx"
             : "emailmodule/send-email.ashx";
 
         if (window.location.protocol === "file:" || window.location.port === "5500" || window.location.port === "3000") {
