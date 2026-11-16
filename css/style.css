@@ -5472,10 +5472,14 @@ blockquote.zp-pull-quote-text {
     bottom: auto !important;
   }
 
-  .zp-bleed-hero-img,
+  .zp-bleed-hero-img {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
+  }
+
   .zp-about-hero-bleed-img {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
-    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 10%, black 28%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 3%, black 8%) !important;
   }
 }
 
